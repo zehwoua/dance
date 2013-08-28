@@ -32,8 +32,6 @@ DanceDynamics::Application.routes.draw do
     resources :comments
   end
 
-  
-
   match 'users/confirm_payment_info' => 'users#confirm_payment_info', :as => :confirm_payment_info
   match 'dashboard', :to => 'users#dashboard'
   match 'dashboard/profile', :to => 'users#profile'

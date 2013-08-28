@@ -10,23 +10,13 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require fancybox
 //= require rails.validations
-// jQuery.ajaxSetup({ 
-//   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-// })
+//= require_tree .
 
-// jQuery.fn.submitWithAjax = function() {
-//   this.submit(function() {
-//     $.post(this.action, $(this).serialize(), null, "script");
-//     return false;
-//   })
-//   return this;
-// };
 
 $(document).ready(function() {
   $("body").removeClass("preload");
