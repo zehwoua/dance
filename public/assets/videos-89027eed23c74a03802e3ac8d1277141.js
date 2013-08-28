@@ -1,0 +1,1 @@
+(function(){jQuery(function(){return $(".pagination").length?($(window).scroll(function(){var i;return i=$(".pagination .next_page").attr("href"),i&&$(window).scrollTop()>$(document).height()-$(window).height()-50?($(".pagination").html("<img src='assets/loader.gif'>"),$.getScript(i)):void 0}),$(window).scroll()):void 0})}).call(this);
