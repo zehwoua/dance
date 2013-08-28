@@ -44,8 +44,8 @@ group :development do
   gem 'mysql2'
 end
 
-group :test do
-	gem 'pg'
+group :production do
+  gem 'pg'
 end
 
 # Image uploading

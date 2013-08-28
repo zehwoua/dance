@@ -10,12 +10,11 @@ $(loading_videos).filter('.video_container').each(function(){
 		  }, 600, function() {
 		    // Animation complete.
   	});
+	  <% if @videos.next_page %>
+	  $('.pagination').replaceWith('<%= j will_paginate(@videos) %>');
+	<% else %>
+	  $('.pagination').remove();
+	<% end %>
+	<% sleep 1 %>
 	}, 500);
 });
-
-<% if @videos.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate(@videos) %>');
-<% else %>
-  $('.pagination').remove();
-<% end %>
-<% sleep 1 %>
