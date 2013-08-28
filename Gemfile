@@ -11,9 +11,6 @@ gem 'sqlite3'
 gem 'devise'
 # Gateaway
 gem 'braintree', '>= 2.16.0'
-
-# Gateaway
-gem 'braintree', '>= 2.16.0'
 gem 'json'
 #fancybox
 gem 'fancybox2-rails', '~> 0.2.4'
