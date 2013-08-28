@@ -1,0 +1,90 @@
+<h1>Welcome back, <span class="purple"><%= current_user.username %></span></h1>
+<p class="text-muted">Here you can see arrange your favorite videos,a dn catch up with latest classes.</p>
+<div class="gray_box clearfix">
+	<div class="inner_container">
+		<h3 class="title">Todays Featured Class</h3>
+		<div class="dashboard_section">
+			<div class="row clearfix">
+				<div class="col-lg-4">
+					<%= image_tag "dance_class.jpg" %>
+				</div>
+				<div class="col-lg-5">
+					<h4 class="title text-primary">Integer volutpat mi sit amet pellentesque.</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae tempus mi. Cras consequat eros ut pretium consectetur. Cras augue enim, tincidunt ut odio at, mattis aliquam turpis. Mauris ac feugiat odio, eget placerat tortor. Sed condimentum elit velit, quis mattis leo auctor nec. Integer scelerisque fringilla turpis. Nunc at turpis nisl.</p>
+
+					<p>Integer volutpat mi sit amet pellentesque consectetur. Etiam consectetur, diam at malesuada posuere, diam purus sagittis urna, et ullamcorper ante enim ac odio. Mauris mollis erat tempus metus faucibus dignissim. Duis nec volutpat felis, non varius nibh. </p>
+				</div>
+				<div class="col-lg-3 video_information_section">
+					<p><b>Teacher: </b>Zehra Ozdemir</p>
+					<p><b>Duration: </b>60 min</p>
+					<p><b>Style: </b>Some style</p>
+					<p><b>Level: </b>Some level</p>
+					<ul class="no_list left_list">
+						<li>
+							<span class="txt">200</span>
+							<span class="glyphicon glyphicon-heart"></span>
+						</li>
+						<li>
+							<span class="txt">10 </span>
+							<span class="glyphicon glyphicon-comment"></span>
+						</li>
+					</ul>
+					<button type="button" class="btn btn-info add_favorites">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="txt">Add to favorites</span>
+					</button>
+				</div>
+			</div><!--/row-->
+		</div><!--/dashboard_section-->
+		
+		<div class="row">
+			<div class="col-lg-8">
+				<h3 class="title">Favorite Videos</h3>
+				<% for video in @user.favorites %>
+					<div class="dashboard_section">
+						<div class="row">
+							<div class="col-lg-5">
+								<%= link_to image_tag(video.photo.url(:medium), :alt => video.title, :class => "video_thumb"), video, :class =>"video_thumb_img_link" %>
+							</div>
+							<div class="col-lg-7">
+								<h3 class="title"><%= link_to video.title, video %></h3>
+
+								<div class="row">
+
+					              <div class="col-lg-8">
+					                <div class="row">
+					                  <div class="col-lg-4 col-5"><b>Teacher</b>:</div>
+					                  <div class="col-lg-8 col-7"><%= video.teacher.name %></div>
+					                </div>
+					                <div class="row">
+					                  <div class="col-lg-4 col-5"><b>Style:</b></div>
+					                  <div class="col-lg-8 col-7"><%= video.style.name %></div>
+					                </div>
+					              </div>
+
+					              <div class="col-lg-4">
+					                <div class="clearfix">
+					                  
+					                </div class="clearfix">
+					                <div class="clearfix">
+					                  <span class="label label-success pull-right"><%= video.duration %></span>
+					                </div>
+					              </div>
+
+					            </div><!--/row-->
+
+								<p>
+									<%= (truncate h(video.description), 
+					                    :length => 440, 
+					                    :omission => "... #{link_to'read more',video}")
+					                    .html_safe %>
+					            </p>
+							</div>
+						</div>
+						
+					</div><!--/dashboard_section-->
+				<% end %>  
+			</div>
+		</div>
+	</div>
+</div><!--/graybox-->

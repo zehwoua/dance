@@ -1,0 +1,69 @@
+<div class="inner_container">
+    <%= form_for(@video, :html => { :class => 'form-horizontal'}) do |f| %>
+      <% if @video.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+          <ul>
+          <% @video.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :title, :class => "col-lg-4 control-label" %>
+        <div class="col-lg-7">
+          <%= f.text_field :title, :autofocus => true, :class => "form-control", :placeholder => "Video title" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :duration, :class => "col-lg-4 control-label" %>
+        <div class="col-lg-7">
+          <%= f.text_field :duration, :class => "form-control", :placeholder => "Duration" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-4 control-label">Select Style</label>
+        <div class="col-lg-7">
+          <%= select("video", "style_id", Style.all.collect {|p| [ p.name, p.id ] }, {prompt:'Select Style Type'}, :class => "form-control" )%>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-4 control-label">Select Teacher</label>
+        <div class="col-lg-7">
+          <%= f.collection_select( :teacher_id, Teacher.order(:name), :id, :name, {:prompt => "Select a teacher"}, { :class => "form-control"}) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-4 control-label">Select Level</label>
+        <div class="col-lg-7">
+          <%= f.radio_button :level, '1' %> 
+          <%= f.label :level, 'Level 1', :value => '1' %>
+          <%= f.radio_button :level, '2' %>
+          <%= f.label :level, 'Level 2', :value => '2' %>
+          <%= f.radio_button :level, '3' %>
+          <%= f.label :level, 'Level 3', :value => '3' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :photo, :class => "col-lg-4 control-label" %>
+        <div class="col-lg-7">
+          <%= f.file_field :photo, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :description, :class => "col-lg-4 control-label" %>
+        <div class="col-lg-7">
+          <%= f.text_area :description, :class => "form-control", :placeholder => "Description of the video", :rows => "10" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-offset-4 col-lg-7">
+          <%= f.submit "Create Video", :class => "btn btn-primary btn-lg" %>
+        </div>
+      </div>
+    <% end %>
+  </div><!--/inner-container-->
+</div><!--/gray-box-->

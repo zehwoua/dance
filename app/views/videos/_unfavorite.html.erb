@@ -1,0 +1,1 @@
+<%= link_to (raw('<span class="glyphicon glyphicon-star"></span><span class="txt">Remove favorites</span>')), current_user.favorite_videos.find_by_video_id(@video.id), { method: :delete, :class => "btn btn-info remove_favorites", remote: true } %>

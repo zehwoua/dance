@@ -1,0 +1,1 @@
+<%= link_to (raw('<span class="glyphicon glyphicon-star"></span><span class="txt">Add to favorites</span>')), favorite_videos_path(video_id: @video), { method: :post, :class => "btn btn-info add_favorites", remote: true }  %>

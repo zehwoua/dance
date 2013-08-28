@@ -1,0 +1,51 @@
+<div class="color_lines">
+<div class="container">
+	<div class="gray_box gray_box_top_margin">
+		<div class="dancing_shadows">
+			<%= image_tag("dancing_figures.png") %>
+		</div>
+		<div class="box_header clearfix">
+			<h2>Member Sign in</h2>
+		</div>
+		<div class="inner_container">
+			<div class="row">
+				<div class="col-lg-7 box_divider">
+					<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:validate => true, :html => { :class => 'form-horizontal'}) do |f| %>
+
+						<%= devise_error_messages! %>
+
+						<div class="form-group">
+							<%= f.label :username, :class => "col-lg-4 control-label" %>
+							<div class="col-lg-7">
+								<%= f.text_field :username, :autofocus => true, :class => "form-control", :placeholder => "Username" %>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<%= f.label :password, :class => "col-lg-4 control-label" %>
+							<div class="col-lg-7">
+								<%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+								<% if devise_mapping.rememberable? -%>
+									<div class="checkbox">
+						          		<%= f.check_box :remember_me %> <%= f.label :remember_me %>
+						        	</div>
+								<% end -%>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="col-lg-offset-4 col-lg-7">
+								<%= f.submit "Sign in", :class => "btn btn-default blue-button" %>
+							</div>
+						</div>
+					<% end %>
+
+					<%= render "devise/shared/links" %>
+				</div><!--/col-lg-8-->
+				<div class="col-lg-4 col-lg-offset-1">Facebook Login</div>
+			</div><!--/row-->
+		</div><!--/inner-container-->
+	</div><!--/gray-box-->
+</div><!--/container-->
+</div>
+

@@ -1,0 +1,8 @@
+$('.add_favorites').fadeOut().remove();
+var c = $('.favorite_button_container');
+c.append('<%= image_tag "loader.gif", :class =>"loader" %>');
+
+setTimeout(function() {
+    c.empty().append('<%= escape_javascript(render(:partial => "/videos/unfavorite.html.erb")) %>');
+}, 1000);
+

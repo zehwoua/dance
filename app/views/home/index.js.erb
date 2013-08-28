@@ -1,0 +1,21 @@
+loading_videos = '<%= j render(@videos) %>';
+// var test = $loading_videos.find('p');
+$(loading_videos).filter('.video_container').each(function(){
+	var video = $(this).addClass('added_video');
+	$('#video_listing').append(video);
+	setTimeout(function(){
+	  video.animate({
+		    opacity: 1,
+		    top: "0"
+		  }, 600, function() {
+		    // Animation complete.
+  	});
+	}, 500);
+});
+
+<% if @videos.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@videos) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
+<% sleep 1 %>

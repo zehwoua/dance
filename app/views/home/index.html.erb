@@ -1,0 +1,43 @@
+	</div>
+</div>
+<div class="sequence-theme">
+	<div id="sequence">
+
+		<%= image_tag "images/bt-prev.png", :class => "sequence-prev", :alt => "Previous Frame" %>
+		<%= image_tag "images/bt-next.png", :class => "sequence-next", :alt => "Next Frame" %>
+
+		<ul class="sequence-canvas">
+			<li class="animate-in">
+				<h2 class="title"><span class="text-primary">Feel Amazing!</span><br/> Welcome to Dance Dynamics</h2>
+				<h3 class="subtitle">Live for Life, Dance For Life</h3>
+				<%= image_tag "slider/slider_man_2.png", :class => "model", :alt =>"Model 1" %>
+			</li>
+			<li>
+				<h2 class="title">Join Us Today for with 15 days Free trial</h2>
+				<h3 class="subtitle"><%= link_to "Join Us","#", :class =>"btn btn-primary btn-lg" %></h3>
+				<%= image_tag "slider/slider_girl_2.png", :class => "model", :alt =>"Model 2" %>
+			</li>
+			<li>
+				<h2 class="title">Cutting Edge</h2>
+				<h3 class="subtitle">Supports modern browsers, old browsers (IE7+), touch devices and responsive designs</h3>
+				<%= image_tag "slider/slider_man_1.png", :class => "model", :alt =>"Model 3" %>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- <div class="sequence-pagination">
+	<ul class="">
+		<li><%= image_tag "images/tn-model1.png" %></li>
+		<li><%= image_tag "images/tn-model2.png" %></li>
+		<li><%= image_tag "images/tn-model3.png" %></li>
+	</ul>
+</div> -->
+
+<div class="display_videos_module">
+	<div class="container">
+		<div class="row" id="video_listing">
+			<%= render @videos %>
+		</div><!--/row-->
+		<%= will_paginate @videos %>
+	</div><!--/container-->
+</div>

@@ -1,0 +1,38 @@
+<h1>Subscription Conformation</h1>
+<p>Thank you for Subscribing with DanceDynamics</p>
+
+	<table class="table">
+	    <tr>
+	        <th>Name</th>
+	        <td><%= @result.customer.first_name %><%= @result.customer.last_name %></td>
+	    </tr>
+        
+        <tr>
+            <th>Phone</th>
+            <td><%= @result.customer.phone %></td>
+        </tr>
+        <% if @result.customer.company %>
+        <tr>
+            <th>Company</th>
+            <td><%= @result.customer.company %></td>
+        </tr>
+        <% end %>
+        <tr>
+            <th>Billing Address Information</th>
+            <td>
+            	<% @result.customer.addresses.each do |ba| %>
+    				<%= ba.street_address %>, <%= ba.extended_address %><br/>
+    				<%= ba.locality %>, <%= ba.region %>,<%= ba.country_code_alpha2 %><br/>
+    				<%= ba.postal_code %></dd>
+  				<% end %>
+  			</td>
+        </tr>
+        <tr>
+            <th>Credit Card Information</th>
+            <td>
+				<% @result.customer.credit_cards.each do |cc| %>
+				    <%= cc.masked_number %>
+				<% end %>
+			</td>	
+        </tr>
+    </table>
