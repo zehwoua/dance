@@ -8,7 +8,6 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require fancybox
  *= require_tree .
  */
@@ -38,10 +37,8 @@ $headings-font-family:  'Bree Serif', serif;
 $headings-font-weight:  bold;
 $line-height-base:      1.3;*/
 $link-color:            #fff;          
-
-@import "twitter/bootstrap";
 @import "css3-mixins";
-/*@import "bootstrap/glyphicons";*/
+@import "twitter/bootstrap";
 @import "bootstarp_united";
 
 body{
@@ -132,7 +129,7 @@ img{max-width: 100%;}
 	background: #f3f3f3;
 	border: 1px solid #fff;
 	@include border-radius(5px);
-	@include box-shadow(0, 1px, 3px, rgba(0,0,0,0.5));
+	@include box-shadow(0 1px 3px rgba(0,0,0,0.5));
 	position: relative;
 	&.gray_box_top_margin{
 		margin-top: 8em;
@@ -152,7 +149,7 @@ img{max-width: 100%;}
 		overflow: auto;
 		background: #d4dedf;
 		border-bottom: 1px solid #fff;
-		@include box-shadow(0, -1px, 0, rgba(0,0,0,0.15), inset);
+		@include box-shadow(0 -1px 0 rgba(0,0,0,0.15) inset);
 		h2{
 			margin: 0;
 			@include text-shadow(1px, 1px, 0, rgba(255,255,255,1.0) );
@@ -190,8 +187,8 @@ textarea.form-control{
 	background: #fff;
 	border: 1px solid #fff;
 	@include border-radius(5px);
-	@include box-shadow(0, 1px, 3px, rgba(153,153,153,0.8),inset);
-	@include transition(all, 0.5s, ease-in-out);
+	@include box-shadow(0 1px 3px rgba(153,153,153,0.8) inset);
+	@include transition(all 0.5s ease-in-out);
 	&.input-small{
 		width: 10%;
 	}
@@ -220,7 +217,7 @@ textarea.form-control{
 }
 .box_divider{
 	border-right: 1px solid #fff;
-	@include box-shadow(-1px, 0px, 0, rgba(0,0,0,0.15), inset);
+	@include box-shadow(-1px 0px 0 rgba(0,0,0,0.15) inset);
 }
 .blue-button{
 	padding: 0.5em 1.5em;
@@ -228,18 +225,18 @@ textarea.form-control{
 	font-weight: 300;
 	font-size: 18px;
 	color: #fff;
-	@include text-shadow(0px, 1px, 0, rgba(0,0,0,0.25));
+	@include text-shadow(0px 1px 0 rgba(0,0,0,0.25));
 	background: #56c2e1;
 	border: 1px solid #46b3d3;
 	@include border-radius(5px);
 	cursor: pointer;
-	@include box-shadow(0, 0, 2px, rgba(255,255,255,0.75), inset);
-	@include transition(all, 0.5s, ease-in-out);
+	@include box-shadow(0 0 2px rgba(255,255,255,0.75) inset);
+	@include transition(all 0.5s ease-in-out);
 	&:hover, &:active{
 		background: #3f9db8;
 		color: white;
 		border: 1px solid rgba(255,255,255,0.75);
-		@include box-shadow(0, 1px, 3px,rgba(0,0,0,0.5),inset);
+		@include box-shadow(0 1px 3px rgba(0,0,0,0.5) inset);
 	}
 }
 .usernav{
@@ -308,7 +305,7 @@ textarea.form-control{
 		overflow: hidden;
 		margin-bottom: 2em;
 		@include border-radius(3px);
-		@include box-shadow(0,1px,5px,rgba(0,0,0,0.3));
+		@include box-shadow(0 1px 5px rgba(0,0,0,0.3));
 		
 		.video_thumb{
 			vertical-align: top;
@@ -330,7 +327,7 @@ textarea.form-control{
 			background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,0.42) 100%); /* W3C */
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#6b000000',GradientType=0 ); /* IE6-8 */
 
-			@include transition(background-color, 0.3s, ease-in-out)
+			@include transition(background-color 0.3s ease-in-out)
 		}
 		&:hover{
 			.video_overlay{
@@ -352,7 +349,7 @@ textarea.form-control{
 				     -o-transform: translate(0,0);
 				        transform: translate(0,0);
 				    
-				@include transition(all, 0.3s, ease-in-out);
+				@include transition(all 0.3s ease-in-out);
 				.video_add_content{
 					opacity: 1;
 				}
@@ -363,7 +360,7 @@ textarea.form-control{
 			width:100%;
 			bottom: 0;
 			@include transform(translate(0,100%));
-			@include transition(all, 0.3s, ease-in-out);
+			@include transition(all 0.3s ease-in-out);
 			background: rgba(255,255,255,.85);
 			.video_top_content{
 				position: relative;
@@ -380,7 +377,7 @@ textarea.form-control{
 						a{
 							color:#7d7d7d;
 							text-decoration: underline;
-							@include transition(all, 0.3s, ease-in-out);
+							@include transition(all 0.3s ease-in-out);
 							&:hover{
 								color:#6d6d6d;
 							}
@@ -404,7 +401,7 @@ textarea.form-control{
 				font-family: 'Lato', sans-serif;
 				font-weight:400;
 				color:#7d7d7d;
-				@include transition(all, 0.3s, ease-in-out);
+				@include transition(all 0.3s ease-in-out);
 				.video_add_content_inner{
 					border:0px solid #dadada;
 					border-top-width:1px;
