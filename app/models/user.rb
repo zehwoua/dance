@@ -34,14 +34,27 @@ class User < ActiveRecord::Base
   	has_many :favorites, through: :favorite_videos, source: :video # the actual videos user favorites
 
   	validates :username, presence: { :on => :create }
-  	validates :email, presence: { :on => :create }
+  	validates :email, :presence => true,
+                                    :if => :validate_password?,
+                                    :confirmation => true,
+                                    :length       => { :within => 6..40 }
   	validates :email, :email_format => true 
-	validates_length_of :password, :minimum => 4
 	validates_uniqueness_of :email
 	validates_uniqueness_of :username, :if => :username_present?
 	validates_presence_of :password_confirmation, :if => :password_present?
 	validates_confirmation_of :password, :if => :password_present?
 
+	def validate_password?
+		if new_record?
+	    	return true
+	  	else
+		    if password.to_s.empty?
+		      	return false
+		    else
+		      	return true
+		    end
+		end
+	end
 	def username_present?
 		username.nil?
 	end

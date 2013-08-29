@@ -57,7 +57,7 @@ $sequencePreloader: ".sequence-preloader";
 	font-size: 0.625em;
 	margin: 0 auto;
 	position: relative;
-	height: 600px;
+	height: 500px;
 
 	> #{$sequenceCanvas} {
 		height: 100%;
@@ -222,7 +222,7 @@ $sequencePreloader: ".sequence-preloader";
 
 .model {
 	left: 20%;
-	top: 70%;
+	top: 53%;
 	opacity: 0;
 	position: relative;
 	height: auto !important;

@@ -1,5 +1,4 @@
 loading_videos = '<%= j render(@videos) %>';
-// var test = $loading_videos.find('p');
 $(loading_videos).filter('.video_container').each(function(){
 	var video = $(this).addClass('added_video');
 	$('#video_listing').append(video);

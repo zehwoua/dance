@@ -1,7 +1,27 @@
-$('#video_listing').append('<%= j render(@videos) %>');
-<% if @videos.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate(@videos) %>');
+<% if params[:page] %>
+	loading_videos = '<%= escape_javascript(render("sorted_videos")) %>';
+	$('#video_listing').find('.pagination').remove();
+	
+	setTimeout(function(){
+		pagination = $(loading_videos).filter('.pagination');
+		$(loading_videos).filter('.video_container').each(function(){
+			var video = $(this).addClass('added_video');
+			$('#video_listing').append(video);
+			video.animate({
+			    opacity: 1,
+			    top: "0"
+			  	}, 600, function() {// Animation complete.
+		  	});
+		});
+	  	$('#video_listing').append(pagination);
+	  	<% if @videos.next_page %>
+		  $('.pagination').replaceWith('<%= j will_paginate(@videos) %>');
+		<% else %>
+		  $('.pagination').remove();
+		<% end %>
+	  }, 500);
+	
 <% else %>
-  $('.pagination').remove();
+	$('#video_listing').html('<%= escape_javascript(render("sorted_videos")) %>');
+	<% sleep 1 %>
 <% end %>
-<% sleep 1 %>

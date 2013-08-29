@@ -13,6 +13,9 @@ class VideosController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @videos }
       format.js
+      #  do
+      #   @loaded_video = render
+      # end
     end
   end
 

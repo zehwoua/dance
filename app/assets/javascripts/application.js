@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require jquery.sequence-min
 //= require twitter/bootstrap
 //= require fancybox
@@ -20,5 +21,39 @@
 
 
 $(document).ready(function() {
-  $("body").removeClass("preload");
+  	$("body").removeClass("preload");
+
+  	$( ".duration_slider" ).slider({
+		animate: true,
+	   	range: "min",
+	   	value: 50,
+	   	min: 10,
+	   	max: 100,
+	   	step: 10,
+    
+	   	//this gets a live reading of the value and prints it on the page
+	   	slide: function( event, ui ) {
+	       $( "#duration_slider_result" ).html( ui.value );
+   		},
+
+	   	//this updates the hidden form field so we can submit the data using a form
+	   	change: function(event, ui) {
+	   		$('#duration_hidden').attr('value', ui.value);
+	   		$.get($("#video_search_form").attr("action"), $("#video_search_form").serialize(), null, "script");
+    		return false;
+   		}
+
+   });
+
+
+  $("#q_style_id_eq, #q_teacher_id_eq").change(function() {
+    
+    $.get($("#video_search_form").attr("action"), $("#video_search_form").serialize(), null, "script");
+    return false;
+  });
+
+  $("#video_search_form input").keyup(function() {
+    $.get($("#video_search_form").attr("action"), $("#video_search_form").serialize(), null, "script");
+    return false;
+  });
  });
