@@ -35,7 +35,7 @@
   	<div class="container">
     <h1>Listing videos</h1>
 
-	    <%= search_form_for(@q, :html => { :class => 'form-inline clearfix', :id => 'video_search_form'}) do |f| %>
+	    <%= search_form_for(@q, :html => { :class => 'form-inline clearfix', :id => 'video_search_form', :remote =>true}) do |f| %>
 
 		    <div class="form-group">
 		        <%= f.label :title_cont,"Search Videos:" %>
@@ -59,19 +59,19 @@
 	      	<div class="form-group">
 		        <label>Select Level</label>
 		            <div>
-		              <%= f.radio_button :level_eq, '1' %> 
-		              <%= f.label :level_eq, 'Level 1', :value => '1' %>
-		              <%= f.radio_button :level_eq, '2' %>
-		              <%= f.label :level_eq, 'Level 2', :value => '2' %>
-		              <%= f.radio_button :level_eq, '3' %>
-		              <%= f.label :level_eq, 'Level 3', :value => '3' %>
+					    <%= f.radio_button :level_eq, '1', :class => 'level_eq_search'%> 
+			            <%= f.label :level_eq, 'Level 1', :value => '1' %>
+			            <%= f.radio_button :level_eq, '2', :class => 'level_eq_search' %>
+			            <%= f.label :level_eq, 'Level 2', :value => '2' %>
+			            <%= f.radio_button :level_eq, '3', :class => 'level_eq_search' %>
+			            <%= f.label :level_eq, 'Level 3', :value => '3' %>
 		            </div>
 	      	</div>
 		    <div class="row clearfix" id="video_listing">
 		        <%= render 'videos/sorted_videos' %>
 		    </div><!--/row-->
 	      
-	      	<%= f.submit %>
+	      	<%= f.submit 'Search', :class => "search_submit" %>
 	    <% end %>
 	</div>
 </div>

@@ -10,18 +10,30 @@
 			video.animate({
 			    opacity: 1,
 			    top: "0"
-			  	}, 600, function() {// Animation complete.
+			  	}, 300, function() {// Animation complete.
 		  	});
 		});
 	  	$('#video_listing').append(pagination);
 	  	<% if @videos.next_page %>
 		  $('.pagination').replaceWith('<%= j will_paginate(@videos) %>');
+		  <% sleep 1 %>
 		<% else %>
 		  $('.pagination').remove();
 		<% end %>
 	  }, 500);
 	
 <% else %>
+	if ($('.pagination').length) {
+      $(window).scroll(function() {
+        var url;
+        url = $('.pagination .next_page').attr('href');
+        if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+          $('.pagination').html("<img src='assets/loader.gif'>");
+          return $.getScript(url);
+        }
+      });
+      return $(window).scroll();
+    }
 	$('#video_listing').html('<%= escape_javascript(render("videos/sorted_videos")) %>');
 	<% sleep 1 %>
 <% end %>

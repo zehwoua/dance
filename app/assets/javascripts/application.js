@@ -44,10 +44,18 @@ $(document).ready(function() {
    		}
 
    });
+  	$(".level_eq_search").change(function(){
+      var id = $(this).attr("id");
+      label = $('label[for='+id+']');
+      if(label.hasClass('checked')){
+        label.removeClass('checked');
+      }else{
+        label.addClass('checked');
+      }	    
+	});
 
-
-  $("#q_style_id_eq, #q_teacher_id_eq").change(function() {
-    
+  $("#q_style_id_eq, #q_teacher_id_eq, .level_eq_search").change(function() {
+    console.log($("#video_search_form").serialize());
     $.get($("#video_search_form").attr("action"), $("#video_search_form").serialize(), null, "script");
     return false;
   });

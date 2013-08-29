@@ -1,45 +1,52 @@
 <div class="display_videos_module">
   <div class="container">
     <h1>Listing videos</h1>
-
-    <%= search_form_for(@q, :html => { :class => 'form-inline clearfix', :id => 'video_search_form'}) do |f| %>
-
-      <div class="form-group">
-        <%= f.label :title_cont,"Search Videos:" %>
-        <%= f.text_field :title_cont, :class => "form-control", :placeholder => "Search Video" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :style_id_eq, :class => "sr-only"  %>
-        <%= f.collection_select( :style_id_eq, Style.order(:name), :id, :name, {:prompt => "Select a style"}, { :class => "form-control"}) %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :teacher_id_eq, :class => "sr-only"  %>
-        <%= f.collection_select( :teacher_id_eq, Teacher.order(:name), :id, :name, {:prompt => "Select a teacher"}, { :class => "form-control"}) %>
-      </div>
-         
-      <div class="duration_slider"></div>
-          <div id="duration_slider_result">50</div>  
-      <%= f.hidden_field :duration_lteq, :id =>"duration_hidden" %>
-
-      <div class="form-group">
-        <label>Select Level</label>
-            <div>
-              <%= f.radio_button :level_eq, '1' %> 
-              <%= f.label :level_eq, 'Level 1', :value => '1' %>
-              <%= f.radio_button :level_eq, '2' %>
-              <%= f.label :level_eq, 'Level 2', :value => '2' %>
-              <%= f.radio_button :level_eq, '3' %>
-              <%= f.label :level_eq, 'Level 3', :value => '3' %>
-            </div>
-      </div>
-      <div class="row clearfix" id="video_listing">
-        <%= render 'sorted_videos' %>
-      </div><!--/row-->
       
-      <%= f.submit %>
-    <% end %>
+      <%= link_to "Filter Classes",:id => "class_filter" %>
+
+      <%= search_form_for(@q, :html => { :class => 'form-inline clearfix', :id => 'video_search_form', :remote =>true}) do |f| %>
+        <div class="well search_dark">
+          <table class="table table-responsive">
+            <tr>
+              <th><%= f.label :title_cont,"Search Videos:" %></th>
+              <th><%= f.label :style_id_eq, "Select Style" %></th>
+              <th><%= f.label :teacher_id_eq, "Select Teacher" %></th>
+              <th><label>Select Duration</label></th>
+              <th></th>
+              <th><label>Select Level</label></th>
+            </tr>
+            <tr>
+              <td><%= f.text_field :title_cont, :class => "form-control", :placeholder => "Search Video" %></td>
+              <td><%= f.collection_select( :style_id_eq, Style.order(:name), :id, :name, {:prompt => "Select a style"}, { :class => "form-control"}) %></td>
+              <td><%= f.collection_select( :teacher_id_eq, Teacher.order(:name), :id, :name, {:prompt => "Select a teacher"}, { :class => "form-control"}) %></td>
+              <td>
+                <div class="duration_slider"></div> 
+                <%= f.hidden_field :duration_lteq, :id =>"duration_hidden" %>
+              </td>
+              <td><p class="duration_min"><span id="duration_slider_result">120</span> min</p></td>
+              <td class="level">
+                <% @duration_value.each do |d| %>
+                  <input type="checkbox" name="q[level_eq_any][]" id="level_eq_any_<%= d %>" class="level_eq_search" value="<%= d %>"/>
+                  <label for="level_eq_any_<%= d %>">
+                    <% x = 1 %>
+                    <% while x <= d.to_i %>
+                    <% x+=1 %>
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    <% end %>
+                  </label>
+                <% end %>
+                
+                
+              </td>
+            </tr>
+          </table>
+        </div><!--/well-->
+        <div class="row clearfix" id="video_listing">
+          <%= render 'sorted_videos' %>
+        </div><!--/row-->
+
+        <%= f.submit 'Search', :class => "search_submit" %>
+      <% end %>
 
 <% if user_signed_in? %>
     <p><%= link_to 'New Video', new_video_path %></p>
