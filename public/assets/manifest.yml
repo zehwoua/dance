@@ -79,8 +79,8 @@ slider/slider_man_2.png: slider/slider_man_2-121ce3376439a70597cf66d51d74f6a1.pn
 slider/slider_man_2/index.png: slider/slider_man_2-121ce3376439a70597cf66d51d74f6a1.png
 star.png: star-e698d0ad886f267996c4c056d3e44151.png
 star/index.png: star-e698d0ad886f267996c4c056d3e44151.png
-application.js: application-6dfab2d290f126837909810f0e8adbd9.js
-application/index.js: application-6dfab2d290f126837909810f0e8adbd9.js
+application.js: application-d5f39e3d19b8b6250c2242c7f523ac10.js
+application/index.js: application-d5f39e3d19b8b6250c2242c7f523ac10.js
 application.css: application-37a0148febe019197473b9c73d47130d.css
 application/index.css: application-37a0148febe019197473b9c73d47130d.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map

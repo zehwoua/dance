@@ -17,7 +17,6 @@
 //= require twitter/bootstrap
 //= require fancybox
 //= require rails.validations
-//= require_tree .
 
 
 $(document).ready(function() {
