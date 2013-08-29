@@ -8,7 +8,7 @@ class VideosController < ApplicationController
 
    @q = Video.search(params[:q])
    @videos = @q.result(distinct: true).page(params[:page]).per_page(3)
-   @duration_value = ["1","2","3"]
+   @level_value = ["1","2","3"]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @videos }
