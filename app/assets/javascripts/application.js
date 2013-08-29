@@ -26,10 +26,10 @@ $(document).ready(function() {
   	$( ".duration_slider" ).slider({
 		animate: true,
 	   	range: "min",
-	   	value: 50,
-	   	min: 10,
-	   	max: 100,
-	   	step: 10,
+	   	value: 120,
+	   	min: 5,
+	   	max: 120,
+	   	step: 5,
     
 	   	//this gets a live reading of the value and prints it on the page
 	   	slide: function( event, ui ) {
