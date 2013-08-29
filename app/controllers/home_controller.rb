@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-  	@videos = Video.page(params[:page]).per_page(3)
+  	@q = Video.search(params[:q])
+   @videos = @q.result(distinct: true).page(params[:page]).per_page(3)
 
     respond_to do |format|
       format.html # index.html.erb
