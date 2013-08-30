@@ -39,8 +39,12 @@ gem 'jquery-rails'
 #ajax image upload
 gem 'remotipart'
 
-group :development do
-  gem 'mysql2'
+group :development, :test do
+	gem 'rspec-rails', "~> 2.0"
+	gem 'factory_girl_rails'
+
+  gem 'cucumber'
+  gem 'webrat'
 end
 
 group :production do
