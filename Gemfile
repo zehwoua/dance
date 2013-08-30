@@ -39,6 +39,8 @@ gem 'jquery-rails'
 #ajax image upload
 gem 'remotipart'
 
+gem 'thin'
+
 group :development, :test do
 	gem 'rspec-rails', "~> 2.0"
 	gem 'factory_girl_rails'
