@@ -29,6 +29,14 @@
                 <% end %>
               </ul>
             </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="teachers_page">Styles <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="Teachers">
+                <% Style.order(:name).each do |t| %>
+                  <li><%= link_to '#','#' %></a></li>
+                <% end %>
+              </ul>
+            </li>
             <li class="active">
               <a href="../help/">Help</a>
             </li>

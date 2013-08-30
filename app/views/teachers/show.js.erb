@@ -1,0 +1,16 @@
+<% if params[:page] %>
+	loading_videos = '<%= escape_javascript(render("videos/sorted_videos")) %>';
+	$('#video_listing').find('.pagination').remove();
+	$('#video_listing').append(loading_videos);
+	
+  	<% if @videos.next_page %>
+	  $('.pagination').replaceWith('<%= j will_paginate(@videos) %>');
+	<% else %>
+	  $('.pagination').remove();
+	<% end %>
+	<% sleep 1 %>
+	
+<% else %>
+	$('#video_listing').html('<%= escape_javascript(render("videos/sorted_videos")) %>');
+	<% sleep 1 %>
+<% end %>

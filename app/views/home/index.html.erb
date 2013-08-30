@@ -36,9 +36,9 @@
 	  	<div class="container">
 	    <h1>Listing videos</h1>
 
-		    <%= link_to "Filter Classes",:id => "class_filter" %>
+		<%= link_to "Filter Classes",:id => "class_filter" %>
 
-	      <%= search_form_for(@q, :html => { :class => 'form-inline clearfix', :id => 'video_search_form', :remote =>true}) do |f| %>
+	    <%= search_form_for(@q, :html => { :class => 'form-inline clearfix', :id => 'video_search_form', :remote =>true}) do |f| %>
 	        <div class="well search_dark">
 	          <table class="table table-responsive">
 	            <tr>
@@ -76,7 +76,7 @@
 	          </table>
 	        </div><!--/well-->
 	        <div class="row clearfix" id="video_listing">
-	          <%= render 'videos/sorted_videos' %>
+	        	<%= render 'videos/sorted_videos' %>
 	        </div><!--/row-->
 
 	        <%= f.submit 'Search', :class => "search_submit" %>
