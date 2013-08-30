@@ -24,6 +24,7 @@ DanceDynamics::Application.routes.draw do
   get "home/subscription"
   
   resources :users
+  resources :teachers
   resources :videos
   resources :favorite_videos
   resources :credit_card_info, :only => [:edit]
