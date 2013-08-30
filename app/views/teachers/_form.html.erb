@@ -1,0 +1,46 @@
+<%= form_for(@teacher, :html => { :class => 'form-horizontal'}) do |f| %>
+      <% if @teacher.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+          <ul>
+          <% @teacher.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :name, :class => "col-lg-4 control-label" %>
+        <div class="col-lg-7">
+          <%= f.text_field :name, :class => "form-control", :placeholder => "Teacher Name" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :website, :class => "col-lg-4 control-label" %>
+        <div class="col-lg-7">
+          <%= f.text_field :website, :class => "form-control", :placeholder => "Website" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :avatar, :class => "col-lg-4 control-label" %>
+        <div class="col-lg-7">
+          <%= f.file_field :avatar, :class => "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :profile, :class => "col-lg-4 control-label" %>
+        <div class="col-lg-7">
+          <%= f.text_area :profile, :class => "form-control", :placeholder => "Teacher's Profile", :rows => "10" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-offset-4 col-lg-7">
+          <%= f.submit "Create Teacher", :class => "btn btn-primary btn-lg" %>
+        </div>
+      </div>
+<% end%>
