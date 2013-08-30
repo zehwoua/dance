@@ -106,6 +106,7 @@ GEM
     mini_portile (0.5.1)
     multi_json (1.7.9)
     multi_test (0.0.2)
+    mysql2 (0.3.13)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
@@ -206,6 +207,7 @@ DEPENDENCIES
   fancybox2-rails (~> 0.2.4)
   jquery-rails
   json
+  mysql2
   paperclip!
   pdfkit
   pg
