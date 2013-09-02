@@ -18,9 +18,11 @@ gem 'client_side_validations'
 #pdf
 gem 'pdfkit'
 #pagination
-gem 'will_paginate'
+gem 'will_paginate', '~> 3.0'
 #search
-gem 'ransack'
+gem "ransack", github: "ernie/ransack"
+#admin
+gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
 
 # Gems used only for assets and not required
 # in production environments by default.

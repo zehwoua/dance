@@ -263,3 +263,14 @@
   transition-delay: $x;
   -webkit-transition-delay: $x;
 }
+
+@mixin p_style{
+  font-family: arial, helvetica, verdana, geneva, sans-serif;
+  font-size: 12px;
+  color: #515a62;
+}
+@mixin main_box{
+  @include box-shadow(0 1px 5px rgba(0,0,0,0.3));
+  @include border-radius(3px);
+  background:white;
+}

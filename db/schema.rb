@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902083419) do
+ActiveRecord::Schema.define(:version => 20130902111813) do
+
+  create_table "active_admin_comments", :force => true do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "video_id"
@@ -27,6 +42,12 @@ ActiveRecord::Schema.define(:version => 20130902083419) do
   create_table "favorite_videos", :force => true do |t|
     t.integer  "video_id"
     t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "levels", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -69,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20130902083419) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "braintree_customer_id"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -80,13 +102,13 @@ ActiveRecord::Schema.define(:version => 20130902083419) do
     t.integer  "style_id"
     t.integer  "duration"
     t.integer  "teacher_id"
-    t.integer  "level"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "level_id"
   end
 
 end

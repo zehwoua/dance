@@ -40,6 +40,7 @@ $link-color:            #fff; */
 @import "css3-mixins";
 @import "twitter/bootstrap";
 @import "bootstarp_united";
+@import "teachers";
 
 body{
 	padding-top: 70px;
@@ -47,37 +48,6 @@ body{
 	background:#F5F5F5;
 	background: url(bg-1.png) repeat #e3e3e3;
 	/* #e4e8ee*/
-}
-@mixin p_style{
-	font-family: arial, helvetica, verdana, geneva, sans-serif;
-	font-size: 12px;
-	color: #515a62;
-}
-/*.main_content_top{
-	margin-top: 30px;
-}
-*/
-/*header{
-	background:orange;
-}
-
-.thumbnail, .img-thumbnail {
-	padding: 10px;
-}
-
-
-@media (min-width: 1200px){
-	.container {
-		max-width: 1000px;
-		}
-}*/
-.video_thumb_img_link{
-	display: block;
-	border-bottom: 2px solid #ff6600;
-	.video_thumb{
-		max-width: 100%;
-		vertical-align: top; 
-	}
 }
 
 .navbar.navbar-black{
@@ -279,21 +249,6 @@ textarea.form-control{
 		@include box-shadow(0 1px 3px rgba(0,0,0,0.5) inset);
 	}
 }
-/*.usernav{
-	margin: 10px 0 10px 20px;
-	.usernav_section{
-		float: left;
-		.avatar{
-			position: relative;
-			/*padding-left: 45px;*/
-			/*.image{
-				position: absolute;
-				top: 10px;
-				left: 5px;
-			}
-		}
-	}
-}*/
 .profile_avatar{
 	background: white;
 	border:5px solid #ddd;
@@ -335,9 +290,7 @@ textarea.form-control{
 	@include p_style;
 	.video_container{
 		margin-bottom: 2em;
-		@include box-shadow(0 1px 5px rgba(0,0,0,0.3));
-		@include border-radius(3px);
-		background:white;
+		@include main_box;
 		.video_item{
 			@include border-radius(3px 3px 0 0);
 			position: relative;
@@ -399,73 +352,6 @@ textarea.form-control{
 						}
 					}
 				}
-				.video_content{
-					-webkit-transform: translate(0,0);
-					   -moz-transform: translate(0,0);
-					    -ms-transform: translate(0,0);
-					     -o-transform: translate(0,0);
-					        transform: translate(0,0);
-					    
-					@include transition(all 0.3s ease-in-out);
-					.video_add_content{
-						opacity: 1;
-					}
-				}
-			}
-			.video_content{
-				position: absolute;
-				width:100%;
-				bottom: 0;
-				@include transform(translate(0,100%));
-				@include transition(all 0.3s ease-in-out);
-				background: rgba(255,255,255,.85);
-				.video_top_content{
-					position: relative;
-					.video_top_content_inner{
-						position: absolute;
-						bottom: 0;
-						padding:10px 15px 10px 15px;
-						background: rgba(255,255,255,.85);
-						width:100%;
-						.video_teacher{
-							font-family: 'helvetica neue';
-							font-size:0.8em;
-							font-weight:400;
-							a{
-								color:#7d7d7d;
-								text-decoration: underline;
-								@include transition(all 0.3s ease-in-out);
-								&:hover{
-									color:#6d6d6d;
-								}
-							}
-						}
-					}
-				}
-				.video_add_content{
-					padding:0 15px 15px 15px;
-					opacity:0;
-					font-family: 'Lato', sans-serif;
-					font-weight:400;
-					color:#7d7d7d;
-					@include transition(all 0.3s ease-in-out);
-					.video_add_content_inner{
-						border:0px solid #dadada;
-						border-top-width:1px;
-						padding-top:10px;
-						.section{
-							margin-bottom:10px;
-							font-family: 'helvetica neue';
-							font-size: 0.8em;
-							font-weight: 400;
-							color: #7d7d7d;
-							p{
-								line-height: 1.2em;
-								margin-bottom: 0.6em;
-							}
-						}
-					}
-				}	
 			}
 			.video_duration{
 				width: 50px;
@@ -522,32 +408,6 @@ textarea.form-control{
 		}
 	}
 	 
-	.video_container.added_video {
-		position: relative;
-		top: 200px;
-		opacity: 0;
-	    /*-webkit-transform: translateY(200px);
-		-moz-transform: translateY(200px);
-		transform: translateY(200px);*/
-		/*-webkit-animation: moveUp 0.65s ease forwards;
-		-moz-animation: moveUp 0.65s ease forwards;
-		animation: moveUp 0.65s ease forwards;*/
-	}
-	 
-	/*@-webkit-keyframes moveUp {
-		from { -webkit-transform: translateY(200px); opacity: 1; }
-		to { -webkit-transform: translateY(0); opacity: 1; }
-	}
-
-	@-moz-keyframes moveUp {
-		from { -moz-transform: translateY(0); opacity: 1; }
-		to { -moz-transform: translateY(0); opacity: 1; }
-	}
-
-	@keyframes moveUp {
-		from { transform: translateY(0); opacity: 1; }
-		to { transform: translateY(0); opacity: 1; }
-	}*/
 }
 
 /* SEARCH FORM */
@@ -661,6 +521,12 @@ textarea.form-control{
 }
 .search_dark{
 	background: url(debut_dark.png) repeat;
+}
+
+/* TEACHERS INDEX PAGE */
+.teacher_avatar{
+	@include main_box;
+	text-align: center;
 }
 
 /* Buttons */

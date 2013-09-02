@@ -3,7 +3,8 @@ class Video < ActiveRecord::Base
 					  :duration, 
 					  :level, 
 					  :style_id, 
-					  :teacher_id, 
+					  :teacher_id,
+					  :level_id, 
 					  :title,
 					  :photo
 
@@ -20,6 +21,7 @@ class Video < ActiveRecord::Base
 	has_many :comments, dependent: :destroy
 	belongs_to :teacher
 	belongs_to :style
+	belongs_to :level
 
 	# Favorited by users
 	has_many :favorite_videos # just the 'relationships'

@@ -1,9 +1,14 @@
 DanceDynamics::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   devise_for :users, :controllers => { :registrations => "users/registrations" }
   devise_scope :user do
     get '/sign_in' => 'devise/sessions#new'
-    get '/sign_out' => 'devise/sessions#destroy'
+  end
+
+  devise_for :users do
+    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
 
   
