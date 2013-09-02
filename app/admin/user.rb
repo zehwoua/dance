@@ -4,6 +4,7 @@ ActiveAdmin.register User do
 		selectable_column
 		column :username
 		column :email
+		column :first_name
 		column "Last Sign in",:last_sign_in_at do |user|
 			date = user.last_sign_in_at.strftime("%d %b %Y")
 			date
@@ -13,7 +14,9 @@ ActiveAdmin.register User do
 			date
 		end
 		column "Active" do |user|
-			has_payment_info?
+			if user.has_payment_info?
+				user.first_name
+			end 
 		end
 		column "" do |user|
 	    	links = ''.html_safe

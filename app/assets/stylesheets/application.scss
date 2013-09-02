@@ -37,8 +37,9 @@ $headings-font-family:  Arvo, serif;
 /*$headings-font-weight:  bold;
 $line-height-base:      1.3;
 $link-color:            #fff; */         
-@import "bootstarp_united";
 @import "css3-mixins";
+@import "twitter/bootstrap";
+@import "bootstarp_united";
 @import "teachers";
 
 body{
