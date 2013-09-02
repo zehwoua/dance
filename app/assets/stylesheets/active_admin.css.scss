@@ -1,17 +1,80 @@
-// SASS variable overrides must be declared before loading up Active Admin's styles.
-//
-// To view the variables that Active Admin provides, take a look at
-// `app/assets/stylesheets/active_admin/mixins/_variables.css.scss` in the
-// Active Admin source.
-//
-// For example, to change the sidebar width:
-// $sidebar-width: 242px;
 
-// Active Admin's got SASS!
+/*// $sidebar-width: 242px;
+*/
 @import "active_admin/mixins";
 @import "active_admin/base";
+@import "twitter/bootstrap";
+@import "css3-mixins";
 
-// Overriding any non-variable SASS must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
+
+/*//   .status_tag { background: #6090DB; }*/
+td{
+text-align: center;
+}
+.title,
+.username,
+.email,
+.last_sign_in,
+.member_since{
+	text-align: left;
+}
+.level,
+.style,
+.teacher,
+.duration,
+.selectable{
+	text-align: center !important;
+}
+.admin_btn{
+	color: white !important;
+	padding: 0.5em 0.7em;
+	display: inline-block;
+	margin-right: 0.2em;
+	&.view_admin_btn{
+		background:#1f7f5c;
+	}
+	&.edit_admin_btn{
+		background:#dba571;
+	}
+	&.delete_admin_btn{
+		background:#e56c69;
+	}
+	&:hover{
+		opacity: 0.8;
+	}
+}
+table.index_table{
+	font-family: arial, helvetica, verdana, geneva, sans-serif;
+	tr{
+		&.even{
+			td{background:#282828;}	
+		}
+		td{
+			border-right: 1px solid;
+			border-color: #333;
+		}
+		&.selected{
+			td{background:#000;}
+		}
+		th{
+			background: #6a5a8c;
+			color: #fff !important;
+			text-shadow: none;
+			border:none;
+			padding: 1em;
+			a{color: white !important;font-weight: bold;}
+			&.sorted-desc {
+				background: #4C4164 !important;
+			}
+			&.sorted-asc{
+				background: #B29EDD !important;
+			}
+		}
+	}
+	background:#232323;
+	color: #f1f1f1;
+	font-size: 12px;
+	a{
+		color: #f1f1f1;
+	}
+}
