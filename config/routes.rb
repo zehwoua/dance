@@ -25,6 +25,7 @@ DanceDynamics::Application.routes.draw do
   
   resources :users
   resources :teachers
+  resources :styles
   resources :videos
   resources :favorite_videos
   resources :credit_card_info, :only => [:edit]

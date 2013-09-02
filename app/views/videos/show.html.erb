@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
-<%= image_tag @video.photo.url(:medium) %>
+<%= image_tag @video.photo.url %>
+<iframe src="http://fast.wistia.net/embed/iframe/2cf8fbb2c0?
+  controlsVisibleOnLoad=true
+  &version=v1
+  &videoHeight=360&videoWidth=640
+  &volumeControl=true"
+  allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%" height="360">
+</iframe>
 <p>
   <b>Title:</b>
   <%= @video.title %>

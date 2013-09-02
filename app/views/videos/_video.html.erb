@@ -6,7 +6,14 @@
         <%= link_to ( image_tag "play_button.png" ), video, 
               :id => "video#{video.id}",
               :class => "video_popover",
-              :data => {:toggle => "popover", :trigger => "hover"} 
+              :data => {:toggle => "popover",
+                        :trigger => "hover",
+                        :content => "<h2>#{video.title}</h2>
+                        <p class='style'><b>Style:</b>#{video.style.name}</p>
+                        <p class='teacher'><b>Teacher:</b>#{video.teacher.name}</p>
+                        <p class='level'><b>Level:</b>#{video.level}</p>
+                        <hr/>
+                        <p class='desc'>#{video.description}</p>"} 
         %>
         <div class="video_duration"><span><%= video.duration %> min</span></div>
       </div><!--/video_overlay--> 

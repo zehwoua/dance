@@ -21,16 +21,43 @@
 //= require_tree .
 
 $(function(){
-    $('a.video_popover').popover({
-      html: true
+  $('a.video_popover').popover({
+      html: true,
+      delay: { show: 500, hide: 100 }
     });
+  // $('a.video_popover').click(function(e){
+  //   e.preventDefault();
+  // })
+
+  // function test(x){
+  //   var return_result = "";
+  //   var id = "";
+  //   id = x.attr('id').match(/\d+/);
+    
+  //   $.ajax({
+  //     url: "/videos/"+id[0]+".json",
+  //     dataType: 'json',
+  //     type: 'get',
+  //     async:false,
+  //     success: function(data){
+  //       return_result = data
+  //     }
+  //   });
+  //   return return_result;
+  // }
+  $('a.video_popover').hover(function(){
+    // var popover_content = ""; 
+    // c = test($(this));
+    // popover_content = c.title;
+    // // console.log(c.title);
+    
+  });
+  
 });
 
 $(document).ready(function() {
   	$("body").removeClass("preload");
     
-    // $('a.video_popover').cluetip({local:true, cursor: 'pointer'});
-
   	$( ".duration_slider" ).slider({
 		animate: true,
 	   	range: "min",
