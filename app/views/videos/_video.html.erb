@@ -1,54 +1,51 @@
-<div class="col-lg-4 video_container">
-  <div class="video_item">
-    <%= image_tag(video.photo.url(:medium), :alt => video.title, :class => "video_thumb") %>
-    <div class="video_overlay">
-      <a href="#" class="item-button play"><i class="play"></i></a>
-      <a href="#" class="item-button share share-btn"><i class="play"></i></a>
-      <div class="video_duration"><span><%= video.duration %> min</span></div>
-    </div>
-    <div class="video_content">
-      <div class="video_top_content">
-        <div class="video_top_content_inner">
-          <div class="item-product">
-            <div class="item-top-title">
-              <h2><%= link_to video.title, video %></h2>
-              <p class="video_teacher">
-                <%= link_to video.teacher.name,"" %>
-              </p>
-            </div>
-          </div>
-          <div class="video_level">
-            <!-- <span class="price-num">$17</span>
-            <p class="subdescription">$36</p>
-            <div class="old-price"></div> -->
-            <% x = 1 %>
-              <% while x <= video.level %>
-                <% x+=1 %>
-                <span class="glyphicon glyphicon-leaf"></span>
-              <% end %>
-          </div>
-        </div>  
-      </div>
-      <div class="video_add_content">
-        <div class="video_add_content_inner">
-          <div class="section">
-            <p><span class="text-primary">Style: </span> <%= video.style.name %></p>
-            <p>
-              <%= (truncate h(video.description), 
-                        :length => 200, 
-                        :omission => "... #{link_to'more',video}")
-                        .html_safe %></p>
-          </div>
-          <!-- <div class="section">
-            <a href="#" class="btn buy expand">Buy now</a>
-          </div> -->
-          <% if user_signed_in? %>
-            <%= link_to 'Show', video %>
-            <%= link_to 'Edit', edit_video_path(video) %>
-            <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
+<div class="col-lg-4">
+  <div class="video_container">
+    <div class="video_item">
+      <%= image_tag(video.photo.url(:medium), :alt => video.title, :class => "video_thumb") %>
+      <div class="video_overlay">
+        <%= link_to ( image_tag "play_button.png" ), video, 
+              :id => "video#{video.id}",
+              :class => "video_popover",
+              :data => {:toggle => "popover", :trigger => "hover"} 
+        %>
+        <div class="video_duration"><span><%= video.duration %> min</span></div>
+      </div><!--/video_overlay--> 
+    </div> <!--/video_item-->
+    <div class="video_short_content">
+      <div class="video_content_inner">
+        <div class="video_level">
+          <% x = 1 %>
+            <% while x <= video.level %>
+              <% x+=1 %>
+              <span class="glyphicon glyphicon-leaf"></span>
+            <% end %>
         </div>
-      </div>
-    </div>
-  </div>  
-</div><!--/video_item-->
+        <p>by <%= link_to video.teacher.name, video.teacher %></p>
+        <div class="social clearfix">
+          <ul class="no_list left_list">
+            <li>
+              <span class="txt">
+                <%= FavoriteVideo.count :conditions => {:video_id => video.id} %>
+              </span>
+              <span class="glyphicon glyphicon-heart"></span>
+            </li>
+            <li>
+              <span class="txt"><%= video.comments.count %> </span>
+              <span class="glyphicon glyphicon-comment"></span>
+            </li>
+            <li> | </li>
+            <li><%= link_to video.style.name, '#' %></li>
+          </ul>
+        </div>
+        <h2 class="clearfix"><%= link_to video.title, video %></h2>
+        <p>
+          <%= (truncate h(video.description), 
+                  :length => 220, 
+                  :omission => "... #{link_to'more',video}")
+                  .html_safe %>
+        </p>
+      </div><!--/video_content_inner-->
+    </div><!--/video_short_content-->
+  </div><!--/video_container-->
+</div><!--/col-lg-4-->
+<div id="test"></div>

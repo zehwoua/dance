@@ -14,14 +14,22 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.sequence-min
-//= require twitter/bootstrap
+//= require bootstrap
 //= require fancybox
+//= require jquery.cluetip
 //= require rails.validations
 //= require_tree .
 
+$(function(){
+    $('a.video_popover').popover({
+      html: true
+    });
+});
 
 $(document).ready(function() {
   	$("body").removeClass("preload");
+    
+    // $('a.video_popover').cluetip({local:true, cursor: 'pointer'});
 
   	$( ".duration_slider" ).slider({
 		animate: true,
@@ -57,6 +65,7 @@ $(document).ready(function() {
   $("#q_style_id_eq, #q_teacher_id_eq, .level_eq_search").change(function() {
     console.log($("#video_search_form").serialize());
     $.get($("#video_search_form").attr("action"), $("#video_search_form").serialize(), null, "script");
+    checkPaginate();
     return false;
   });
 
