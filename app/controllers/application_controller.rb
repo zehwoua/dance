@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
 
 	 
 	def current_admin_user
-	  return nil if user_signed_in? && !current_user.admin?
+	  return nil if user_signed_in? && !current_user.admin? && current_user.has_payment_info?
 	  current_user
+	end
+
+	def membership_required
+	    redirect_to subscription_path unless current_user.has_payment_info?
 	end
 end

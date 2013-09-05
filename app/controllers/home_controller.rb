@@ -10,4 +10,7 @@ class HomeController < ApplicationController
       format.js
     end
   end
+  def subscription
+  	@plans = BraintreeRails::Plan.all
+  end
 end

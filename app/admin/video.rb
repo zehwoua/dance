@@ -1,5 +1,8 @@
 ActiveAdmin.register Video do
 	scope :all, :default => true
+	scope :late do |tasks|
+	  tasks.where('due_date < ?', Time.now)
+	end
 	actions :all
 	index do
 		selectable_column
@@ -24,6 +27,7 @@ ActiveAdmin.register Video do
 	index :as => :grid do |video|
 	    link_to(image_tag(video.photo.url(:small)), admin_video_path(video))
 	end
+
 
 	form :html => { :enctype => "multipart/form-data" } do |f|
 	   f.inputs do

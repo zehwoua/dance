@@ -57,6 +57,8 @@
 
 $(document).ready(function() {
     $("body").removeClass("preload");
+    $( ".dashboard_inner_tab" ).tabs();
+    $(".video_add_note").editable();
     
     $( ".duration_slider" ).slider({
     animate: true,

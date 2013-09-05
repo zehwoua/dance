@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
 	validates_presence_of :password_confirmation, :if => :password_present?
 	validates_confirmation_of :password, :if => :password_present?
 
+	after_destroy :destroy_customer
+
 	def validate_password?
 		if new_record?
 	    	return true
@@ -85,4 +87,18 @@ class User < ActiveRecord::Base
 
 	    credit_cards.find { |cc| cc.default? }
 	end
+
+	def full_name
+	  	"#{first_name} #{last_name}"
+	end
+
+	def customer
+	    braintree_customer_id && BraintreeRails::Customer.new(braintree_customer_id)
+	end
+
+	private
+	def destroy_customer
+	    BraintreeRails::Customer.delete(braintree_customer_id) if braintree_customer_id.present?
+	end
+
 end

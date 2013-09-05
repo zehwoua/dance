@@ -1,0 +1,7 @@
+- model_class = BraintreeRails::Address
+= render 'users/dashboard_tabs', :active_tab => 'profile'
+%div#dashboard_section
+  %div.inner_container
+    .page-header
+      %h1="New #{model_class.model_name.human}"
+    = render :partial => "form", :locals => {:url => user_addresses_path(@user)}

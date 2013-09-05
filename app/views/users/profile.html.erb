@@ -1,120 +1,157 @@
-<h1>Welcome back, <span class="purple"><%= current_user.username %></span></h1>
-<p class="text-muted">Here you can see arrange your favorite videos,a dn catch up with latest classes.</p>
-<div class="gray_box clearfix">
-	<div class="inner_container">	
-		<div class="row clearfix">
-			<div class="col-lg-3">
-				<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-	                <li ><%= link_to "Dashboard", dashboard_path %></li>
-	                <li class="active"><%= link_to "Profile", dashboard_profile_path%></li>
-	                <li><a href="#">Billing Information</a></li>
-	                <li><a href="">Security</a></li>                
-	              </ul>
-			</div><!--/col-lg-3-->
+<%= render 'dashboard_tabs', :active_tab => 'profile' %>
+<div id="dashboard_section">
+	<div class="inner_container">
+		<div id="my_profile" class="dashboard_inner_tab">
+			<ul class="class_tabs clearfix">
+		        <li><a href="#tabs-1">Profile</a></li>
+		        <li><a href="#address-tab">Address</a></li>
+		        <li><a href="#tabs-3">Credit Card</a></li>
+		        <li><a href="#tabs-3">Subscripton</a></li>
+		    </ul>
+		    
+		    <hr/>
+      		<div id="tabs-1" class="display_videos_module featured_style favorites clearfix">
+      			<div class="row">
+      				<div class="col-lg-3">
+						<div class="avatar_container">
+							<%= avatar_url @user, :class =>"img-thumbnail", :size =>300 %>
+							<span class="edit_avatar btn btn-info btn-sm">
+							<span class="glyphicon glyphicon-camera"></span>
+								<%= link_to "Edit Picture", "#", :class =>"edit_avatar_link" %>
+							</span>
+						</div><!--/avatar_container-->
+					</div><!--/col-lg-3-->
 
-			<div class="col-lg-3">
-				<div class="avatar_container">
-					<%= avatar_url @user, :class =>"img-thumbnail", :size =>300 %>
-					<span class="edit_avatar btn btn-info btn-sm">
-						<span class="glyphicon glyphicon-pencil"></span>
-						<%= link_to "Edit Picture", "#", :class =>"edit_avatar_link" %>
-					</span>
-				</div><!--/avatar_container-->
-			</div><!--/col-lg-3-->
+					<div class="col-lg-9">
+						<div id="display_profile_table" class="clearfix">
+							<span class="btn btn-info btn-sm pull-right" id="edit_profile">
+									<span class="glyphicon glyphicon-pencil"></span>
+									<a href="#" class="edit_profile_link">Edit Profile</a>
+								</span>
+							<table class="table table-striped">
+								<tr>
+									<th>Name :</th>
+									<td>Zehra Ozdemir</td>
+								</tr>
+								<tr>
+									<th>Email :</th>
+									<td>zehwoua@hotmail.com</td>
+								</tr>
+								<tr>
+									<th>Subscription Type :</th>
+									<td>Standard</td>
+								</tr>
+								<tr>
+									<th>Date of Birth :</th>
+									<td>23.04.1987</td>
+								</tr>
+								<tr>
+									<th>Gender :</th>
+									<td>Female</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae tempus mi. Cras consequat eros ut pretium consectetur. Cras augue enim, tincidunt ut odio at, mattis aliquam turpis. Mauris ac feugiat odio, eget placerat tortor. Sed condimentum elit velit, quis mattis leo auctor nec. Integer scelerisque fringilla turpis. Nunc at turpis nisl.
 
-			<div class="col-lg-6">
-				<div id="display_profile_table" class="clearfix">
-					<span class="btn btn-info btn-sm pull-right" id="edit_profile">
-							<span class="glyphicon glyphicon-pencil"></span>
-							<a href="#" class="edit_profile_link">Edit Profile</a>
-						</span>
-					<table class="table table-striped">
-						<tr>
-							<th>Name :</th>
-							<td>Zehra Ozdemir</td>
-						</tr>
-						<tr>
-							<th>Email :</th>
-							<td>zehwoua@hotmail.com</td>
-						</tr>
-						<tr>
-							<th>Subscription Type :</th>
-							<td>Standard</td>
-						</tr>
-						<tr>
-							<th>Date of Birth :</th>
-							<td>23.04.1987</td>
-						</tr>
-						<tr>
-							<th>Gender :</th>
-							<td>Female</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae tempus mi. Cras consequat eros ut pretium consectetur. Cras augue enim, tincidunt ut odio at, mattis aliquam turpis. Mauris ac feugiat odio, eget placerat tortor. Sed condimentum elit velit, quis mattis leo auctor nec. Integer scelerisque fringilla turpis. Nunc at turpis nisl.
+										Integer volutpat mi sit amet pellentesque consectetur. Etiam consectetur, diam at malesuada posuere, diam purus sagittis urna, et ullamcorper ante enim ac odio. Mauris mollis erat tempus metus faucibus dignissim. Duis nec volutpat felis, non varius nibh. Integer adipiscing dui lectus, non vulputate lacus tincidunt id. Suspendisse consequat est et erat sagittis dapibus convallis sed lectus. Ut elementum ullamcorper turpis tincidunt ornare. Integer gravida faucibus tortor, nec rutrum metus scelerisque aliquam. Duis sodales ipsum auctor, vulputate purus at, condimentum erat. Vestibulum sagittis nunc magna, vitae mollis metus porta at. Vestibulum vehicula risus eu magna congue consequat eu at nisl.</p>
+									</td>
+								</tr>
+							</table>
+						</div><!--/display_profile_table-->
 
-								Integer volutpat mi sit amet pellentesque consectetur. Etiam consectetur, diam at malesuada posuere, diam purus sagittis urna, et ullamcorper ante enim ac odio. Mauris mollis erat tempus metus faucibus dignissim. Duis nec volutpat felis, non varius nibh. Integer adipiscing dui lectus, non vulputate lacus tincidunt id. Suspendisse consequat est et erat sagittis dapibus convallis sed lectus. Ut elementum ullamcorper turpis tincidunt ornare. Integer gravida faucibus tortor, nec rutrum metus scelerisque aliquam. Duis sodales ipsum auctor, vulputate purus at, condimentum erat. Vestibulum sagittis nunc magna, vitae mollis metus porta at. Vestibulum vehicula risus eu magna congue consequat eu at nisl.</p>
-							</td>
-						</tr>
-					</table>
-				</div><!--/display_profile_table-->
+						<div class="no_display clearfix" id="change_avatar_table">
+							<div class="panel panel-default">
+				              	<div class="panel-heading">
+				              		Upload a new Image
+				              		<button id="photocloseid" type="button" class="close">&times;</button>
+				              	</div><!--panel-heading-->
+				              	<div class="panel-body">
+				                	<%= form_for(@user, :html => { :class => 'form-horizontal', :multipart => true }, :url => {:action => "update_avatar"}) do |f| %>
+				                		<% if @user.errors.any? %>
+									        <div id="error_explanation">
+									        	<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-				<div class="no_display clearfix" id="change_avatar_table">
-					<div class="panel panel-default">
-		              	<div class="panel-heading">
-		              		Upload a new Image
-		              		<button id="photocloseid" type="button" class="close">&times;</button>
-		              	</div><!--panel-heading-->
-		              	<div class="panel-body">
-		                	<%= form_for(@user, :html => { :class => 'form-horizontal'}, :url => {:action => "update_avatar"}) do |f| %>
-		                		<% if @user.errors.any? %>
-							        <div id="error_explanation">
-							        	<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+									          	<ul>
+										          	<% @user.errors.full_messages.each do |msg| %>
+										            	<li><%= msg %></li>
+										          	<% end %>
+									          	</ul>
+									        </div>
+									    <% end %>
 
-							          	<ul>
-								          	<% @user.errors.full_messages.each do |msg| %>
-								            	<li><%= msg %></li>
-								          	<% end %>
-							          	</ul>
-							        </div>
-							    <% end %>
+										<div class="form-group">
+										    <%= f.label :avatar, "Upload Photo", :class => "col-lg-4 control-label" %>
+											<div class="col-lg-8">
+											    <div class="fileupload fileupload-new" data-provides="fileupload">
+													<div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+												  		<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+												  	</div>
+												  	<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;">
+													</div>
+												 	<div>
+												    	<span class="btn btn-warning btn-file btn-sm">
+												    		<span class="fileupload-new">Select image
+												    		</span>
+												    		<span class="fileupload-exists">Change</span>
+												    		<%= f.file_field :avatar %>
+												    	</span>
+												    	<a href="#" class="btn-sm btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
+												  	</div>
+												</div>
+											</div><!--/col-lg-8-->
+										</div><!--/form_group-->
+									    <div class="form-group">
+									        <div class="col-lg-offset-4 col-lg-7">
+									          	<%= f.submit "Upload Photo", :class => "btn btn-success" %>
+									        </div>
+									    </div><!--/form_group-->
+									<% end %>
+								</div><!--/panel-body-->
+				            </div><!--/panel-->
+				        </div><!--/change-avatar-table-->
 
-								<div class="form-group">
-								    <%= f.label :avatar, "Upload Photo", :class => "col-lg-4 control-label" %>
-									<div class="col-lg-8">
-									    <div class="fileupload fileupload-new" data-provides="fileupload">
-											<div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-										  		<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
-										  	</div>
-										  	<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;">
-											</div>
-										 	<div>
-										    	<span class="btn btn-warning btn-file btn-sm">
-										    		<span class="fileupload-new">Select image
-										    		</span>
-										    		<span class="fileupload-exists">Change</span>
-										    		<%= f.file_field :avatar %>
-										    	</span>
-										    	<a href="#" class="btn-sm btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-										  	</div>
-										</div>
-									</div><!--/col-lg-8-->
-								</div><!--/form_group-->
-							    <div class="form-group">
-							        <div class="col-lg-offset-4 col-lg-7">
-							          	<%= f.submit "Upload Photo", :class => "btn btn-success" %>
-							        </div>
-							    </div><!--/form_group-->
-							<% end %>
-						</div><!--/panel-body-->
-		            </div><!--/panel-->
-		        </div><!--/change-avatar-table-->
+				        <div id="change_profile_table" class="clearfix no_display">
+				        	<%= render 'edit_profile_form' %>
+				        </div><!--/change_profile_table-->
 
-		        <div id="change_profile_table" class="clearfix no_display">
-		        	<%= render 'edit_profile_form' %>
-		        </div><!--/change_profile_table-->
+					</div><!--/col-lg-9-->
+      			</div><!--/row-->
 
-			</div><!--/col-lg-6-->
-		</div><!--/row-->
-	</div><!--/inner-container-->
-</div><!--/graybox-->
+      		</div><!--/tabs1-->
+      		<div id="address-tab" class="display_videos_module featured_style favorites clearfix">
+      			<%= link_to 'Add New Address', new_user_address_path(@user), :class => 'btn btn-primary pull-right btn-sm' %>
+      			<h2 class="section_title">My Adresses</h2>
+      			<table class="table">
+      				<tr>
+      					<th>Address</th>
+      					<th>City</th>
+      					<th>Region</th>
+      					<th>Country</th>
+      					<th>Postal Code</th>
+      					<th></th>
+      				</tr>
+      				<% @addresses.each do |address| %>
+      					<tr>
+      						<td><%= "#{address.street_address} #{address.extended_address}" %></td>
+      						<td><%= address.locality %></td>
+      						<td><%= address.region %></td>
+      						<td><%= address.country_name %></td>
+      						<td><%= address.postal_code %></td>
+      						<td>
+      							<%= link_to 'Destroy', user_address_path(@user, address), :method => :delete, :confirm =>'Are you sure?', :class => 'btn btn-sm btn-danger pull-right' %>
+      							<%= link_to 'Edit', edit_user_address_path(@user, address), :class => 'btn btn-warning btn-sm pull-right' %>
+
+      						</td>
+      					</tr>
+      				<% end %>
+      			</table>
+      		</div><!--/tabs2-->
+      		<div id="tabs-3" class="display_videos_module featured_style favorites clearfix">
+
+      		</div><!--/tabs3-->
+      		<div id="tabs-4" class="display_videos_module featured_style favorites clearfix">
+
+      		</div><!--/tabs4-->
+		</div><!--/my_profile-->
+	</div>
+</div>

@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :membership_required
 
   # GET /videos
   # GET /videos.json

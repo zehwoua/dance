@@ -18,17 +18,21 @@ DanceDynamics::Application.routes.draw do
  
  # get "favorite_videos/destroy"
   get "home/index"
-  get "users/dashboard"
-  get "users/profile"
+  get "/dashboard" => "users#dashboard", :as => :user_dashboard
+  get "/dashboard/profile" => "users#profile", :as => :user_profile
+  get "/dashboard/my_classes"  => "users#my_classes", :as => :user_my_classes
   get "users/billing"
   put "users/update_avatar"
   get "users/edit_payment_info"
   get "users/confirm_payment_info"
-  get "users/new_payment_method"
+  get "/register" => "users#new_membership", :as => :new_membership
+  post "/payment" => "users#create_membership", :as => :create_membership
   get "users/new_subscription_method"
   get "home/subscription"
   
-  resources :users
+  resources :users do
+    resources :addresses
+  end
   resources :teachers
   resources :styles
   resources :videos
@@ -40,8 +44,6 @@ DanceDynamics::Application.routes.draw do
   end
 
   match 'users/confirm_payment_info' => 'users#confirm_payment_info', :as => :confirm_payment_info
-  match 'dashboard', :to => 'users#dashboard'
-  match 'dashboard/profile', :to => 'users#profile'
   match 'dashboard/billing', :to => 'users#billing'
   match 'credit_card_info/confirm' => 'credit_card_info#confirm', :as => :confirm_credit_card_info
   match 'subscription', :to => 'home#subscription'

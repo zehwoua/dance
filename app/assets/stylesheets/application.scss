@@ -189,7 +189,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea.form-control{
-	padding: 1.4em 1em;
+	padding: 0.8em 1em;
 	font-size: 14px;
 	border-width: 2px;
 	color: #9d9e9e;
@@ -364,8 +364,8 @@ textarea.form-control{
 				right: -10px;
 				span{
 					position: absolute;
-					top: 17px;
-					left: 4px;
+					top: 14px;
+					left: 8px;
 					font-size:11px;
 					color:#fff;
 				}

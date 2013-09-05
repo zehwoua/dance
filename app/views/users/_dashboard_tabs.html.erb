@@ -1,0 +1,23 @@
+<div class="clearfix" id="dashboard_tabs">
+  <div class="inner_container">
+    <ul class="clearfix">
+      <li class="<%= active_tab %>">
+          <% link = raw('<span class="glyphicon glyphicon-calendar"></span><span>Dashboard</span>') %>
+          <%= link_to link, user_dashboard_path, :class => 'dashboard' %>
+          
+      </li>
+      <li class="<%= active_tab %>">
+          <% link = raw('<span class="glyphicon glyphicon-user"></span><span>Profile</span>') %>
+          <%= link_to link, user_profile_path, :class => 'profile' %>
+      </li>
+      <li class="<%= active_tab %>">
+          <% link = raw('<span class="glyphicon glyphicon-star"></span><span>My Classes</span>') %>
+          <%= link_to link, user_my_classes_path, :class => 'my_class' %>
+      </li>
+      <li class="last <%= active_tab %>">
+          <% link = raw('<span class="glyphicon glyphicon-book"></span><span>Billing</span>') %>
+          <%= link_to link, "#", :class => 'billing' %>
+        </li>
+    </ul>
+  </div>
+</div>

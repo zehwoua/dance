@@ -1,0 +1,23 @@
+= simple_form_for @credit_card, :url => create_membership_path(:plan_id => @plan.id), :html => { :class => 'form-horizontal', :id => 'braintree-credit-card-form' } do |f|
+  .form-actions
+    %h2 Billing Information
+  = f.simple_fields_for :billing_address, @credit_card.billing_address do |ba|
+    = ba.input :first_name
+    = ba.input :last_name
+    = ba.input :company
+    = ba.input :street_address
+    = ba.input :extended_address
+    = ba.input :locality
+    = ba.input :country_code_alpha2, options_for_country_select
+    = ba.input :region, options_for_region_select
+    = ba.input :postal_code
+  .form-actions
+    %h2 Credit Card Information
+  = f.input(:number, :input_html => { 'data-encrypted-name' => true }) if @credit_card.new_record?
+  = f.input :cardholder_name
+  = f.input(:cvv, :maxlength => 4, :input_html => {'data-encrypted-name' => true }) if @credit_card.new_record?
+  = f.input :expiration_month, options_for_month_select
+  = f.input :expiration_year, options_for_year_select
+  .form-actions
+    = f.button :submit,"Become a Member Now", :class => 'btn-primary'
+    = link_to 'Cancel', root_path, :class => 'btn'

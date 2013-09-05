@@ -8,13 +8,16 @@ ruby "1.9.3"
 
 # Authorization
 gem 'devise'
+gem 'haml-rails'
 # Gateaway
-gem 'braintree', '>= 2.16.0'
+gem 'braintree-rails', :github => "lyang/braintree-rails", :branch => 'master'
+gem 'simple_form'
 gem 'json'
 #fancybox
 gem 'fancybox2-rails', '~> 0.2.4'
 #validations
 gem 'client_side_validations'
+gem 'carmen-rails'
 #pdf
 gem 'pdfkit'
 #pagination

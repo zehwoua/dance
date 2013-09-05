@@ -60,4 +60,9 @@ module ApplicationHelper
       end
     end
   end
+
+  def nice_date_form(date)
+    return nil unless date.present?
+      return date.strftime('%d-%m-%Y')
+  end
 end

@@ -54,34 +54,34 @@
 
           	<ul class="nav navbar-nav navbar-right usernav">
             	<% if user_signed_in? %>
-                <li class="dropdown usernav_section">    
-                  <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
-                      <%= avatar_url @user, :size => 32, :class => "image" %>
-                      <span class="txt">Welcome <%= current_user.username %></span>
-                      <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                      <li class="menu">
-                          <ul class="no_list">
-                              <li>
-                                  <a href="#"><span class="icon16 icomoon-icon-user-plus"></span>See</a>
-                              </li>
-                              <li>
-                                  <a href="#"><span class="icon16 icomoon-icon-bubble-2"></span>Approve comments</a>
-                              </li>
-                              <li>
-                                  <a href="#"><span class="icon16 icomoon-icon-plus"></span>Add user</a>
-                              </li>
-                          </ul>
-                      </li>
-                  </ul>
-                </li>
-            	<li class="usernav_section">
-	              <%= link_to (raw('<span class="glyphicon glyphicon-log-out"></span><span class="txt"> Logout</span>')), destroy_user_session_path, :method => :delete %>
-	        	  </li>
+                  <li class="dropdown usernav_section">    
+                    <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
+                        <%= avatar_url @user, :size => 32, :class => "image" %>
+                        <span class="txt">Welcome <%= current_user.username %></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="menu">
+                            <ul class="no_list">
+                                <li>
+                                    <a href="#"><span class="icon16 icomoon-icon-user-plus"></span>See</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon16 icomoon-icon-bubble-2"></span>Approve comments</a>
+                                </li>
+                                <li>
+                                    <a href="#"><span class="icon16 icomoon-icon-plus"></span>Add user</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                  </li>
+              	<li class="usernav_section">
+  	              <%= link_to (raw('<span class="glyphicon glyphicon-log-out"></span><span class="txt"> Logout</span>')), destroy_user_session_path, :method => :delete %>
+  	        	  </li>
               <% else %>
-                <li><%= link_to "Sign up", new_user_registration_path %></li>
-                <li><%= link_to "Sign in" , new_user_session_path %></li>
+                  <li><%= link_to "Sign up", new_user_registration_path %></li>
+                  <li><%= link_to "Sign in" , new_user_session_path %></li>
               <% end %>
           	</ul>
 
