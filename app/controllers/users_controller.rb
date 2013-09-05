@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 	    	if @subscription.save 
 		    	@user.update_attribute(:braintree_customer_id, @customer.id)
 		      	flash[:notice] = "Thank you for the subscribing"
-		      	redirect_to users_dashboard_path
+		      	redirect_to user_dashboard_path
 		    end
 	    else
 	      	flash[:alert] = @credit_card.errors.full_messages.join(".\n")
