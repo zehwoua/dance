@@ -39,12 +39,13 @@
       <div class="form-group">
         <label class="col-lg-4 control-label">Select Level</label>
         <div class="col-lg-7">
-          <%= f.radio_button :level, '1' %> 
-          <%= f.label :level, 'Level 1', :value => '1' %>
-          <%= f.radio_button :level, '2' %>
-          <%= f.label :level, 'Level 2', :value => '2' %>
-          <%= f.radio_button :level, '3' %>
-          <%= f.label :level, 'Level 3', :value => '3' %>
+          <%= f.collection_select( :level_id, Level.order(:name), :id, :name, {:prompt => "Select a level"}, { :class => "form-control"}) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-4 control-label">Enter Wistia video code</label>
+        <div class="col-lg-7">
+          <%= f.text_field :wistia_id, :class => "form-control", :placeholder => "wistia id" %>
         </div>
       </div>
       <div class="form-group">

@@ -25,9 +25,10 @@
 
               <div class="video_level pull-right">
                 <% x = 1 %>
+                <span>Level: </span>
                 <% while x <= @video.level.scale %>
                   <% x+=1 %>
-                  <span>Level: </span><span class="glyphicon glyphicon-leaf"></span>
+                  <span class="glyphicon glyphicon-leaf"></span>
                 <% end %>
               </div>
 
@@ -81,10 +82,12 @@
     <% end %>
 
     <h3 class="video_title">Most favorited Videos</h3>
-    
+
     <div class="video_box">
       <div class="inner_container">
-        
+        <% @tests.each do |test| %>
+        <p><%= test[0] %></p>
+        <% end %>
       </div>
     </div>
   </div>
