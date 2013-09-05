@@ -81,6 +81,18 @@ $(document).ready(function() {
       }
 
    });
+
+    $("#class_filter").click(function(e){
+      e.preventDefault();
+      $("#search_section").slideToggle('fast');
+      if ( $(this).hasClass('active_search')) {
+        $(this).removeClass('active_search');
+        $(this).find('span.glyphicon-chevron-down').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
+      }else{
+        $(this).addClass('active_search');
+        $(this).find('span.glyphicon-chevron-right').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+      }
+    })
     $(".level_eq_search").change(function(){
       var id = $(this).attr("id");
       label = $('label[for='+id+']');

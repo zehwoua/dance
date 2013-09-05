@@ -1,0 +1,38 @@
+<div class="display_videos_module">
+	<%= link_to raw("<span class='txt'>Filter Classes</span><span class='glyphicon glyphicon-chevron-right'></span>"), "#", :id => "class_filter", :class=>"btn buy"%>
+
+    <%= search_form_for(@q, :html => { :class => 'form-inline clearfix', :id => 'video_search_form', :remote =>true}) do |f| %>
+	<div id="search_section">
+	    <div class="well search_dark">
+            <div class="row">
+	            <div class="col-lg-2">
+	            	<p><%= f.label :title_cont,"Search Videos:" %></p>
+	            	<%= f.text_field :title_cont, :class => "form-control", :placeholder => "Search Video" %>
+	            </div>
+	            <div class="col-lg-2">
+        			<p><%= f.label :style_id_eq, "Select Style" %></p>
+        			<%= f.collection_select( :style_id_eq, Style.order(:name), :id, :name, {:prompt => "Select a style"}, { :class => "form-control"}) %>
+        		</div>
+	            <div class="col-lg-2">
+	            	<p><%= f.label :teacher_id_eq, "Select Teacher" %></p>
+	            	<%= f.collection_select( :teacher_id_eq, Teacher.order(:name), :id, :name, {:prompt => "Select a teacher"}, { :class => "form-control"}) %>
+	            </div>
+	            <div class="col-lg-2">
+	            	<p><label>Select Duration</label></p>
+	            	<div class="duration_slider"></div> 
+	                	<%= f.hidden_field :duration_lteq, :id =>"duration_hidden" %>
+	            </div>
+	            <div class="col-lg-1">
+	            	<p class="duration_min"><span id="duration_slider_result">120</span> min</p>
+	            	<%= f.hidden_field :level_id_eq, :value => @current_level_id %>
+	            </div>
+	        </div>
+	    </div><!--/well-->
+	</div><!--/search_section-->
+    <div class="row clearfix" id="video_listing">
+    	<%= render 'videos/sorted_videos' %>
+    </div><!--/row-->
+
+    <%= f.submit 'Search', :class => "search_submit" %>
+    <% end %>
+</div>

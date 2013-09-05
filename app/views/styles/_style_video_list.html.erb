@@ -1,46 +1,43 @@
 <div class="display_videos_module">
-	<h1>Listing videos</h1>
-
-	<%= link_to "Filter Classes",:id => "class_filter" %>
+	<%= link_to raw("<span class='txt'>Filter Classes</span><span class='glyphicon glyphicon-chevron-right'></span>"), "#", :id => "class_filter", :class=>"btn buy"%>
 
     <%= search_form_for(@q, :html => { :class => 'form-inline clearfix', :id => 'video_search_form', :remote =>true}) do |f| %>
-	    
-	    <div class="well search_dark">
-            <table class="table table-responsive">
-	            <tr>
-	                <th><%= f.label :title_cont,"Search Videos:" %></th>
-	                <th><%= f.label :teacher_id_eq, "Select Teacher" %></th>
-	                <th><label>Select Duration</label></th>
-	                <th></th>
-	                <th><label>Select Level</label></th>
-	            </tr>
-	            <tr>
-	                <td><%= f.text_field :title_cont, :class => "form-control", :placeholder => "Search Video" %></td>
-	                <td><%= f.collection_select( :teacher_id_eq, Teacher.order(:name), :id, :name, {:prompt => "Select a teacher"}, { :class => "form-control"}) %></td>
-	      
-	                <td>
-	                	<div class="duration_slider"></div> 
-	                	<%= f.hidden_field :duration_lteq, :id =>"duration_hidden" %>
-	              	</td>
-	              	<td><p class="duration_min"><span id="duration_slider_result">120</span> min</p></td>
-	              	
-	              	<td class="level">
-		                <% @level_value.each do |d| %>
-		                    <input type="checkbox" name="q[level_eq_any][]" id="level_eq_any_<%= d %>" class="level_eq_search" value="<%= d %>"/>
-		                    <label for="level_eq_any_<%= d %>">
-			                    <% x = 1 %>
-			                    <% while x <= d.to_i %>
-			                    	<% x+=1 %>
-		                    		<span class="glyphicon glyphicon-leaf"></span>
-		                    	<% end %>
-		                    </label>
+	    <div id="search_section">
+		    <div class="well search_dark">
+	            <div class="row">
+		            <div class="col-lg-2">
+		            	<p><%= f.label :title_cont,"Search Videos:" %></p>
+		            	<%= f.text_field :title_cont, :class => "form-control", :placeholder => "Search Video" %>
+		            </div>
+		            <div class="col-lg-2">
+		            	<p><%= f.label :teacher_id_eq, "Select Teacher" %></p>
+		            	<%= f.collection_select( :teacher_id_eq, Teacher.order(:name), :id, :name, {:prompt => "Select a teacher"}, { :class => "form-control"}) %>
+		            </div>
+		            <div class="col-lg-2">
+		            	<p><label>Select Duration</label></p>
+		            	<div class="duration_slider"></div> 
+		                	<%= f.hidden_field :duration_lteq, :id =>"duration_hidden" %>
+		            </div>
+		            <div class="col-lg-1">
+		            	<p class="duration_min"><span id="duration_slider_result">120</span> min</p>
+		            	<%= f.hidden_field :style_id_eq, :value => @current_style_id %>
+		            </div>
+		            <div class="col-lg-3 level_search">
+	        			<p><label>Select Level</label></p>
+	        			<% @level.each do |lv| %>
+		                  	<input type="checkbox" name="q[level_id_eq_any][]" id="level_id_eq_any_<%= lv.id %>" class="level_eq_search" value="<%= lv.id %>"/>
+		                  	<label for="level_id_eq_any_<%= lv.id %>" class="level_buttons">
+				                <% x = 1 %>
+				               	<% while x <= lv.scale %>
+				                    <% x+=1 %>
+				                    <span class="glyphicon glyphicon-leaf"></span>
+			                    <% end %>
+		                  	</label>
 		                <% end %>
-	              	</td>
-	            </tr>
-	            <%= f.hidden_field :style_id_eq, :value => @current_style_id %>
-	        </table>
-        </div><!--/well-->
-
+	        		</div>
+		        </div>
+		    </div><!--/well-->
+		</div>
         <div class="row clearfix" id="video_listing">
         	<%= render 'videos/sorted_videos' %>
         </div><!--/row-->

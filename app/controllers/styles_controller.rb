@@ -3,8 +3,7 @@ class StylesController < ApplicationController
 	  	@current_style_id = params[:id]
 	  	@q = Video.search(params[:q])
 	  	@videos = @q.result(distinct: true).page(params[:page]).per_page(3).where(:style_id => @current_style_id)
-	   	@level_value = ["1","2","3"]
-
+	   	@level = Level.all
 	    @style = Style.find(@current_style_id)
 
 	    respond_to do |format|

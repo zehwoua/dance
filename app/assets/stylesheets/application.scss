@@ -410,8 +410,13 @@ textarea.form-control{
 	}
 	 
 }
-.search_dark{
-	
+#search_section{display:none;}
+#class_filter{
+	margin-bottom: 1em;
+	padding: 0.1em 2em;
+	span.txt{
+		margin-right: 0.5em;
+	}
 }
 /* SEARCH FORM */
 #video_search_form{
