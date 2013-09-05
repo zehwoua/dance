@@ -40,6 +40,7 @@ DanceDynamics::Application.routes.draw do
   resources :levels
   resources :videos
   resources :favorite_videos
+  resources :history_videos
   resources :credit_card_info, :only => [:edit]
 
   resources :videos do

@@ -25,5 +25,8 @@ class Video < ActiveRecord::Base
 
 	# Favorited by users
 	has_many :favorite_videos # just the 'relationships'
-	has_many :favorited_by, through: :favorite_videos, source: :user # the actual users favoriting a recipe
+	has_many :favorited_by, through: :favorite_videos, source: :user # the actual users favoriting a video
+	# Favorited by users
+	has_many :history_videos # just the 'relationships'
+	has_many :historied_by, through: :history_videos, source: :user # the actual users finish watching a video
 end

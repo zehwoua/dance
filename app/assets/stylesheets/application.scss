@@ -49,6 +49,7 @@ body{
 	background: url(bg-1.png) repeat #e3e3e3;
 	/* #e4e8ee*/
 }
+.container.main_body{padding-top: 50px;}
 
 .navbar.navbar-black{
 	background: #f1f1f1;
@@ -133,6 +134,7 @@ img{max-width: 100%;}
 			position: absolute;
 			bottom: 20px;
 			right: 20px;
+			width: 100%;
 		}
 	}
 }

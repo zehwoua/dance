@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
   	has_many :favorite_videos # just the 'relationships'
   	has_many :favorites, through: :favorite_videos, source: :video # the actual videos user favorites
 
+  	# History videos of user
+  	has_many :history_videos # just the 'relationships'
+  	has_many :histories, through: :history_videos, source: :video # the actual videos user favorites
+
   	validates :username, presence: { :on => :create }
   	validates :email, :presence => true,
                                     :if => :validate_password?,

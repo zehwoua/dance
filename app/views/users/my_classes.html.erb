@@ -4,12 +4,12 @@
     
     <div id="my_classes" class="dashboard_inner_tab">
       <ul class="class_tabs clearfix">
-        <li><a href="#tabs-1">Favorite Videos</a></li>
-        <li><a href="#tabs-2">History</a></li>
+        <li><a href="#favorites">Favorite Videos</a></li>
+        <li><a href="#history">History</a></li>
       </ul>
 
       <hr/>
-      <div id="tabs-1" class="display_videos_module featured_style favorites clearfix">
+      <div id="favorites" class="display_videos_module featured_style favorites clearfix">
         <div class="row">
           <div class="col-lg-12">
             <h3 class="section_title">Favorite Videos</h3>
@@ -83,9 +83,83 @@
           </div>
         </div>
       </div><!--/tab featured videos-->
-      <div id="tabs-2" class="clearfix">
-        this part needs to be done...
-      </div>
+      <div id="history" class="display_videos_module featured_style favorites clearfix">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="section_title">Videos Previously Watched</h3>
+            
+            <% for video in @user.histories %>
+              <div class="col-lg-12">
+                <div class="video_container clearfix">
+                  <div class="video_item">
+                    <%= image_tag(video.photo.url(:medium), :alt => video.title, :class => "video_thumb") %>
+                    <div class="video_overlay">
+                      <%= link_to ( image_tag "play_button.png" ), video, 
+                            :id => "video#{video.id}",
+                            :class => "video_popover",
+                            :data => {:toggle => "popover",
+                                      :trigger => "hover",
+                                      :content => "<h2>#{video.title}</h2>
+                                      <p class='style'><b>Style:</b>#{video.style.name}</p>
+                                      <p class='teacher'><b>Teacher:</b>#{video.teacher.name}</p>
+                                      <p class='level'><b>Level:</b>#{video.level}</p>
+                                      <hr/>
+                                      <p class='desc'>#{video.description}</p>"} 
+                      %>
+                      <div class="video_duration"><span><%= video.duration %> min</span></div>
+                    </div><!--/video_overlay--> 
+                  </div> <!--/video_item-->
+                  <div class="video_short_content">
+                    <div class="video_content_inner">
+                      <div class="video_level">
+                        <% x = 1 %>
+                          <% while x <= video.level.scale %>
+                            <% x+=1 %>
+                            <span class="glyphicon glyphicon-leaf"></span>
+                          <% end %>
+                      </div>
+                      <p>by <%= link_to video.teacher.name, video.teacher %></p>
+                      <div class="social clearfix">
+                        <ul class="no_list left_list">
+                          <li>
+                            <span class="txt">
+                              <%= FavoriteVideo.count :conditions => {:video_id => video.id} %>
+                            </span>
+                            <span class="glyphicon glyphicon-heart"></span>
+                          </li>
+                          <li>
+                            <span class="txt"><%= video.comments.count %> </span>
+                            <span class="glyphicon glyphicon-comment"></span>
+                          </li>
+                          <li> | </li>
+                          <li><%= link_to video.style.name, '#' %></li>
+                        </ul>
+                      </div>
+                      <h2 class="clearfix"><%= link_to video.title, video %></h2>
+                      <p>
+                        <%= (truncate h(video.description), 
+                                :length => 220, 
+                                :omission => "... #{link_to'more',video}")
+                                .html_safe %>
+                      </p>
+                    </div><!--/video_content_inner-->
+                  </div><!--/video_short_content-->
+                  <div class="video_notes">
+                    <div class="video_content_inner">
+
+                      <span id="note<%= video.id %>" data-pk="1" data-toggle=".pencil<%= video.id %>" data-original-title="Enter note" tabindex="-1" data-type="textarea" class="video_add_note">You can enter your notes in here</span>
+
+                      <a href="#" class="pencil<%= video.id %>" style="float: right"><span class="glyphicon glyphicon-pencil"></span></a>
+                    </div>
+                  </div>
+                </div><!--/video_container-->
+              </div>
+            <% end %>  
+
+          </div><!--/col-lg-12-->
+        </div><!--/row-->
+      </div><!--/history tab-->
+      
     </div>
   </div>
 </div>

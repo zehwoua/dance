@@ -1,3 +1,70 @@
-// Place all the styles related to the videos controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "css3-mixins";
+
+#video_section{
+	.video_box{
+		@include box-shadow(0, 1px, 5px, rgba(0,0,0,0.3));
+	  	@include border-radius(3px);
+	  	background:white;
+	}
+  	.video_title{
+  		color: #dd4814;
+		font-weight: 700;
+		font-size: 15px;
+		text-shadow: 1px 1px 1px #eee;
+		text-transform: uppercase;
+		margin-bottom: 1em;
+  	}
+  	.video_level{
+  		color: #40c781;
+		position: relative;
+		margin-right: 1em;
+  	}
+  	#video_info{
+  		color: rgb(81, 90, 98);
+		font-family: arial, helvetica, verdana, geneva, sans-serif;
+		font-size: 12px;
+  	}
+  	#video_social{
+  		font-size: 12px;
+	  	.commented_by{
+	  		color: #dd4814;
+	  		margin-right: 1em;
+	  	}
+	  	.favorited_by{
+	  		color: #f17a77;
+	  	}
+	  	.duration{
+	  		margin-right: 1em;
+	  		color: #28a4c9;
+	  	}
+  	}
+  	
+  	.video_sub_info{
+  		border-bottom: 1px solid #ddd;
+		padding-bottom: 1em;
+		margin-bottom: 2em;
+  		a{
+  			color: #40c781;
+  			font-weight: bold;
+  		}
+  		.video_description{
+  			margin: 3em 0;
+  		}
+  	}
+  	.favorite_button_container{
+  		text-align: center;
+  		min-height: 60px;
+  		img{
+  			padding-top: 5px;
+  		}
+  		.add_favorites,
+	  	.remove_favorites{
+	  		width: 100%;
+	  	}
+  	}
+  	#video_sidebar{
+  		.video_box{
+  			margin-top: 1em;
+  		}
+  	}
+}

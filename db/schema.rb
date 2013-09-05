@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902114916) do
+ActiveRecord::Schema.define(:version => 20130905070055) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -46,11 +46,18 @@ ActiveRecord::Schema.define(:version => 20130902114916) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "history_videos", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "video_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "levels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "scale"
+    t.integer  "scale",      :null => false
   end
 
   create_table "styles", :force => true do |t|
@@ -110,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20130902114916) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "level_id"
+    t.string   "wistia_id"
   end
 
 end

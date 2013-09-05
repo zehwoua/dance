@@ -1,66 +1,91 @@
-<p id="notice"><%= notice %></p>
-<%= image_tag @video.photo.url %>
-<iframe src="http://fast.wistia.net/embed/iframe/2cf8fbb2c0?
-  controlsVisibleOnLoad=true
-  &version=v1
-  &videoHeight=360&videoWidth=640
-  &volumeControl=true"
-  allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%" height="360">
-</iframe>
-<p>
-  <b>Title:</b>
-  <%= @video.title %>
-</p>
+<div class="row clearfix" id="video_section">
+  <div class="col-lg-9">
+    <div class="video_box">
+      <div class="inner_container">
 
-<p>
-  <b>Description:</b>
-  <%= @video.description %>
-</p>
+        <div id="wistia_<%= @video.wistia_id %>" class="wistia_embed" style="width:100%;height:450px;" data-video-width="640" data-video-height="360" data-wistia-id="<%= @video.wistia_id %>" data-video-id="<%= @video.id %>">&nbsp;</div>
+        <h2 class="video_title"><%= @video.title %></h2>
+        
+        <div id="video_info">
+          
+          <div class="video_sub_info">
+            <div class="pull-right" id="video_social">
+        
+              <div class="favorited_by pull-right">
+                <span class="txt">
+                <%= FavoriteVideo.count :conditions => {:video_id => @video.id} %>
+              </span>
+              <span class="glyphicon glyphicon-heart"></span>
+              </div>
 
-<p>
-  <b>Style:</b>
-  <%= @video.style_id %>
-</p>
+              <div class="commented_by pull-right">
+                <span class="txt"><%= @video.comments.count %> </span>
+                <span class="glyphicon glyphicon-comment"></span>
+              </div>
 
-<p>
-  <b>Duration:</b>
-  <%= @video.duration %>
-</p>
+              <div class="video_level pull-right">
+                <% x = 1 %>
+                <% while x <= @video.level.scale %>
+                  <% x+=1 %>
+                  <span>Level: </span><span class="glyphicon glyphicon-leaf"></span>
+                <% end %>
+              </div>
 
-<p>
-  <b>Teacher:</b>
-  <%= @video.teacher_id %>
-</p>
+              <div class="duration pull-right">
+                <span class="txt"><%= @video.duration %> min</span>
+                <span class="glyphicon glyphicon-time"></span>
+              </div>
+            </div>
+            <div><%= link_to @video.style.name, @video.style %> | by <%= link_to @video.teacher.name, @video.teacher %> on <%= nice_date_form(@video.created_at )%></div>
+          
+          </div><!--/video-sub-info-->
+          <div class="video_description"><%= @video.description %></div>
 
-<p>
-  <b>Level:</b>
-  <%= @video.level %>
-</p>
-<% if current_user %>
-  <div class="favorite_button_container">
-    <% if current_user.favorites.include? @video %>
-      <%= render 'videos/unfavorite' %>
-    <% else %>
-      <%= render 'videos/favorite' %>
+        </div><!--/video_info-->        
+      </div><!--/inner_container-->
+    </div><!--/video_box-->
+
+    <div id="comments_section">
+      <h2 class="video_title"><%= comment_message(@video.comments.count) %></h2>
+
+      <div id="comments" class="clearfix">
+        <%= render @video.comments %>
+      </div>
+    
+
+      <% if user_signed_in? %>
+        <h3 class="comment_title">Add New Comment</h3>
+        <%= render 'comments/form' %>
+        <% else %>
+        <br/>
+        <p>Please <%= link_to "Sign in" , new_user_session_path %> to leave a comment.</p>
+        <p>You do not have an account yet? <%= link_to "Sign up", new_user_registration_path %> from here</p>
+      <% end %>
+    </div><!--/comments_section-->
+  </div><!--/col-lg-9-->
+  <div class="col-lg-3" id="video_sidebar">
+
+    <% if current_user %>
+      <div class="favorite_button_container clearfix">
+        <% if current_user.favorites.include? @video %>
+          <%= render 'videos/unfavorite' %>
+        <% else %>
+          <%= render 'videos/favorite' %>
+        <% end %>
+      </div>
     <% end %>
+
+    <% if current_user.admin? %>
+      <%= link_to 'Edit', edit_video_path(@video) %> |
+      <%= link_to 'Back', videos_path %>
+    <% end %>
+
+    <h3 class="video_title">Most favorited Videos</h3>
+    
+    <div class="video_box">
+      <div class="inner_container">
+        
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
-
-
-<h2>Comments</h2>
-
-<div id="comments">
-  <%= render @video.comments %>
 </div>
-
-<% if user_signed_in? %>
-  <h3>New Comment</h3>
-  <%= render 'comments/form' %>
-  <% else %>
-  <br/>
-  <p>Please <%= link_to "Sign in" , new_user_session_path %> to leave a comment.</p>
-  <p>You do not have an account yet? <%= link_to "Sign up", new_user_registration_path %> from here</p>
-<% end %>
