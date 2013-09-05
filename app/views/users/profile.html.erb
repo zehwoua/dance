@@ -5,8 +5,8 @@
 			<ul class="class_tabs clearfix">
 		        <li><a href="#tabs-1">Profile</a></li>
 		        <li><a href="#address-tab">Address</a></li>
-		        <li><a href="#tabs-3">Credit Card</a></li>
-		        <li><a href="#tabs-3">Subscripton</a></li>
+		        <li><a href="#credit-card-tab">Credit Card</a></li>
+		        <li><a href="#subscription">Subscripton</a></li>
 		    </ul>
 		    
 		    <hr/>
@@ -146,11 +146,48 @@
       				<% end %>
       			</table>
       		</div><!--/tabs2-->
-      		<div id="tabs-3" class="display_videos_module featured_style favorites clearfix">
+      		<div id="credit-card-tab" class="display_videos_module featured_style favorites clearfix">
+      			<%= link_to 'Add New Credit Card', new_user_credit_card_path(@user), :class => 'btn btn-primary pull-right btn-sm' %>
+      			<h2 class="section_title">My Credit Crads</h2>
+      			<table class="table">
+      				<tr>
+      					<th>Card Type</th>
+      					<th>Credit Card Number</th>
+      					<th>Card Holder Name</th>
+      					<th>Expiration Date</th>
+      					<th></th>
+      				</tr>
+      				<% if @credit_cards.count > 1 %>
+      					<% @deletable = true %>
+      				<% end %>
 
+      				<% @credit_cards.each do |credit_card| %>
+	      				<tr>
+					        <td> <%= image_tag "credit_cards/#{credit_card.card_type}.png", :class => "card_image" %>
+					        	<% if credit_card.default? %>
+					        		<b>(default)</b>
+					        	<% end %>
+					        </td>
+					        <td> <%= credit_card.masked_number %></td>
+					        <td> <%= credit_card.cardholder_name %></td>
+					        <td> <%= credit_card.expiration_date %></td>
+					        <td>
+					        	<% if @deletable == true %>
+					          		<%= link_to 'Destroy', user_credit_card_path(@user, credit_card), :method => :delete, :confirm =>'Are you sure?', :class => 'btn btn-sm btn-danger pull-right' %>
+					          	<% end %>
+					          	<%= link_to 'Edit', edit_user_credit_card_path(@user, credit_card), :class => 'btn btn-warning btn-sm pull-right'%>
+					          	<% if !credit_card.default? %>
+				        			<%= link_to 'Make Default', user_credit_cards_make_default_path(@user, :id => credit_card), :method => :make_default, :class => 'btn btn-sm btn-success pull-right make-default'%>
+				        		<% end %>
+					          </td>
+					    </tr>
+				    <% end %>
+				</table>
       		</div><!--/tabs3-->
-      		<div id="tabs-4" class="display_videos_module featured_style favorites clearfix">
+      		<div id="subscription" class="display_videos_module featured_style favorites clearfix">
+      			In this part user will be able to cancel their subscription..
 
+      			maybe in the future update the subscription
       		</div><!--/tabs4-->
 		</div><!--/my_profile-->
 	</div>

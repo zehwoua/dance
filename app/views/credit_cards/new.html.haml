@@ -1,0 +1,12 @@
+- model_class = BraintreeRails::CreditCard
+= render 'users/dashboard_tabs', :active_tab => 'profile'
+%div#dashboard_section
+  %div.inner_container
+    .page-header
+      %h1="New #{model_class.model_name.human}"
+    = render :partial => "form", :locals => {:url => user_credit_cards_path(@user)}
+
+- content_for :javascript do
+  :javascript
+    var braintree = Braintree.create("#{BraintreeRails::Configuration.client_side_encryption_key}")
+    braintree.onSubmitEncryptForm('braintree-credit-card-form');

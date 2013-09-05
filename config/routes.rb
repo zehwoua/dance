@@ -32,6 +32,8 @@ DanceDynamics::Application.routes.draw do
   
   resources :users do
     resources :addresses
+    resources :credit_cards
+     post "credit_cards/make_default"
   end
   resources :teachers
   resources :styles

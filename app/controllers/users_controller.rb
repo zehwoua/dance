@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 		@user = User.find(current_user.id)
 		@customer = current_user.customer
 		@addresses = @customer.addresses
+		@credit_cards = @customer.credit_cards
 	end
 
 	def edit

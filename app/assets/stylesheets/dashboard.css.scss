@@ -132,6 +132,7 @@
 		margin-top: 0;
 	}
 	.btn-danger{margin-left: 1em;}
+	.make-default{margin-right: 1em;}
 	.table{
 		th{
 			font-weight: bold;
@@ -171,5 +172,8 @@
 				}
 			}
 		}
+	}
+	.card_image{
+		max-width: 60px;
 	}
 }
