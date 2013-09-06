@@ -54,6 +54,9 @@
   	.favorite_button_container{
   		text-align: center;
   		min-height: 60px;
+  		span.glyphicon{
+			margin-right: 0.7em;
+		}
   		img{
   			padding-top: 5px;
   		}
@@ -67,4 +70,64 @@
   			margin-top: 1em;
   		}
   	}
+}
+.favorite_videos_box{
+	li.favorite_videos{
+		margin-top: 0.7em;
+		padding-top: 0.7em;
+		border-top: 1px solid #ddd;
+	}
+	ul.favorite_videos_list{
+		li{
+			float: left;
+			&.favorite_video_img{
+				border: 1px solid #DDD;
+				padding: 3px;
+				border-radius: 3px;
+				margin-right: 1.5em;
+				background: #f9f9f9;
+				max-width: 80px;
+				@include box-shadow(0px, 1px, 2px, rgba(0, 0, 0, 0.3));
+				@include transition(all, 0.2s, ease-in-out);
+				&:hover{
+					box-shadow:none;
+				}
+			}
+			&.favorite_video_content{
+				font-size: 12px;
+				h4{
+					margin-top: 0;
+					a{
+						color: #515a62;
+						text-shadow: 1px 1px 1px white;
+						font-size: 13px;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+}
+.btn.edit{
+	color: white;
+	padding: 0.75em 1.5em 0.8125em 1.5em;
+	line-height: 42px;
+	font-size: 13px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	@include transition(all, 0.2s, ease-in-out);
+	background: #e74c3c;
+	border: none;
+	text-shadow: none;
+	font-weight: bold;
+	margin: 0 0 1em 0;
+	border-bottom: 2px solid #CA2B1A;
+	width: 100%;
+	span.glyphicon{
+		margin-right: 0.7em;
+	}
+	&:hover{
+		background: #ff4733;
+	}
 }

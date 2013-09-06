@@ -29,4 +29,5 @@ class Video < ActiveRecord::Base
 	# Favorited by users
 	has_many :history_videos # just the 'relationships'
 	has_many :historied_by, through: :history_videos, source: :user # the actual users finish watching a video
+
 end

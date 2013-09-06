@@ -24,8 +24,8 @@ class VideosController < ApplicationController
   # GET /videos/1.json
   def show
     @video = Video.find(params[:id])
-
-    @tests = Video.includes(:favorite_videos).all.map { |p| [p.id, p.title, p.favorite_videos.size] }
+    @popular = FavoriteVideo.most_favorite_videos
+    @latest_comments = Comment.latest_comment
     @comment = Comment.new
 
     respond_to do |format|

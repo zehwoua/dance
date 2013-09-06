@@ -1,0 +1,20 @@
+<h3 class="video_title">Most favorited Videos</h3>
+<div class="favorite_videos_box">
+  <ul>
+    <% @popular.each do |popular| %>
+        <% @popular_videos = get_favorite_video(popular.video_id) %>
+        <li class="favorite_videos">
+        <ul class="favorite_videos_list clearfix">
+          <li class="favorite_video_img">
+            <% image = image_tag @popular_videos.photo.url(:small) %>
+            <%= link_to image, popular.video %>
+          </li>
+          <li class="favorite_video_content">
+            <h4><%= link_to @popular_videos.title, popular.video %></h4>
+            <p><%= link_to @video.style.name, @video.style %> | by <%= link_to @video.teacher.name, @video.teacher %></p>
+          </li>
+        </ul>  
+      </li>
+    <% end %>
+  </ul>
+</div> 

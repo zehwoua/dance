@@ -1,0 +1,16 @@
+<div id="comments_section">
+  <h2 class="video_title"><%= comment_message(selected_video.comments.count) %></h2>
+
+  <div id="comments" class="clearfix">
+    <%= render selected_video.comments %>
+  </div>
+
+  <% if user_signed_in? %>
+    <h3 class="comment_title">Add New Comment</h3>
+    <%= render 'comments/form' %>
+    <% else %>
+    <br/>
+    <p>Please <%= link_to "Sign in" , new_user_session_path %> to leave a comment.</p>
+    <p>You do not have an account yet? <%= link_to "Sign up", new_user_registration_path %> from here</p>
+  <% end %>
+</div><!--/comments_section-->
