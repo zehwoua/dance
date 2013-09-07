@@ -50,44 +50,7 @@ body{
 }
 .container.main_body{padding-top: 50px;}
 .home.index{
-	.container.main_body{padding-top: 0px;}
-}
-.navbar.navbar-black{
-	background: #f1f1f1;
-	@include box-shadow(0px -3px 0px #dd4814 inset);
-	border:none;
-	li{
-		padding: 1em 0;
-		a{
-			display: block;
-		}
-		&.active{
-			background: #dd4814;
-			a{
-				color: white;
-			}
-			&:hover{
-				background: #dd4814;
-				a{
-					color: white;
-					background: none;
-				}
-			}
-		}
-		&:hover{
-			background: #dd4814;
-			a{
-				color: white;
-				background: none;
-			}
-		}
-	}
-	.usernav_section{
-		.avatar{
-			max-height: 23px;
-			width: auto;
-		}
-	}
+	.container.main_body{padding-top: 17px;}
 }
 .video_title{
 	color: #FA2A00;

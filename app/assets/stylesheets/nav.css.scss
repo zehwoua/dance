@@ -1,0 +1,157 @@
+@import "css3-mixins";
+
+.navbar.navbar-top{
+	background: #f8f8f8;
+	@include box-shadow(0px, -3px ,0px, #ff6805, inset);
+	border:none;
+	.nav.navbar-nav.navigation{
+		li{
+			padding: 0;
+			position: relative;
+			margin-top: 0.6em;
+			a{
+				color:#ff6805;
+				display: block;
+				font-weight: bold;
+				text-transform: uppercase;
+				font-family: Ubuntu, Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				@inlcude text-shadow(1px, 1px, 1px, #ffffff);
+			}
+			&.active{
+				a{
+
+				}
+				&:hover{
+					
+					a{
+						color: white;
+						background: none;
+					}
+				}
+			}
+			&:hover{
+				a{
+					background: none;
+				}
+			}
+			&.hoverable{
+				&:hover{
+					&:after{
+						border-left: 5px solid transparent;
+						border-right: 5px solid transparent;
+						border-bottom: 5px solid #ff6805;
+						content: '';
+						left: 50%;
+						margin-left:-5px;
+						bottom: 3px;
+						position: absolute;
+						font-size: 0px;
+						line-height: 0px;
+					}
+				}
+			}
+			&.dropdown{
+				&.open{
+					a{
+						background: none;
+					}
+				}
+				a{
+					&:hover{
+						background:none;
+					}
+				}
+			}
+		}
+	}
+}
+.dropdown-menu{
+	border: 5px solid #ccc !important;
+	border-radius: 3px;
+	li{
+		border-bottom: 1px solid #ddd;
+		a{
+			font-size: 12px !important;
+			text-transform: capitalize !important;
+			color: #515a62 !important;
+			&:hover{
+				color:#ff6805 !important;
+			}
+		}
+		&:last-child{
+			border-bottom: none;
+		}
+	}
+	&:after{
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+		border-bottom: 8px solid #ccc;
+		content: '';
+		left: 70%;
+		margin-left: -5px;
+		top: -12px;
+		position: absolute;
+		font-size: 0px;
+		line-height: 0px;
+	}
+}
+.navbar > .container .navbar-brand {
+	margin-left: -15px;
+	padding-bottom: 0 !important;
+	padding-top: 0 !important;
+	top: 9px;
+	position: relative;
+}
+#login_section{
+	background:#090909;
+	max-height: 30px;
+	border-bottom: 1px solid #323232;
+	.usernav{
+		.usernav_section{
+			padding: 0.2em 0;
+			a{
+				padding-top: 0;
+				padding-bottom: 0;
+				color:white;
+				font-family: Ubuntu, Tahoma, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				&:hover{
+					background: none;
+				}
+			}
+			.dropdown-menu{
+				li{
+					margin: 0 0.3em;
+					&:first-child{
+						margin-top:0.3em;
+					}
+				}
+				a{
+					display: block;
+					padding: 3px 0 3px 7px;
+					&:hover{
+						text-decoration:none;
+					}
+					span{
+						margin-right: 1em;
+					}
+				}
+			}
+			&.open{
+				a{
+					background: none;
+				}
+			}
+			.avatar{
+				max-height: 22px;
+				width: auto;
+				vertical-align: top;
+				img{
+					background: white;
+					border:1px solid #ddd;
+				}
+			}
+		}
+	}
+}
