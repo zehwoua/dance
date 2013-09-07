@@ -107,6 +107,7 @@
   		&.favorites{
   			.video_container{
   				margin-bottom: 20px;
+  				position: relative;
   				.video_content_inner{
   					padding:1em;
   				}
@@ -121,6 +122,22 @@
 	  				position: absolute;
 	  				height: 100%;
 	  				right: 0;
+	  				.small_title{
+	  					margin-top: 0;
+						color: #dd4814;
+						font-size: 14px;
+						border-bottom: 1px solid #ddd;
+						padding-bottom: 1em;
+	  				}
+	  				#favorite_video_user_notes{
+	  					width: 100%;
+						border: none;
+						outline: none;
+						color: rgb(81, 90, 98);
+	  				}
+	  				#submit_user_notes{
+	  					display: none;
+	  				}
 	  			}
   			}
   		}

@@ -16,7 +16,6 @@
 //= require jquery.sequence-min
 //= require bootstrap
 //= require fancybox
-//= require jquery.cluetip
 //= require rails.validations
 //= require_tree .
 
@@ -58,7 +57,6 @@
 $(document).ready(function() {
     $("body").removeClass("preload");
     $( ".dashboard_inner_tab" ).tabs();
-    $(".video_add_note").editable();
     
     $( ".duration_slider" ).slider({
     animate: true,
@@ -104,7 +102,6 @@ $(document).ready(function() {
   });
 
   $("#q_style_id_eq, #q_teacher_id_eq, .level_eq_search").change(function() {
-    console.log($("#video_search_form").serialize());
     $.get($("#video_search_form").attr("action"), $("#video_search_form").serialize(), null, "script");
     checkPaginate();
     return false;
@@ -114,4 +111,10 @@ $(document).ready(function() {
     $.get($("#video_search_form").attr("action"), $("#video_search_form").serialize(), null, "script");
     return false;
   });
+
+  $(".add_user_notes_form textarea").keyup(function() {
+    $.post($(".add_user_notes_form").attr("action"), $(".add_user_notes_form").serialize(), null, "script");
+    return false;
+  });
+
  });

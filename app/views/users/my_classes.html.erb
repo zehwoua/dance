@@ -43,7 +43,11 @@
                             <span class="glyphicon glyphicon-leaf"></span>
                           <% end %>
                       </div>
-                      <p>by <%= link_to video.teacher.name, video.teacher %></p>
+                      <ul class="no_list left_list clearfix" style="margin-bottom:0.5em;">
+                        <li><%= link_to video.style.name, '#' %></li>
+                        <li> | </li>
+                        <li>by <%= link_to video.teacher.name, video.teacher %></li>
+                      </ul>
                       <div class="social clearfix">
                         <ul class="no_list left_list">
                           <li>
@@ -56,8 +60,10 @@
                             <span class="txt"><%= video.comments.count %> </span>
                             <span class="glyphicon glyphicon-comment"></span>
                           </li>
-                          <li> | </li>
-                          <li><%= link_to video.style.name, '#' %></li>
+                          <li>
+                            <span class="txt"><%= video.duration %> min</span>
+                            <span class="glyphicon glyphicon-time"></span>
+                          </li>
                         </ul>
                       </div>
                       <h2 class="clearfix"><%= link_to video.title, video %></h2>
@@ -71,10 +77,14 @@
                   </div><!--/video_short_content-->
                   <div class="video_notes">
                     <div class="video_content_inner">
+                      <h4 class="small_title">Personal Notes on This Video</h4>
+                      <% video.favorite_videos.where(:user_id => current_user.id, :video_id => video.id).each do |note| %>
+                        <%= form_for(note, :html => { :class => 'form-horizontal add_user_notes_form', :multipart => true }) do |f| %>
+                            <%= f.text_area :user_notes, :rows =>11 %>
+                            <%= f.submit "submit", :id=>"submit_user_notes" %>
+                        <% end %>
+                      <% end %>
 
-                      <span id="note<%= video.id %>" data-pk="1" data-toggle=".pencil<%= video.id %>" data-original-title="Enter note" tabindex="-1" data-type="textarea" class="video_add_note">You can enter your notes in here</span>
-
-                      <a href="#" class="pencil<%= video.id %>" style="float: right"><span class="glyphicon glyphicon-pencil"></span></a>
                     </div>
                   </div>
                 </div><!--/video_container-->
@@ -147,9 +157,13 @@
                   <div class="video_notes">
                     <div class="video_content_inner">
 
-                      <span id="note<%= video.id %>" data-pk="1" data-toggle=".pencil<%= video.id %>" data-original-title="Enter note" tabindex="-1" data-type="textarea" class="video_add_note">You can enter your notes in here</span>
-
-                      <a href="#" class="pencil<%= video.id %>" style="float: right"><span class="glyphicon glyphicon-pencil"></span></a>
+                      <h4 class="small_title">Personal Notes on This Video</h4>
+                      <% video.favorite_videos.where(:user_id => current_user.id, :video_id => video.id).each do |note| %>
+                        <%= form_for(note, :html => { :class => 'form-horizontal add_user_notes_form', :multipart => true }) do |f| %>
+                            <%= f.text_area :user_notes, :rows =>11 %>
+                            <%= f.submit "submit", :id=>"submit_user_notes" %>
+                        <% end %>
+                      <% end %>
                     </div>
                   </div>
                 </div><!--/video_container-->

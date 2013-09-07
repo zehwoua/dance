@@ -1,0 +1,29 @@
+@import "css3-mixins";
+#teachers_section{
+	color: rgb(81, 90, 98);
+	font-family: arial, helvetica, verdana, geneva, sans-serif;
+	font-size: 12px;
+	margin-bottom: 50px;
+	.teacher_avatar{
+		border: 1px solid #DDD;
+		padding: 3px;
+		border-radius: 3px;
+		margin-right: 1.5em;
+		background: #f9f9f9;
+		@include box-shadow(0px, 1px, 2px, rgba(0, 0, 0, 0.3));
+		text-align: center;
+		img{
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+	.teacher_title{
+		color: #dd4814;
+		font-weight: 700;
+		font-size: 15px;
+		text-shadow: 1px 1px 1px #eee;
+		text-transform: uppercase;
+		margin-bottom: 1em;
+		margin-top: 0;
+	}
+}

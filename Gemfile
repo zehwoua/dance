@@ -24,8 +24,8 @@ gem 'pdfkit'
 gem 'will_paginate', '~> 3.0'
 #search
 gem "ransack", github: "ernie/ransack"
-#admin
-gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
+
+gem 'shareable'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,7 +40,7 @@ group :assets do
                               :branch => '3.0.0'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '2.1.4'
 #ajax image upload
 gem 'remotipart'
 

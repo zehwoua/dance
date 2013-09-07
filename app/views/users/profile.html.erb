@@ -185,9 +185,45 @@
 				</table>
       		</div><!--/tabs3-->
       		<div id="subscription" class="display_videos_module featured_style favorites clearfix">
-      			In this part user will be able to cancel their subscription..
-
-      			maybe in the future update the subscription
+      			<table class="table">
+      				<tr>
+      					<th>Membership Status</th>
+      					<th>Plan</th>
+      					<th>Plan Price</th>
+      					<th>Billing date</th>
+      					<th>Trial Period</th>
+      					<th></th>
+      				</tr>
+	      			<% @credit_cards.each do |credit_card| %>
+	      			<% @subscriptions = credit_card.subscriptions %>
+		      			<% @subscriptions.each do |subscription| %>
+		      				<tr>
+		      					<% if subscription.status == "Active" %>
+		      						<% status_class = "success" %>
+		      					<% else %>
+		      						<% status_class = "danger" %>
+		      					<% end %>
+		      					<td><b><span class="text-<%= status_class %>"><%= subscription.status %></span></b></td>
+		      					<td><%= subscription.plan_id %></td>
+		      					<td>$<%= subscription.price.to_int %></td>
+		      					<td><%= subscription.billing_day_of_month %>th of every month</td>
+		      					<td>
+		      						<% if subscription.trial_period == true %>
+		      							<% now = subscription.first_billing_date.to_time %>
+				      					<% trial = DateTime.now %>
+				      					<%= "#{(now.day-trial.day).to_int} days left until your trial expires" %>
+		      						<% else %>
+		      						<%= "Your status is #{subscription.status}" %>
+		      						<% end %>
+		      					</td>
+		      					<% if subscription.status == "Active" %>
+		      						<td><%= link_to 'Cancel Membership', user_subscription_path(@user, subscription), :method => :delete, :confirm =>'Are you sure you want to cancel your membership?', :class => 'btn btn-sm btn-danger pull-right' %></td>
+		      					<% end %>
+		      				</tr>
+		      				
+		      			<% end %>
+		      		<% end %>
+	      		</table>
       		</div><!--/tabs4-->
 		</div><!--/my_profile-->
 	</div>

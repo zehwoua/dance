@@ -6,7 +6,7 @@ class HistoryVideosController < ApplicationController
 		
 		respond_to do |format|
 			if @history_video.save
-			    format.json
+			    format.json {head :no_content}
 			else
         		format.json { render json: @video.errors, status: :unprocessable_entity }
 		    end

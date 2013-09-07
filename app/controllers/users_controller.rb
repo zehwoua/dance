@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 		@customer = current_user.customer
 		@addresses = @customer.addresses
 		@credit_cards = @customer.credit_cards
+		# @subscriptions = @customer.subscriptions
 	end
 
 	def edit

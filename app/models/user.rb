@@ -27,14 +27,14 @@ class User < ActiveRecord::Base
 	validates_attachment_size :avatar, :less_than => 5.megabytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg','image/jpg', 'image/png']
 
-  	has_many :comments
+  	has_many :comments, dependent: :destroy
 
   	# Favorite videos of user
-  	has_many :favorite_videos # just the 'relationships'
+  	has_many :favorite_videos, dependent: :destroy # just the 'relationships'
   	has_many :favorites, through: :favorite_videos, source: :video # the actual videos user favorites
 
   	# History videos of user
-  	has_many :history_videos # just the 'relationships'
+  	has_many :history_videos, dependent: :destroy # just the 'relationships'
   	has_many :histories, through: :history_videos, source: :video # the actual videos user favorites
 
   	validates :username, presence: { :on => :create }

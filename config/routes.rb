@@ -1,7 +1,5 @@
 DanceDynamics::Application.routes.draw do
 
-  ActiveAdmin.routes(self)
-
   devise_for :users, :controllers => { :registrations => "users/registrations" }
   devise_scope :user do
     get '/sign_in' => 'devise/sessions#new'
@@ -33,6 +31,7 @@ DanceDynamics::Application.routes.draw do
   resources :users do
     resources :addresses
     resources :credit_cards
+    resources :subscriptions
      post "credit_cards/make_default"
   end
   resources :teachers

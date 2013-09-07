@@ -1,16 +1,17 @@
-<div class="row">
-	<div class="col-lg-3">
-		<div class="teacher_avatar">
-			<%= image_tag(@teacher.avatar.url(:medium), :alt => @teacher.name, :class => "video_thumb") %>
+<div id="teachers_section">
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="teacher_avatar">
+				<%= image_tag(@teacher.avatar.url(:medium), :alt => @teacher.name, :class => "video_thumb") %>
+			</div>
 		</div>
-	</div>
-	<div class="col-lg-9">
-		<h2><%= @teacher.name %></h2>
-		<p><%= @teacher.profile %></p>
-		<p><%= @teacher.website %></p>
-	</div>
-</div><!--/row-->
-
+		<div class="col-lg-9">
+			<h2 class="teacher_title"><%= @teacher.name %></h2>
+			<p><%= @teacher.profile %></p>
+			<p><%= link_to @teacher.website, @teacher.website %></p>
+		</div>
+	</div><!--/row-->
+</div><!--/teachers-section-->
 <%= render 'teacher_video_list' %>
 
 
