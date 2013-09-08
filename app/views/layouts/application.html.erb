@@ -5,7 +5,6 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <script charset="ISO-8859-1" src="http://fast.wistia.net/static/concat/E-v1.js"></script>
 </head>
 
 <body class="preload <%= controller_name -%> <%= action_name -%>">
@@ -40,8 +39,8 @@
                 <%= link_to (raw('<span class="glyphicon glyphicon-log-out"></span><span class="txt"> Logout</span>')), destroy_user_session_path, :method => :delete %>
               </li>
             <% else %>
-                <li><%= link_to "Sign up", new_user_registration_path %></li>
-                <li><%= link_to "Sign in" , new_user_session_path %></li>
+                <li class="usernav_section"><%= link_to "Sign up", new_user_registration_path %></li>
+                <li class="usernav_section"><%= link_to "Sign in" , new_user_session_path %></li>
             <% end %>
           </ul>
         </div>

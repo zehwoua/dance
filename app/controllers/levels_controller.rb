@@ -1,4 +1,7 @@
 class LevelsController < ApplicationController
+	def index
+		@levels = Level.all
+	end
   	def show
 	  	@current_level_id = params[:id]
 	  	@q = Video.search(params[:q])
@@ -30,7 +33,7 @@ class LevelsController < ApplicationController
 
 	    respond_to do |format|
 		    if @level.save
-		        format.html { redirect_to @level, notice: 'level was successfully created.' }
+		        format.html { redirect_to admin_levels_path, notice: 'level was successfully created.' }
 		        format.json { render json: @level, status: :created, location: @teacher }
 		    else
 		        format.html { render action: "new" }
@@ -44,7 +47,7 @@ class LevelsController < ApplicationController
 
 	    respond_to do |format|
 	      	if @level.update_attributes(params[:level])
-		        format.html { redirect_to @level, notice: 'level was successfully updated.' }
+		        format.html { redirect_to admin_levels_path, notice: 'level was successfully updated.' }
 		        format.json { head :no_content }
 	      	else
 		        format.html { render action: "edit" }
@@ -58,7 +61,7 @@ class LevelsController < ApplicationController
 	    @level.destroy
 
 	    respond_to do |format|
-		    format.html { redirect_to videos_url }
+		    format.html { redirect_to admin_levels_path }
 		    format.json { head :no_content }
 	    end
   	end

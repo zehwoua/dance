@@ -3,7 +3,7 @@ class SubscriptionsController < ApplicationController
   before_filter :find_subscription, :except => [:index, :create]
   # helper_method :subscription_path, :subscriptions_path
 
-  # def index; end
+  def index; end
 
   # def show; end
 
@@ -41,17 +41,17 @@ class SubscriptionsController < ApplicationController
     redirect_to user_profile_path(:anchor => "subscription")
   end
 
-  # protected
+  protected
 
-  # def find_subscriptions
-  #   if find_credit_card
-  #     @subscriptions = @credit_card.subscriptions
-  #   elsif find_plan
-  #     @subscriptions = @plan.subscriptions
-  #   else
-  #     @subscriptions = BraintreeRails::Subscriptions.new(nil)
-  #   end
-  # end
+  def find_subscriptions
+    if find_credit_card
+      @subscriptions = @credit_card.subscriptions
+    elsif find_plan
+      @subscriptions = @plan.subscriptions
+    else
+      @subscriptions = BraintreeRails::Subscriptions.new(nil)
+    end
+  end
 
   # def find_subscription
   #   @subscription = @subscriptions.find(params[:id])
@@ -63,9 +63,9 @@ class SubscriptionsController < ApplicationController
   #   @credit_card = @customer.credit_cards.find(params[:credit_card_id]) if @customer && params[:credit_card_id].present?
   # end
 
-  # def find_plan
-  #   @plan = BraintreeRails::Plan.find(params[:plan_id]) if params[:plan_id].present?
-  # end
+  def find_plan
+    @plan = BraintreeRails::Plan.find(params[:plan_id]) if params[:plan_id].present?
+  end
 
   # def subscriptions_path
   #   path ||= user_customer_credit_card_subscriptions_path(@user, @credit_card) if @credit_card

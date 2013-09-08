@@ -1,0 +1,23 @@
+@import "css3-mixins";
+#dashboard_section.admin_dashboard{
+	color: rgb(81, 90, 98);
+	font-family: arial, helvetica, verdana, geneva, sans-serif;
+	font-size: 12px;
+	.table{
+		margin-top: 40px;
+		.btn-warning{
+			margin-left:1em;
+		}
+	}
+	&.admin_style, &.admin_video{
+		.table{
+			.description{
+				width: 30%;
+			}
+		}
+		.add_new_style_btn{
+			.glyphicon{margin-right: 0.5em;}
+		}
+	}
+}
+

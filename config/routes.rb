@@ -28,18 +28,26 @@ DanceDynamics::Application.routes.draw do
   get "users/new_subscription_method"
   get "home/subscription"
   
+  resources :styles, :levels, :favorite_videos, :history_videos, :teachers
   resources :users do
     resources :addresses
     resources :credit_cards
     resources :subscriptions
      post "credit_cards/make_default"
   end
-  resources :teachers
-  resources :styles
-  resources :levels
-  resources :videos
-  resources :favorite_videos
-  resources :history_videos
+  
+  namespace :admin do
+    root :to => "admin#index"
+    get "plans" => "admin#plans", :as => :admin_plans do 
+      resources :subscriptions
+    end
+    resources :users
+    resources :videos, :except => [:index]
+    get "videos" => "videos#index_admin", :as => :admin_videos
+    resources :levels
+    resources :styles
+    
+  end
   resources :credit_card_info, :only => [:edit]
 
   resources :videos do

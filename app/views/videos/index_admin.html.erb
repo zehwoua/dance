@@ -1,0 +1,40 @@
+<%= render 'admin/admin/admin_dashboard_tabs', :active_tab => 'dashboard' %>
+<div id="dashboard_section" class="admin_dashboard admin_video">
+  <div class="inner_container">
+    <div id="tabs-1">
+    	<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Video'), new_admin_video_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
+      	<h2 class="">Your Listed Videos</h2>
+      	<table class="table table-condensed table-striped">
+      		<tr>
+      			<th>Id</th>
+      			<th>Name</th>
+      			<th>Style</th>
+      			<th>Level</th>
+      			<th>Teacher</th>
+      			<th>Duration</th>
+      			<th>Created at</th>
+      			<th>Updated at</th>
+      			<th></th>
+      		</tr>
+      		<% @videos.each do |video| %>
+	      		<tr>
+	      			<td><%= video.id %></td>
+	      			<td><%= video.title %></td>
+	      			<td><%= video.style.name %></td>
+	      			<td><%= video.level.name %></td>
+	      			<td><%= video.teacher.name %></td>
+	      			<td><%= video.duration %> min</td>
+	      			<td><%= nice_date_form(video.created_at) %></td>
+	      			<td><%= nice_date_form(video.updated_at) %></td>
+	      			<td>
+                <%= link_to "Delete", admin_video_path(video), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-sm pull-right" %>
+	      				<%= link_to "Edit", edit_admin_video_path(video), :class => "btn btn-warning btn-sm pull-right" %>
+	      				
+	      				<%= link_to "View", admin_video_path(video), :class => "btn btn-success btn-sm pull-right" %>
+	      			</td>
+	      		</tr>
+      		<% end%>
+      	</table>
+	</div>
+  </div>
+</div>

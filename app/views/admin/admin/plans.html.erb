@@ -1,0 +1,29 @@
+<%= render 'admin_dashboard_tabs', :active_tab => 'dashboard' %>
+<div id="dashboard_section" class="admin_dashboard">
+  <div class="inner_container">
+    <div id="tabs-1">
+      	<h2>Welcome, <span class="text-primary"><%= current_user.username %></span></h2>
+      	<p>In this page you are seeing, your whole plans subscriable by users. In order to create a new plan or update existing one please go to braintree account.</p>
+      	<table class="table table-condensed table-striped">
+      		<tr>
+            <th>#</th>
+      			<th>Id</th>
+      			<th>Plan name</th>
+      			<th>Description</th>
+      			<th>Plan Price</th>
+      			<th>Trial</th>
+      		</tr>
+      		<% @plans.each do |plan| %>
+	      		<tr>
+              <td><%= %></td>
+	      			<td><%= plan.id %></td>
+	      			<td><%= plan.name %></td>
+	      			<td><%= plan.description %></td>
+	      			<td><%= "#{plan.price} #{plan.currency_iso_code}" %></td>
+	      			<td><%= "#{plan.trial_duration} #{plan.trial_duration_unit}" %></td>
+	      		</tr>
+      		<% end%>
+      	</table>
+	</div>
+  </div>
+</div>

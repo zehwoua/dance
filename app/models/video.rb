@@ -6,7 +6,8 @@ class Video < ActiveRecord::Base
 					  :teacher_id,
 					  :level_id, 
 					  :title,
-					  :photo
+					  :photo,
+					  :wistia_id
 
 	has_attached_file :photo, :styles => {:medium => "400x400>", :small => "150x150>" },
 				:default_url => "/assets/default_avatars/default.png",
