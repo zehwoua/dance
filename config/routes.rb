@@ -38,7 +38,7 @@ DanceDynamics::Application.routes.draw do
   
   namespace :admin do
     root :to => "admin#index"
-    get "plans" => "admin#plans", :as => :admin_plans do 
+    get "admin/admin/plans" => "admin#plans", :as => :admin_plans do 
       resources :subscriptions
     end
     resources :users

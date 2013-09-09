@@ -1,5 +1,5 @@
 <div class="inner_container">
-    <%= form_for(@video, :html => { :class => 'form-horizontal'}) do |f| %>
+    <%= form_for([:admin,@video], :html => { :class => 'form-horizontal'}) do |f| %>
       <% if @video.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
