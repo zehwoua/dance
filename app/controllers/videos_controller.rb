@@ -19,9 +19,6 @@ class VideosController < ApplicationController
       # end
     end
   end
-  def index_admin
-    @videos = Video.all
-  end
 
   # GET /videos/1
   # GET /videos/1.json
@@ -46,11 +43,6 @@ class VideosController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @video }
     end
-  end
-
-  # GET /videos/1/edit
-  def edit
-    @video = Video.find(params[:id])
   end
 
   # POST /videos
