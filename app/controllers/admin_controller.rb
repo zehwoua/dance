@@ -1,5 +1,9 @@
 class AdminController < ApplicationController
   def index
-  	@users = User.all#(current_user.blank? ? User.all : User.find(:all, :conditions => ["id != ?", current_user.id]))
+  	@users = (current_user.blank? ? User.all : User.find(:all, :conditions => ["id != ?", current_user.id]))
+  end
+
+  def plans
+  	@plans = BraintreeRails::Plan.all
   end
 end
