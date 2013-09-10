@@ -1,5 +1,5 @@
 <div class="inner_container">
-    <%= form_for([:admin,@video], :html => { :class => 'form-horizontal'}) do |f| %>
+    <%= form_for(@video, :html => { :class => 'form-horizontal'}) do |f| %>
       <% if @video.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
@@ -21,15 +21,7 @@
       <div class="form-group">
         <%= f.label :duration, :class => "col-lg-2 control-label" %>
         <div class="col-lg-7">
-          <div class="row">
-            <div class="col-lg-9">
-              <div class="duration_slider"></div> 
-              <%= f.hidden_field :duration, :id =>"duration_hidden" %>
-            </div>
-            <div class="col-lg-3">
-              <p class="duration_min"><span id="duration_slider_result">120</span> min</p>
-            </div>
-          </div>
+          <%= f.text_field :duration, :class => "form-control", :placeholder => "Duration" %>
         </div>
       </div>
       <div class="form-group">
@@ -57,33 +49,14 @@
         </div>
       </div>
       <div class="form-group">
-        <%= f.label :photo, "Upload Photo", :class => "col-lg-2 control-label" %>
-        <div class="col-lg-8">
-          <div class="fileupload fileupload-new" data-provides="fileupload">
-            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                <% if @video.photo.url present? %>
-                  <%= image_tag @video.photo.url(:small) %>
-                <% else %>
-                  <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
-                <% end %>
-              </div>
-              <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;">
-            </div>
-            <div>
-              <span class="btn btn-warning btn-file btn-sm">
-                <span class="fileupload-new">Select image
-                </span>
-                <span class="fileupload-exists">Change</span>
-                <%= f.file_field :photo %>
-              </span>
-              <a href="#" class="btn-sm btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-            </div>
-          </div>
-        </div><!--/col-lg-8-->
-    </div><!--/form_group-->
+        <%= f.label :photo, :class => "col-lg-2 control-label" %>
+        <div class="col-lg-7">
+          <%= f.file_field :photo, :class => "form-control" %>
+        </div>
+      </div>
       <div class="form-group">
         <%= f.label :description, :class => "col-lg-2 control-label" %>
-        <div class="col-lg-10">
+        <div class="col-lg-7">
           <%= f.text_area :description, :class => "form-control", :placeholder => "Description of the video", :rows => "10" %>
         </div>
       </div>

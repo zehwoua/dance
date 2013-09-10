@@ -57,14 +57,23 @@
 $(document).ready(function() {
     $("body").removeClass("preload");
     $( ".dashboard_inner_tab" ).tabs();
-    
+    max = 120;
+    if($("#duration_hidden").attr("data-max")){
+      max = $("#duration_hidden").attr("data-max");
+    }
+    duration = $("#duration_hidden").val();
+    if(!duration){
+      duration = 120;
+    }else{
+      $( "#duration_slider_result" ).html( duration );
+    }
     $( ".duration_slider" ).slider({
     animate: true,
       range: "min",
-      value: 120,
-      min: 5,
-      max: 120,
-      step: 5,
+      value: duration,
+      min: 0,
+      max: max,
+      step: 1,
     
       //this gets a live reading of the value and prints it on the page
       slide: function( event, ui ) {
@@ -79,6 +88,10 @@ $(document).ready(function() {
       }
 
    });
+
+    $("#flashclose").click(function(){
+      $(this).parents('.notify-bar').slideUp();
+    });
 
     $("#class_filter").click(function(e){
       e.preventDefault();

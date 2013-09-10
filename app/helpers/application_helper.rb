@@ -65,4 +65,13 @@ module ApplicationHelper
     return nil unless date.present?
       return date.strftime('%d-%m-%Y')
   end
+
+  def flash_class(level)
+      case level
+          when :notice then "alert alert-info flash_message"
+          when :success then "alert alert-success flash_message"
+          when :error then "alert alert-error flash_message"
+          when :alert then "alert alert-error flash_message"
+      end
+    end
 end

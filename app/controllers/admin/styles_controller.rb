@@ -24,8 +24,16 @@ class Admin::StylesController < ApplicationController
 		        format.html { redirect_to admin_styles_path, notice: 'style was successfully created.' }
 		        format.json { render json: @style, status: :created, location: @teacher }
 		    else
-		        format.html { render action: "new" }
-		        format.json { render json: @style.errors, status: :unprocessable_entity }
+		        # format.html { 
+		        # 	render action: "new"
+		        # 	flash[:alert] = @style.errors.full_messages.join(".\n") 
+		        # }
+		        format.json { flash[:alert] = @style.errors.full_messages.join(".\n")}
+		        format.html {
+			        render action: "new"
+			    }
+		        # flash[:alert] = @style.errors.full_messages.join(".\n")
+		        
 	      	end
 	    end
   	end

@@ -1,0 +1,14 @@
+<%= render 'admin/admin_dashboard_tabs', :active_tab => 'dashboard' %>
+<div id="dashboard_section" class="admin_dashboard admin_style">
+  <div class="inner_container">
+    <div id="tabs-1">
+      	<h2> Edit <%= @video.title %></h2>
+      	<hr/>
+      	<div class="row clearfix">
+      		<div class="col-lg-8">
+      			<%= render 'form' %>
+      		</div>
+      	</div>
+	</div>
+  </div>
+</div>
