@@ -3,13 +3,13 @@
   <div class="inner_container">
     <div id="tabs-1">
       <div>
-      	<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Style'), new_admin_teacher_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
+      	<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Teacher'), new_admin_teacher_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
         <h2 class="">Your Listed Teachers</h2>
       </div>
 
       <%= search_form_for([:admin, @search], :html => { :class => 'form-inline clearfix', :id => 'video_search_form'}) do |f| %>
         <div class="row">
-          <div class="col-lg-4"><%= f.text_field :name_cont, :class => "form-control", :placeholder => "Search Video" %>
+          <div class="col-lg-4"><%= f.text_field :name_cont, :class => "form-control", :placeholder => "Search Teacher" %>
           </div>
           <div class="col-lg-1">
             <%= f.submit :class =>"btn btn-primary" %>

@@ -9,7 +9,7 @@ class Video < ActiveRecord::Base
 					  :wistia_id
 
 	has_attached_file :photo, :styles => {:medium => "400x400>", :small => "150x150>" },
-				:default_url => "/assets/default_avatars/default.png",
+				:default_url => "http://pixelholdr.com/color:ff5c23/350x246",
 	            :url  => "/assets/videos/:id/:style/:basename.:extension",
 	            :path => ":rails_root/public/assets/videos/:id/:style/:basename.:extension"
 	# validates_attachment_presence :photo

@@ -24,9 +24,10 @@
       			<th><%= sort_link @search, :style_id, "Style" %></th>
       			<th><%= sort_link @search, :level_id, "Level" %></th>
       			<th><%= sort_link @search, :teacher_id, "Teacher" %></th>
-      			<th><%= sort_link @search, :duration, "Duration" %></th>
-      			<th><%= sort_link @search, :created_at, "Created at" %></th>
-      			<th><%= sort_link @search, :updated_at, "Updated at" %></th>
+      			<th class="text-center"><%= sort_link @search, :duration, "Duration" %></th>
+            <th class="text-center">Favorited by</th>
+            <th class="text-center">Commented by</th>
+      			<th><%= sort_link @search, :created_at, "Created on" %></th>
       			<th></th>
       		</tr>
       		<% @videos.each do |video| %>
@@ -36,14 +37,15 @@
 	      			<td><%= video.style.name %></td>
 	      			<td><%= video.level.name %></td>
 	      			<td><%= video.teacher.name %></td>
-	      			<td><%= video.duration %> min</td>
+	      			<td class="text-center"><%= video.duration %> min</td>
+              <td class="text-center"><%= FavoriteVideo.count :conditions => {:video_id => video.id} %> <span class="glyphicon glyphicon-heart"></span></td>
+              <td class="text-center"><%= video.comments.count %> <span class="glyphicon glyphicon-comment"></span></td>
 	      			<td><%= nice_date_form(video.created_at) %></td>
-	      			<td><%= nice_date_form(video.updated_at) %></td>
 	      			<td>
-                <%= link_to "Delete", admin_video_path(video), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-sm pull-right" %>
-	      				<%= link_to "Edit", edit_admin_video_path(video), :class => "btn btn-warning btn-sm pull-right" %>
+                <%= link_to "Delete", admin_video_path(video), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-xs pull-right" %>
+	      				<%= link_to "Edit", edit_admin_video_path(video), :class => "btn btn-warning btn-xs pull-right" %>
 	      				
-	      				<%= link_to "View", video_path(video), :class => "btn btn-success btn-sm pull-right" %>
+	      				<%= link_to "View", video_path(video), :class => "btn btn-success btn-xs pull-right" %>
 	      			</td>
 	      		</tr>
       		<% end%>

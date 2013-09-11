@@ -467,11 +467,13 @@ textarea.form-control{
 .duration_slider {
 	margin-top: 14px;
 	width:100%;
-	height:11px;
-	background:url(images/slider-bg.png);
-	background-size: cover;
+	height:12px;
+	border: 1px solid #ddd;
+	background: #eee url(slider_bg.png) 50% top repeat-x;
+	color: #333;
 	position:relative;
 	margin-top:14px;
+	@include border-radius(3px);
 }
  
 /*Style for the slider button*/
@@ -498,12 +500,32 @@ textarea.form-control{
 }
 /*This is the fill bar colour*/
 .ui-slider .ui-widget-header {
-	background:url(images/fill.png) no-repeat left;
-	background-size: cover;
-	height:8px;
-	left:1px;
-	top:1px;
-	position:absolute;
+	position: absolute;
+	z-index: 1;
+	height: 10px;
+	font-size: .7em;
+	display: block;
+	border: 1px solid #FFF;
+	border-bottom-left-radius: 6px;
+	border-top-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-top-right-radius: 6px;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#cccccc), to(#bdbdbd));
+	background-image: -webkit-linear-gradient(top, #cccccc, 0%, #bdbdbd, 100%);
+	background-image: -moz-linear-gradient(top, #cccccc 0%, #bdbdbd 100%);
+	background-image: linear-gradient(to bottom, #cccccc 0%, #bdbdbd 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffcccccc', endColorstr='#ffbdbdbd', GradientType=0);
+	border-color: #b3b3b3;
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffa929), to(#ff9d0a));
+	background-image: -webkit-linear-gradient(top, #ffa929, 0%, #ff9d0a, 100%);
+	background-image: -moz-linear-gradient(top, #ffa929 0%, #ff9d0a 100%);
+	background-image: linear-gradient(to bottom, #ffa929 0%, #ff9d0a 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffa929', endColorstr='#ffff9d0a', GradientType=0);
+	border-color: #cc7a00;
 }
 
 
