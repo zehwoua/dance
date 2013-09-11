@@ -1,6 +1,7 @@
 class Admin::VideosController < ApplicationController
  def index_admin
-    @videos = Video.all
+    @search = Video.search(params[:q])
+    @videos = @search.result
   end
 
   # GET /videos/new

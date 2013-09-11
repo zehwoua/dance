@@ -1,0 +1,50 @@
+<%= render 'admin/admin_dashboard_tabs', :active_tab => 'teachers' %>
+<div id="dashboard_section" class="admin_dashboard admin_style">
+  <div class="inner_container">
+    <div id="tabs-1">
+      <div>
+      	<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Style'), new_admin_teacher_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
+        <h2 class="">Your Listed Teachers</h2>
+      </div>
+
+      <%= search_form_for([:admin, @search], :html => { :class => 'form-inline clearfix', :id => 'video_search_form'}) do |f| %>
+        <div class="row">
+          <div class="col-lg-4"><%= f.text_field :name_cont, :class => "form-control", :placeholder => "Search Video" %>
+          </div>
+          <div class="col-lg-1">
+            <%= f.submit :class =>"btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+
+      	<table class="table table-condensed table-striped">
+      		<tr>
+      			<th><%= sort_link @search, :id, "ID" %></th>
+      			<th><%= sort_link @search, :name, "Name" %></th>
+      			<th>Description</th>
+      			<th><%= sort_link @search, :created_at, "Created At" %></th>
+      			<th><%= sort_link @search, :updated_at, "Updated At" %></th>
+      			<th></th>
+      		</tr>
+      		<% @teachers.each do |teacher| %>
+	      		<tr>
+	      			<td><%= teacher.id %></td>
+	      			<td><%= teacher.name %></td>
+	      			<td class="description"><%= (truncate h(teacher.profile), 
+			                  :length => 300, 
+			                  :omission => "...")
+			                  .html_safe %></td>
+	      			<td><%= nice_date_form(teacher.created_at) %></td>
+	      			<td><%= nice_date_form(teacher.updated_at) %></td>
+	      			<td>
+                <%= link_to "Delete", admin_teacher_path(teacher), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-sm pull-right" %>
+	      				<%= link_to "Edit", edit_admin_teacher_path(teacher), :class => "btn btn-warning btn-sm pull-right" %>
+	      				
+	      				<%= link_to "View", teacher_path(teacher), :class => "btn btn-success btn-sm pull-right" %>
+	      			</td>
+	      		</tr>
+      		<% end%>
+      	</table>
+	</div>
+  </div>
+</div>

@@ -1,19 +1,32 @@
-<%= render 'admin/admin/admin_dashboard_tabs', :active_tab => 'dashboard' %>
+<%= render 'admin/admin_dashboard_tabs', :active_tab => 'videos' %>
 <div id="dashboard_section" class="admin_dashboard admin_video">
   <div class="inner_container">
     <div id="tabs-1">
-    	<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Video'), new_admin_video_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
-      	<h2 class="">Your Listed Videos</h2>
+      <div>
+        <%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Video'), new_admin_video_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
+          <h2 class="">Your Listed Videos</h2>
+      </div>
+    	
+      <%= search_form_for([:admin, @search], :html => { :class => 'form-inline clearfix', :id => 'video_search_form'}) do |f| %>
+        <div class="row">
+          <div class="col-lg-4"><%= f.text_field :title_cont, :class => "form-control", :placeholder => "Search Video" %>
+          </div>
+          <div class="col-lg-1">
+            <%= f.submit :class =>"btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+            
       	<table class="table table-condensed table-striped">
       		<tr>
-      			<th>Id</th>
-      			<th>Name</th>
-      			<th>Style</th>
-      			<th>Level</th>
-      			<th>Teacher</th>
-      			<th>Duration</th>
-      			<th>Created at</th>
-      			<th>Updated at</th>
+      			<th><%= sort_link @search, :id, "ID" %></th>
+      			<th><%= sort_link @search, :title, "Video Name" %></th>
+      			<th><%= sort_link @search, :style_id, "Style" %></th>
+      			<th><%= sort_link @search, :level_id, "Level" %></th>
+      			<th><%= sort_link @search, :teacher_id, "Teacher" %></th>
+      			<th><%= sort_link @search, :duration, "Duration" %></th>
+      			<th><%= sort_link @search, :created_at, "Created at" %></th>
+      			<th><%= sort_link @search, :updated_at, "Updated at" %></th>
       			<th></th>
       		</tr>
       		<% @videos.each do |video| %>

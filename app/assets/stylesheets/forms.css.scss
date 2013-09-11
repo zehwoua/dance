@@ -37,10 +37,13 @@
 		display: block;
 		margin-bottom: 5px;
 		color: rgb(81, 90, 98);
-		font-weight: normal;
+		font-weight: bold;
 	}
 	.controls {
 		margin-left: 180px;
+		select{
+			width:74%;
+		}
 	}
 	 .form-actions {
 		padding-left: 180px;

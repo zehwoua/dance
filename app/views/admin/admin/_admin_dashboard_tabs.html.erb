@@ -1,4 +1,4 @@
-<div class="clearfix" id="dashboard_tabs">
+<div class="clearfix" id="dashboard_tabs" class="admin_dashboard_tabs">
   <div class="inner_container">
     <ul class="clearfix">
       <li class="<%= active_tab %>">
@@ -8,7 +8,7 @@
       </li>
       <li class="<%= active_tab %>">
           <% link = raw('<span class="glyphicon glyphicon-briefcase"></span><span>Plans</span>') %>
-          <%= link_to link, admin_admin_plans_path, :class => 'profile' %>
+          <%= link_to link, admin_admin_plans_path, :class => 'plans' %>
       </li>
       <li class="<%= active_tab %>">
           <% link = raw('<span class="glyphicon glyphicon-film"></span><span>Videos</span>') %>

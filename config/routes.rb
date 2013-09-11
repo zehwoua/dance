@@ -46,7 +46,7 @@ DanceDynamics::Application.routes.draw do
     get "videos" => "videos#index_admin", :as => :admin_videos
     resources :levels
     resources :styles
-    
+    resources :teachers
   end
   resources :credit_card_info, :only => [:edit]
 

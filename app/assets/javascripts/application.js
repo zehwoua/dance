@@ -56,21 +56,33 @@
 
 $(document).ready(function() {
     $("body").removeClass("preload");
+
     $( ".dashboard_inner_tab" ).tabs();
-    max = 120;
-    if($("#duration_hidden").attr("data-max")){
-      max = $("#duration_hidden").attr("data-max");
-    }
-    duration = $("#duration_hidden").val();
-    if(!duration){
-      duration = 120;
+
+    
+    duration_value = 0;
+    duration_value = $("#duration_hidden").val();
+
+    if($("#duration_hidden").hasClass("hidden_scale_slider")){
+      max = 10;
     }else{
-      $( "#duration_slider_result" ).html( duration );
+      max = 120;
     }
+    
+    if(!duration_value){
+      if($("#duration_hidden").hasClass("new_slider")){
+        duration_value = 0;
+      }else{
+        duration_value = 120;
+      }
+    }
+    
+    $("#duration_slider_result").html( duration_value );
+
     $( ".duration_slider" ).slider({
-    animate: true,
+      animate: true,
       range: "min",
-      value: duration,
+      value: duration_value,
       min: 0,
       max: max,
       step: 1,

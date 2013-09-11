@@ -1,6 +1,7 @@
 class Admin::StylesController < ApplicationController
 	def index
-		@styles = Style.all
+		@search = Style.search(params[:q])
+    	@styles = @search.result
 	end
 
 	def new
@@ -24,16 +25,10 @@ class Admin::StylesController < ApplicationController
 		        format.html { redirect_to admin_styles_path, notice: 'style was successfully created.' }
 		        format.json { render json: @style, status: :created, location: @teacher }
 		    else
-		        # format.html { 
-		        # 	render action: "new"
-		        # 	flash[:alert] = @style.errors.full_messages.join(".\n") 
-		        # }
-		        format.json { flash[:alert] = @style.errors.full_messages.join(".\n")}
-		        format.html {
-			        render action: "new"
-			    }
-		        # flash[:alert] = @style.errors.full_messages.join(".\n")
-		        
+		    	format.html {
+		    	flash[:alert] = @style.errors.full_messages.join(".\n")
+		    	render action: "new" 
+		    	}		        
 	      	end
 	    end
   	end

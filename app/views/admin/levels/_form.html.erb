@@ -1,41 +1,31 @@
-<%= form_for([:admin,@level], :html => { :class => 'form-horizontal'}) do |f| %>
+<%= simple_form_for([:admin,@level], :html => { :class => 'form-horizontal'}) do |f| %>
       <% if @level.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@level.errors.count, "error") %> prohibited this level from being saved:</h2>
-
-          <ul>
-          <% @level.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
+          <h4 class="text text-danger"><%= pluralize(@level.errors.count, "error") %> occured.</h4>
         </div>
       <% end %>
-      <div class="form-group">
-        <%= f.label :name, :class => "col-lg-2 control-label" %>
-        <div class="col-lg-7">
-          <%= f.text_field :name, :class => "form-control", :placeholder => "Level Name" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :scale, :class => "col-lg-2 control-label" %>
-        <div class="col-lg-7">
+      <%= f.input :name %>
+      <div class="control-group required level_scale">
+        <label class="string required control-label" for="level_scale"><abbr title="required">*</abbr>Scale</label>
+        <div class="controls">
           <div class="row">
-            <div class="col-lg-10">
+            <div class="col-lg-8">
               <div class="duration_slider"></div> 
-              <%= f.hidden_field :scale, :id =>"duration_hidden", :data =>{:max => 10} %>
+              <%= f.hidden_field :scale, :id =>"duration_hidden", :class => "hidden_scale_slider new_slider" %>
             </div>
-            <div class="col-lg-2">
-              <p class="duration_min"><span id="duration_slider_result">0</span></p>
+            <div class="col-lg-3">
+              <span class="duration_min" style="display:inline-block;margin-right:5px;"><span id="duration_slider_result">120</span> </span>
+              <%= f.error :scale, id: 'scale_error', :style => "color: #b94a48;"  %>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <div class="col-lg-offset-2 col-lg-7">
+      <div class="control-group">
+        <label class="string required control-label" for="style_name"></label>
+        <div class="controls">
           <%= link_to "Go back", admin_levels_path, :class => "btn btn-default"%>
-          <%= f.submit :class => "btn btn-primary" %>
+          <%= f.button :submit, :class => "btn btn-primary" %>
         </div>
       </div>
 <% end%>

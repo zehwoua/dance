@@ -1,0 +1,45 @@
+<%= simple_form_for(@teacher, :html => { :class => 'form-horizontal'}) do |f| %>
+      <% if @teacher.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+        </div>
+      <% end %>
+      <%= f.input :name %>
+      <%= f.input :website %>
+
+      <div class="control-group">
+        <label class="string required control-label" for="style_name">Upload Video Thumb</label>
+        <div class="controls">
+          <div class="fileupload fileupload-new" data-provides="fileupload">
+            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                <% if @teacher.avatar.url present? %>
+                  <%= image_tag @teacher.avatar.url(:small) %>
+                <% else %>
+                  <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" />
+                <% end %>
+              </div>
+              <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;">
+            </div>
+            <div>
+              <span class="btn btn-warning btn-file btn-sm">
+                <span class="fileupload-new">Select image
+                </span>
+                <span class="fileupload-exists">Change</span>
+                <%= f.file_field :avatar %>
+              </span>
+              <a href="#" class="btn-sm btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= f.input :profile , :input_html => { :rows => 5,:class => "form-control"} %>
+
+      <div class="control-group">
+        <label class="string required control-label" for="style_name"></label>
+        <div class="controls">
+          <%= link_to "Go back", admin_teachers_path, :class => "btn btn-default"%>
+          <%= f.button :submit, :class => "btn btn-primary" %>
+        </div>
+      </div>
+<% end%>

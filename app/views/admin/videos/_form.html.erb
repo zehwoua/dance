@@ -1,5 +1,5 @@
 <div class="inner_container">
-    <%= form_for([:admin,@video], :html => { :class => 'form-horizontal'}) do |f| %>
+    <%= simple_form_for([:admin,@video], :html => { :class => 'form-horizontal'}) do |f| %>
       <% if @video.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
@@ -12,53 +12,32 @@
         </div>
       <% end %>
 
-      <div class="form-group">
-        <%= f.label :title, :class => "col-lg-2 control-label" %>
-        <div class="col-lg-7">
-          <%= f.text_field :title, :autofocus => true, :class => "form-control", :placeholder => "Video title" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :duration, :class => "col-lg-2 control-label" %>
-        <div class="col-lg-7">
+      <%= f.input :title %>
+
+      <div class="control-group required video_duration">
+        <label class="string required control-label" for="video_duration"><abbr title="required">*</abbr>Duration</label>
+        <div class="controls">
           <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-8">
               <div class="duration_slider"></div> 
-              <%= f.hidden_field :duration, :id =>"duration_hidden" %>
+              <%= f.hidden_field :duration, :id =>"duration_hidden", :class => "new_slider" %>
             </div>
             <div class="col-lg-3">
-              <p class="duration_min"><span id="duration_slider_result">120</span> min</p>
+              <span class="duration_min" style="display:inline-block;margin-right:5px;"><span id="duration_slider_result">120</span> </span>
+              <%= f.error :duration, id: 'duration_error', :style => "color: #b94a48;"  %>
             </div>
           </div>
         </div>
       </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Select Style</label>
-        <div class="col-lg-7">
-          <%= select("video", "style_id", Style.all.collect {|p| [ p.name, p.id ] }, {prompt:'Select Style Type'}, :class => "form-control" )%>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Select Teacher</label>
-        <div class="col-lg-7">
-          <%= f.collection_select( :teacher_id, Teacher.order(:name), :id, :name, {:prompt => "Select a teacher"}, { :class => "form-control"}) %>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Select Level</label>
-        <div class="col-lg-7">
-          <%= f.collection_select( :level_id, Level.order(:name), :id, :name, {:prompt => "Select a level"}, { :class => "form-control"}) %>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-lg-2 control-label">Enter Wistia video code</label>
-        <div class="col-lg-7">
-          <%= f.text_field :wistia_id, :class => "form-control", :placeholder => "wistia id" %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :photo, "Upload Photo", :class => "col-lg-2 control-label" %>
-        <div class="col-lg-8">
+
+      <%=  f.association :style , input_html: { class: 'form-control' }, prompt: "Select your style" %>
+      <%=  f.association :teacher , input_html: { class: 'form-control' }, prompt: "Select your teacher" %>
+      <%=  f.association :level , input_html: { class: 'form-control' }, prompt: "Select your level" %>
+      <%= f.input :wistia_id %>
+
+      <div class="control-group">
+        <label class="string required control-label" for="style_name">Upload Video Thumb</label>
+        <div class="controls">
           <div class="fileupload fileupload-new" data-provides="fileupload">
             <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
                 <% if @video.photo.url present? %>
@@ -79,18 +58,15 @@
               <a href="#" class="btn-sm btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
             </div>
           </div>
-        </div><!--/col-lg-8-->
-    </div><!--/form_group-->
-      <div class="form-group">
-        <%= f.label :description, :class => "col-lg-2 control-label" %>
-        <div class="col-lg-10">
-          <%= f.text_area :description, :class => "form-control", :placeholder => "Description of the video", :rows => "10" %>
         </div>
       </div>
-      <div class="form-group">
-        <div class="col-lg-offset-2 col-lg-7">
+
+      <%= f.input :description , :input_html => { :rows => 5,:class => "form-control"} %>
+      <div class="control-group">
+        <label class="string required control-label" for="style_name"></label>
+        <div class="controls">
           <%= link_to "Go back", admin_videos_path, :class => "btn btn-default"%>
-          <%= f.submit :class => "btn btn-primary" %>
+          <%= f.button :submit, :class => "btn btn-primary" %>
         </div>
       </div>
     <% end %>

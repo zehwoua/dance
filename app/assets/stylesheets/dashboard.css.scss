@@ -51,7 +51,12 @@
 			&.dashboard a.dashboard,
 			&.profile a.profile,
 			&.my_class a.my_class,
-			&.billing a.billing{
+			&.billing a.billing,
+			&.levels a.levels,
+			&.styles a.styles,
+			&.videos a.videos,
+			&.plans a.plans,
+			&.teachers a.teachers{
 				position: relative;
 				background: white;
 				color: #dd4814;
@@ -64,6 +69,13 @@
 					text-decoration:none;
 					opacity: 1;
 				}
+			}
+		}
+	}
+	&.admin_dashboard_tabs{
+		ul{
+			li{
+				a{width:auto;}
 			}
 		}
 	}

@@ -1,7 +1,6 @@
 class Video < ActiveRecord::Base
 	attr_accessible :description,
 					  :duration, 
-					  :level, 
 					  :style_id, 
 					  :teacher_id,
 					  :level_id, 
@@ -17,6 +16,7 @@ class Video < ActiveRecord::Base
 	validates_attachment_size :photo, :less_than => 5.megabytes
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg','image/jpg', 'image/png']
 
+	validates_presence_of :description, :duration, :style_id, :teacher_id, :level_id, :title, :wistia_id 
 
 	#relationships
 	has_many :comments, dependent: :destroy

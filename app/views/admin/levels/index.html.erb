@@ -1,4 +1,4 @@
-<%= render 'admin/admin/admin_dashboard_tabs', :active_tab => 'dashboard' %>
+<%= render 'admin/admin_dashboard_tabs', :active_tab => 'levels' %>
 <div id="dashboard_section" class="admin_dashboard admin_style">
   <div class="inner_container">
     <div id="tabs-1">
@@ -6,11 +6,11 @@
       	<h2 class="">Your Listed Levels</h2>
       	<table class="table table-condensed table-striped">
       		<tr>
-      			<th>Id</th>
-      			<th>Name</th>
-      			<th>Scale</th>
-      			<th>Created at</th>
-      			<th>Updated at</th>
+      			<th><%= sort_link @search, :id, "ID" %></th>
+      			<th><%= sort_link @search, :name, "Name" %></th>
+      			<th><%= sort_link @search, :scale, "Scale" %></th>
+      			<th><%= sort_link @search, :created_at, "Created At" %></th>
+      			<th><%= sort_link @search, :updated_at, "Updated At" %></th>
       			<th></th>
       		</tr>
       		<% @levels.each do |level| %>

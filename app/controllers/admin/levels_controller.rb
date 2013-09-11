@@ -1,6 +1,7 @@
 class Admin::LevelsController < ApplicationController
 	def index
-		@levels = Level.all
+		@search = Level.search(params[:q])
+    	@levels = @search.result
 	end
   	def show
 	  	@current_level_id = params[:id]
