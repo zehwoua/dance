@@ -1,17 +1,20 @@
 DanceDynamics::Application.routes.draw do
 
+ devise_for :users, :path => '', :path_names => 
+          {:sign_in => '/login',
+           :sign_out => '/logout', :as => :destroy_user_session,
+           :sign_up => '/sign_up'
+         }
   devise_for :users, :controllers => { :registrations => "users/registrations" }
-  devise_scope :user do
-    get '/sign_in' => 'devise/sessions#new'
-  end
+  # devise_scope :user do
+  #   get '/sign_in' => 'sessions#new'
+  #   get "/sign_up", :to => "registrations#new"
+  # end
 
-  devise_for :users do
-    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
-  end
+  # devise_for :users do
+  #   get "/users/sign_out" => "devise/sessions#destroy", 
+  # end
 
-  
-  # devise_for :users, :path => '', :path_names => 
-  #            {:sign_in => 'login', :sign_out => 'logout'}
 
  
  # get "favorite_videos/destroy"

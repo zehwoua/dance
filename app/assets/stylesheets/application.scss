@@ -729,8 +729,6 @@ h2{
 		color: #ff6805;
 		font-size: 32px;
 		margin-top: 0;
-		border-bottom: 1px dotted #ddd;
-		padding-bottom: 0.4em;
 	}
 	.login-fields{
 		.field{
@@ -908,4 +906,30 @@ h2{
   bottom: -4px;
   left: 6px;
   right: 6px;
+}
+
+/* REGISTER PAGE */
+.register{
+	.login-social {
+		margin-bottom: 1em;
+	}
+	.login-actions {
+		margin-bottom: 0;
+	}
+	h1 {
+		color: #444;
+	}
+	.login-fields input {
+		width: 299px;
+		padding-left: 6px;
+	}
+	span.login-checkbox {
+		position: relative;
+		top: -6px;
+		width: 200px;
+	}
+	span.login-checkbox > input[type="checkbox"] + label {
+		position: relative;
+		line-height: 1.3em;
+	}
 }

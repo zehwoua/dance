@@ -37,14 +37,14 @@ class User < ActiveRecord::Base
   	has_many :history_videos, dependent: :destroy # just the 'relationships'
   	has_many :histories, through: :history_videos, source: :video # the actual videos user favorites
 
- #  	validates :username, presence: { :on => :create }
+  	validates :username, presence: { :on => :create }
  #  	validates :email, :presence => true,
  #                                    :if => :validate_password?,
  #                                    :confirmation => true,
  #                                    :length       => { :within => 6..40 }
  #  	validates :email, :email_format => true 
 	# validates_uniqueness_of :email
-	# validates_uniqueness_of :username, :if => :username_present?
+	validates_uniqueness_of :username, :if => :username_present?
 	# validates_presence_of :password_confirmation, :if => :password_present?
 	# validates_confirmation_of :password, :if => :password_present?
 
