@@ -15,8 +15,6 @@
 //= require jquery-ui
 //= require jquery.sequence-min
 //= require bootstrap
-//= require fancybox
-//= require rails.validations
 //= require_tree .
 
 // $(function(){
