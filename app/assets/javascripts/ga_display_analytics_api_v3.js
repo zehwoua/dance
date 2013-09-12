@@ -146,7 +146,7 @@ function siteStatistic(profileId) {
     'ids': 'ga:' + profileId,
     'start-date': lastNDays(6),
     'end-date': lastNDays(0),
-    'metrics': 'ga:visitors,ga:visits,ga:avgTimeOnSite,ga:percentNewVisits',
+    'metrics': 'ga:visitors,ga:visits,ga:avgTimeOnSite,ga:percentNewVisits,ga:visitBounceRate',
     'dimensions': 'ga:date',
     // 'sort': '-ga:visitors',
     // 'filters': 'ga:medium==organic',
@@ -166,26 +166,10 @@ function handleCoreReportingResults(response) {
   if (!response.code) {
     if (response.rows && response.rows.length) {
       var output = [];
-      // console.log(response);
-      // output.push('Profile Name: ', response.profileInfo.profileName, '<br>');
-
-      // var table = ['<table>'];
-
-      // // Put headers in table.
-      // table.push('<tr>');
-      // for (var i = 0, header; header = response.columnHeaders[i]; ++i) {
-      //   table.push('<th>', header.name, '</th>');
-      // }
-      // table.push('</tr>');
-
-      // // Put cells in table.
-      // for (var i = 0, row; row = response.rows[i]; ++i) {
-      //   table.push('<tr><td>', row.join('</td><td>'), '</td></tr>');
-      // }
-      // table.push('</table>');
       $("#site_visits").html(response.rows[6][2]);
       $("#unique_visits").html(response.rows[6][1]);
       $("#new_visits").html(Math.floor(response.rows[6][4])+"%");
+      $("#bounce_rate").html(Math.floor(response.rows[6][5])+"%");
       calculate_time(response.rows[6][3]);
       drawVisualization(response);
 
