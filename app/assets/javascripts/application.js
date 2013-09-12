@@ -12,10 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
-//= require jquery.sequence-min
-//= require bootstrap
-//= require_tree .
+//= require_tree ./global
 
 // $(function(){
 //   $('a.video_popover').popover({
