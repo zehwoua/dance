@@ -43,11 +43,11 @@
 				<p>Sign in using social network:</p>
 				
 				<div class="twitter">
-					<a href="#" class="btn_1">Login with Twitter</a>				
+					<%= link_to "Login with Twitter",user_omniauth_authorize_path(:twitter)%>				
 				</div>
 				
 				<div class="fb">
-					<a href="#" class="btn_2">Login with Facebook</a>				
+					<%= link_to "Login with Facebook",user_omniauth_authorize_path(:facebook)%>			
 				</div>
 			</div>
 			
