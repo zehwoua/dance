@@ -1,8 +1,8 @@
 DanceDynamics::Application.routes.draw do
 
   devise_for :users, :controllers => { 
-    :registrations => "users/registrations" 
-    
+    :registrations => "users/registrations" ,
+    :omniauth_callbacks => "omniauth_callbacks"
   }
   devise_scope :user do
     get '/sign_in' => 'sessions#new'
@@ -12,9 +12,6 @@ DanceDynamics::Application.routes.draw do
   devise_for :users do
     get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
-  # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
-
   
   # devise_for :users, :path => '', :path_names => 
   #           {:sign_in => '/login',

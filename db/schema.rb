@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906053732) do
+ActiveRecord::Schema.define(:version => 20130912040137) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(:version => 20130906053732) do
     t.datetime "avatar_updated_at"
     t.string   "braintree_customer_id"
     t.boolean  "admin"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

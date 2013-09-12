@@ -32,16 +32,17 @@
 					<%= f.label :email %>
 					<%= f.text_field :email, :class=>"form-control",:placeholder => "Email" %>	
 				</div> <!-- /field -->
-				
-				<div class="field">
-					<%= f.label :password %>
-					<%= f.password_field :password, :class=>"form-control",:placeholder => "Password" %>	
-				</div> <!-- /field -->
-				
-				<div class="field">
-					<%= f.label :password_confirmation %>
-					<%= f.password_field :password_confirmation, :class=>"form-control",:placeholder => "Confirm Password" %>	
-				</div> <!-- /field -->
+				<% if f.object.password_required? %>
+					<div class="field">
+						<%= f.label :password %>
+						<%= f.password_field :password, :class=>"form-control",:placeholder => "Password" %>	
+					</div> <!-- /field -->
+					
+					<div class="field">
+						<%= f.label :password_confirmation %>
+						<%= f.password_field :password_confirmation, :class=>"form-control",:placeholder => "Confirm Password" %>	
+					</div> <!-- /field -->
+				<% end %>
 				
 			</div> <!-- /login-fields -->
 			
