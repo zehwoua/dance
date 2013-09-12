@@ -1,51 +1,62 @@
-<div class="color_lines">
-<div class="container">
-	<div class="gray_box gray_box_top_margin">
-		<div class="dancing_shadows">
-			<%= image_tag("dancing_figures.png") %>
-		</div>
-		<div class="box_header clearfix">
-			<h2>Member Sign in</h2>
-		</div>
-		<div class="inner_container">
-			<div class="row">
-				<div class="col-lg-7 box_divider">
-					<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:validate => true, :html => { :class => 'form-horizontal'}) do |f| %>
+<div class="account-container stacked">
+	
+	<div class="content clearfix">
+		
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		
+			<h1 class="text-center">Sign In</h1>		
+			
+			<div class="login-fields">
+				<%= devise_error_messages! %>
+				
+				<p>Sign in using your registered account:</p>
 
-						<%= devise_error_messages! %>
-
-						<div class="form-group">
-							<%= f.label :username, :class => "col-lg-4 control-label" %>
-							<div class="col-lg-7">
-								<%= f.text_field :username, :autofocus => true, :class => "form-control", :placeholder => "Username" %>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<%= f.label :password, :class => "col-lg-4 control-label" %>
-							<div class="col-lg-7">
-								<%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
-								<% if devise_mapping.rememberable? -%>
-									<div class="checkbox">
-						          		<%= f.check_box :remember_me %> <%= f.label :remember_me %>
-						        	</div>
-								<% end -%>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<div class="col-lg-offset-4 col-lg-7">
-								<%= f.submit "Sign in", :class => "btn btn-default blue-button" %>
-							</div>
-						</div>
-					<% end %>
-
-					<%= render "devise/shared/links" %>
-				</div><!--/col-lg-8-->
-				<div class="col-lg-4 col-lg-offset-1">Facebook Login</div>
-			</div><!--/row-->
-		</div><!--/inner-container-->
-	</div><!--/gray-box-->
-</div><!--/container-->
+				<% if flash[:alert] %>
+				  <p id="login_error" class="text-danger"><%= flash[:alert] %></p>
+				<% end %>
+				
+				<div class="field">
+					<%= f.label :username %>
+					<%= f.text_field :username, :placeholder =>"Username", :class=> "form-control input-lg username-field", :autofocus => true %>
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<%= f.label :password %>
+					<%= f.password_field :password, :placeholder =>"Password", :class=> "form-control input-lg password-field" %>
+				</div> <!-- /password -->
+				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions">
+				<% if devise_mapping.rememberable? -%>
+					<span class="login-checkbox">
+						<%= f.check_box :remember_me, :class=>"field login-checkbox" %>
+						<%= f.label :remember_me, "Keep me signed in", :class=>"choice" %>
+					</span>
+				<% end -%>
+									
+				<%= f.submit "Sign In", :class=>"login-action btn btn-primary" %>
+				
+			</div> <!-- .actions -->
+			
+			<div class="login-social">
+				<p>Sign in using social network:</p>
+				
+				<div class="twitter">
+					<a href="#" class="btn_1">Login with Twitter</a>				
+				</div>
+				
+				<div class="fb">
+					<a href="#" class="btn_2">Login with Facebook</a>				
+				</div>
+			</div>
+			
+		<% end %>
+		
+	</div> <!-- /content -->
+	
 </div>
-
+<div class="login-extra">
+	Don't have an account? <%= link_to "Sign Up", new_registration_path(resource_name) %><br>
+	Remind <%= link_to "Password",new_password_path(resource_name) %>
+</div>

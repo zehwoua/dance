@@ -47,6 +47,7 @@ DanceDynamics::Application.routes.draw do
     resources :levels
     resources :styles
     resources :teachers
+    resources :users
   end
   resources :credit_card_info, :only => [:edit]
 

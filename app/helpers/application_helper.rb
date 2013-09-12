@@ -73,5 +73,5 @@ module ApplicationHelper
           when :error then "alert alert-error flash_message"
           when :alert then "alert alert-error flash_message"
       end
-    end
+  end
 end

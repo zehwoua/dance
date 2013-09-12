@@ -2,28 +2,31 @@
   <div class="inner_container">
     <ul class="clearfix">
       <li class="<%= active_tab %>">
-          <% link = raw('<span class="glyphicon glyphicon-user"></span><span>Users</span>') %>
-          <%= link_to link, user_dashboard_path, :class => 'dashboard' %>
-          
+          <% link = raw('<i class="glyphicon glyphicon-home"></i><span>Dashboard</span>') %>
+          <%= link_to link, admin_root_path, :class => 'dashboard' %>
       </li>
       <li class="<%= active_tab %>">
-          <% link = raw('<span class="glyphicon glyphicon-briefcase"></span><span>Plans</span>') %>
-          <%= link_to link, user_profile_path, :class => 'profile' %>
+          <% link = raw('<i class="glyphicon glyphicon-user"></i><span>Users</span>') %>
+          <%= link_to link, admin_users_path, :class => 'users' %>
       </li>
       <li class="<%= active_tab %>">
-          <% link = raw('<span class="glyphicon glyphicon-film"></span><span>Videos</span>') %>
+          <% link = raw('<i class="glyphicon glyphicon-briefcase"></i><span>Plans</span>') %>
+          <%= link_to link, admin_admin_plans_path, :class => 'plans' %>
+      </li>
+      <li class="<%= active_tab %>">
+          <% link = raw('<i class="glyphicon glyphicon-film"></i><span>Videos</span>') %>
           <%= link_to link, admin_videos_path, :class => 'videos' %>
       </li>
       <li class="<%= active_tab %>">
-          <% link = raw('<span class="glyphicon glyphicon-music"></span><span>Styles</span>') %>
+          <% link = raw('<i class="glyphicon glyphicon-music"></i><span>Styles</span>') %>
           <%= link_to link, admin_styles_path, :class => 'styles' %>
       </li>
       <li class="<%= active_tab %>">
-          <% link = raw('<span class="glyphicon glyphicon-stats"></span><span>Levels</span>') %>
+          <% link = raw('<i class="glyphicon glyphicon-stats"></i><span>Levels</span>') %>
           <%= link_to link, admin_levels_path, :class => 'levels' %>
         </li>
         <li class="last <%= active_tab %>">
-          <% link = raw('<span class="glyphicon glyphicon-stats"></span><span>Teachers</span>') %>
+          <% link = raw('<i class="glyphicon glyphicon-stats"></i><span>Teachers</span>') %>
           <%= link_to link, admin_teachers_path, :class => 'teachers' %>
         </li>
     </ul>

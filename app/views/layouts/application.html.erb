@@ -4,6 +4,7 @@
   <title>DanceDynamics</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <%= csrf_meta_tags %>
 </head>
 
@@ -48,13 +49,13 @@
                               <li>
                                   <%= link_to raw('<span class="glyphicon glyphicon-star"></span>My classes'), user_my_classes_path %>
                               </li>
+                              <li><%= link_to (raw('<span class="glyphicon glyphicon-log-out"></span><span class="txt"> Logout</span>')), destroy_user_session_path, :method => :delete %>
+                              </li>
                           </ul>
                       </li>
                   </ul>
                 </li>
-              <li class="usernav_section">
-                <%= link_to (raw('<span class="glyphicon glyphicon-log-out"></span><span class="txt"> Logout</span>')), destroy_user_session_path, :method => :delete %>
-              </li>
+              
             <% else %>
                 <li class="usernav_section"><%= link_to "Sign up", new_user_registration_path %></li>
                 <li class="usernav_section"><%= link_to "Sign in" , new_user_session_path %></li>

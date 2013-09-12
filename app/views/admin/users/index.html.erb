@@ -1,0 +1,34 @@
+<%= render 'admin/admin_dashboard_tabs', :active_tab => 'users' %>
+<div id="dashboard_section" class="admin_dashboard">
+  <div class="inner_container">
+    <div id="tabs-1">
+      	<h2>Welcome, <span class="text-primary"><%= current_user.username %></span></h2>
+      	<table class="table table-condensed table-striped">
+      		<tr>
+      			<th>Id</th>
+      			<th>Username</th>
+      			<th>Email</th>
+      			<th>Created at</th>
+      			<th>Membership status</th>
+      			<th>Subscription type</th>
+      			<th></th>
+      		</tr>
+      		<% @users.each do |user| %>
+	      		<tr>
+	      			<td><%= user.id %></td>
+	      			<td><%= user.email %></td>
+	      			<td><%= user.username %></td>
+	      			<td><%= nice_date_form(user.created_at) %></td>
+	      			<td><%= user.id %></td>
+	      			<td><%= user.id %></td>
+	      			<td>
+	      				<%= link_to "View", "", :class => "btn btn-success btn-sm" %>
+	      				<%= link_to "Edit", "", :class => "btn btn-warning btn-sm" %>
+	      				<%= link_to "Delete", "", :class => "btn btn-danger btn-sm" %>
+	      			</td>
+	      		</tr>
+      		<% end%>
+      	</table>
+	</div>
+  </div>
+</div>
