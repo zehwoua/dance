@@ -3,26 +3,187 @@
   <div class="inner_container">
     <div id="tabs-1">
       	<h2>Welcome, <span class="text-primary"><%= current_user.username %></span></h2>
-      	<h1>Analytics Data Export API Script</h1>
-    <button id="authButton">Loading...</button>
-    <div id="dataControls" style="display:none">
-      <p>
-        For this user, retrieve the first 50 accounts with view (profile) ID and table ID
-        <button id="getAccount">Get Account Data</button>
-      </p>
-      <p>
-        For this view (profile), show visitor type and entrance/exit graphs:
-        <input type="text" id="tableId"/> (insert Table ID)
-        <button id="getData">Get Report Data</button>
-      </p>
-    </div>
-    <table>
-      <tr>
-      <td><div id="visitorsDiv"></div></td>
-      <td><div id="entrancesDiv"></div></td>
-    </tr>
-  </table>
-  <img src="dummy.gif" style="display:none" alt="required for Google Data"/>
-	</div>
-  </div>
-</div>
+
+        <button id="authorize-button" style="visibility: hidden">Authorize</button>
+        <hr>
+        <div id="output"><%= image_tag "loader.gif" %></div>
+
+        <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+        <div class="row">
+          <div class="col-md-6 col-xs-12">
+            <div class="widget stacked">
+          
+              <div class="widget-header">
+                <i class="glyphicon glyphicon-star"></i>
+                <h3>Quick Stats of Today</h3>
+              </div> <!-- /widget-header -->
+              
+              <div class="widget-content">
+                
+                <div class="stats">
+                  
+                  <div class="stat">
+                    <span class="stat-value" id="site_visits"></span>                  
+                    Site Visits
+                  </div> <!-- /stat -->
+                  
+                  <div class="stat">
+                    <span class="stat-value" id="unique_visits"></span>                 
+                    Unique Visits
+                  </div> <!-- /stat -->
+                  
+                  <div class="stat">
+                    <span class="stat-value" id="new_visits"></span>                 
+                    New Visits
+                  </div> <!-- /stat -->
+                  
+                </div> <!-- /stats -->
+              
+                <div id="chart-stats" class="stats">
+                  
+                  <div class="stat stat-chart">             
+                    <div id="visitor-type-chart" class="chart-holder"></div> <!-- #donut -->             
+                   </div> <!-- /substat -->
+                  
+                  <div class="stat stat-time">                  
+                    <span class="stat-value" id="avarage_visit_time"></span>
+                    Average Time on Site
+                  </div> <!-- /substat -->
+                  
+                </div> <!-- /substats -->
+                
+              </div> <!-- /widget-content -->
+                
+            </div>
+            <div class="widget widget-nopad stacked">
+            
+              <div class="widget-header">
+                <i class="glyphicon glyphicon-comment"></i>
+                <h3>Recent Comments</h3>
+              </div> <!-- /widget-header -->
+              
+              <div class="widget-content">
+                
+                <ul class="news-items">
+                  <li>
+                    
+                    <div class="news-item-detail">                    
+                      <a href="javascript:;" class="news-item-title">Duis aute irure dolor in reprehenderit</a>
+                      <p class="news-item-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    </div>
+                    
+                    <div class="news-item-date">
+                      <span class="news-item-day">08</span>
+                      <span class="news-item-month">Mar</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-item-detail">                    
+                      <a href="javascript:;" class="news-item-title">Duis aute irure dolor in reprehenderit</a>
+                      <p class="news-item-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    </div>
+                    
+                    <div class="news-item-date">
+                      <span class="news-item-day">08</span>
+                      <span class="news-item-month">Mar</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="news-item-detail">                    
+                      <a href="javascript:;" class="news-item-title">Duis aute irure dolor in reprehenderit</a>
+                      <p class="news-item-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    </div>
+                    
+                    <div class="news-item-date">
+                      <span class="news-item-day">08</span>
+                      <span class="news-item-month">Mar</span>
+                    </div>
+                  </li>
+                </ul>
+                
+              </div> <!-- /widget-content -->
+            
+            </div>
+
+          </div><!--/col-6-->
+          
+          <div class="col-md-6">
+            <div class="widget stacked">
+          
+              <div class="widget-header">
+                <i class="glyphicon glyphicon-bookmark"></i>
+                <h3>Quick Shortcuts</h3>
+              </div> <!-- /widget-header -->
+              
+              <div class="widget-content">
+                
+                <div class="shortcuts">
+                  <a href="javascript:;" class="shortcut">
+                    <i class="glyphicon glyphicon-film shortcut-icon"></i>
+                    <span class="shortcut-label">New Video</span>
+                  </a>
+                  
+                  <a href="javascript:;" class="shortcut">
+                    <i class="glyphicon glyphicon-tower shortcut-icon"></i>
+                    <span class="shortcut-label">Teachers</span>               
+                  </a>
+                  
+                  <a href="javascript:;" class="shortcut">
+                    <i class="shortcut-icon icon-signal"></i>
+                    <span class="shortcut-label">Reports</span> 
+                  </a>
+                  
+                  <a href="javascript:;" class="shortcut">
+                    <i class="glyphicon glyphicon-comment shortcut-icon"></i>
+                    <span class="shortcut-label">Comments</span>                
+                  </a>
+                  
+                  <a href="javascript:;" class="shortcut">
+                    <i class="glyphicon glyphicon-user shortcut-icon"></i>
+                    <span class="shortcut-label">Users</span>
+                  </a>
+                  
+                  <a href="javascript:;" class="shortcut">
+                    <i class="shortcut-icon icon-file shortcut-icon"></i>
+                    <span class="shortcut-label">Notes</span> 
+                  </a>
+                  
+                  <a href="javascript:;" class="shortcut">
+                    <i class="shortcut-icon icon-picture shortcut-icon"></i>
+                    <span class="shortcut-label">Photos</span>  
+                  </a>
+                  
+                  <a href="javascript:;" class="shortcut">
+                    <i class="shortcut-icon icon-tag shortcut-icon"></i>
+                    <span class="shortcut-label">Tags</span>
+                  </a>        
+                </div> <!-- /shortcuts -->  
+              
+              </div> <!-- /widget-content -->
+              
+            </div><!--/widget-->
+            <div class="widget stacked">
+          
+              <div class="widget-header">
+                <i class="glyphicon glyphicon-stats"></i>
+                <h3>Statistic of the Week</h3>
+              </div> <!-- /widget-header -->
+              
+              <div class="widget-content">          
+                <div id="site-statistic" class="chart-holder" style="width:100%;">
+                  <script type="text/javascript">
+                    google.load('visualization', '1', {packages: ['corechart']});
+                    // google.setOnLoadCallback(drawVisualization);
+                  </script>
+                  
+                </div>         
+              </div> <!-- /widget-content -->
+            
+            </div>
+          </div>
+        </div><!--/row-->
+
+    </div><!--/tabs-1-->
+  </div><!--/inner_container-->
+</div><!--/dashboard_section-->
