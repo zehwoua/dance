@@ -1,12 +1,39 @@
-<h2>Forgot your password?</h2>
+<div class="account-container stacked">
+	
+	<div class="content clearfix">
+		
+		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+		
+			<h1 class="text-center">Forgot your password?</h1>		
+			
+			<div class="login-fields">
+				<%= devise_error_messages! %>
+				
+				<p>Enter your email address to reset your password:</p>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+				<% if flash[:alert] %>
+				  <p id="login_error" class="text-danger"><%= flash[:alert] %></p>
+				<% end %>
+				
+				<div class="field">
+					<%= f.label :email %>
+					<%= f.text_field :email, :placeholder =>"Email address", :class=> "form-control input-lg email-field", :autofocus => true %>
+				</div> <!-- /field -->
+				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions">
+									
+				<%= f.submit "Send me reset password instructions", :class=>"login-action btn btn-primary btn-block" %>
+				
+			</div> <!-- .actions -->
+			
+		<% end %>
+		
+	</div> <!-- /content -->
+	
+</div>
+<div class="login-extra">
+	Don't have an account? <%= link_to "Sign Up", new_registration_path(resource_name) %><br>
+	You can  <%= link_to "Sign in",new_user_session_path %> from here
+</div>

@@ -759,6 +759,15 @@ h2{
 .password-field {
 	background: url(password.png) no-repeat !important;
 }
+.email-field {
+	background: url(icon_email.png) no-repeat !important;
+}
+.field_with_errors{
+	.email-field {
+		background: url(icon_email_error.png) no-repeat !important;
+		box-shadow: inset 1px 1px 4px #ffd1d1 !important;
+	}
+}
 .login-actions {
 	float: left;
 	width: 100%;
