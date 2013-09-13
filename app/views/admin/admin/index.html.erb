@@ -1,5 +1,6 @@
 <% content_for :header do %>
-  <%= javascript_include_tag 'admin' %>  
+  <%= load_javascript() %> 
+  <%= javascript_include_tag 'admin' %> 
 <% end %>
 <%= render 'admin/admin_dashboard_tabs', :active_tab => 'dashboard' %>
 <div id="dashboard_section" class="admin_dashboard">

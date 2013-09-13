@@ -44,7 +44,8 @@ function makeApiCall() {
 function handleAccounts(response) {
   if (!response.code) {
     if (response && response.items && response.items.length) {
-      var firstAccountId = response.items[0].id;
+      var firstAccountId = '37860054';
+      console.log(firstAccountId);
       queryWebproperties(firstAccountId);
     } else {
       updatePage('No accounts found for this user.')
