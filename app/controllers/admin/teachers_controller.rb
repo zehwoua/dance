@@ -21,7 +21,7 @@ class  Admin::TeachersController < ApplicationController
 
 	    respond_to do |format|
 		    if @teacher.save
-		        format.html { redirect_to @teacher, notice: 'teacher was successfully created.' }
+		        format.html { redirect_to admin_teachers_path, notice: 'teacher was successfully created.' }
 		        format.json { render json: @teacher, status: :created, location: @teacher }
 		    else
 		        format.html { render action: "new" }
@@ -35,7 +35,7 @@ class  Admin::TeachersController < ApplicationController
 
 	    respond_to do |format|
 	      	if @teacher.update_attributes(params[:teacher])
-		        format.html { redirect_to @teacher, notice: 'Teacher was successfully updated.' }
+		        format.html { redirect_to admin_teachers_path, notice: 'Teacher was successfully updated.' }
 		        format.json { head :no_content }
 	      	else
 		        format.html { render action: "edit" }
@@ -49,7 +49,7 @@ class  Admin::TeachersController < ApplicationController
 	    @teacher.destroy
 
 	    respond_to do |format|
-		    format.html { redirect_to videos_url }
+		    format.html { redirect_to admin_teachers_path }
 		    format.json { head :no_content }
 	    end
   	end
