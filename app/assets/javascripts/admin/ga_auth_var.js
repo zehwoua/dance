@@ -50,7 +50,7 @@ function handleClientLoad() {
  */
 function checkAuth() {
   var clientId = giveClientId();
-  var scope = giveScopes();
+  var scopes = giveScopes();
 
   gapi.auth.authorize({
     client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
@@ -114,8 +114,8 @@ function handleUnauthorized() {
  */
 function handleAuthClick(event) {
   var clientId = giveClientId();
-  var scope = giveScopes();
-  
+  var scopes = giveScopes();
+
   gapi.auth.authorize({
     client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
   return false;

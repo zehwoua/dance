@@ -190,8 +190,14 @@ function calculate_time(time){
   var minutes = Math.floor(time / 60);
   var seconds = Math.floor(time % 60);
 
-  avarage_time = hours+":"+minutes+":"+seconds;
+  avarage_time = pad(hours,2)+":"+pad(minutes,2)+":"+pad(seconds,2);
   $("#avarage_visit_time").html(avarage_time);
+}
+
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
 }
 
 /**
