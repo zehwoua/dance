@@ -173,8 +173,7 @@ function handleCoreReportingResults(response) {
       calculate_time(response.rows[6][3]);
       drawVisualization(response);
 
-      // output.push(table.join(''));
-      outputToPage(output.join(''));
+      outputToPage();
     } else {
       outputToPage('No results found.');
     }
@@ -207,7 +206,8 @@ function pad(num, size) {
  * @param {String} output The HTML string to output.
  */
 function outputToPage(output) {
-  document.getElementById('output').innerHTML = output;
+  $('#output').hide();
+  $("#admin_full_content").show();
 }
 
 

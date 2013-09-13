@@ -2,11 +2,11 @@ module AdminHelper
 	def load_javascript
 	  if Rails.env.production?
 	  	content_for :header do
-  			javascript_include_tag 'ga_auth_pro.js' 
+  			javascript_include_tag 'ga_auth_pro' 
   		end
 	  else
 	  	content_for :header do
-  			javascript_include_tag 'ga_auth_dev.js'
+  			javascript_include_tag 'ga_auth_dev'
   		end
 	  end
 	end

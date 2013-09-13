@@ -7,11 +7,14 @@
 
         <button id="authorize-button" style="display: none;">Authorize</button>
         <hr>
-        <div id="output"><%= image_tag "loader.gif" %></div>
+        <div id="output">
+          <%= image_tag "loader.gif" %>
+          <h2>Loading, Please wait</h2>
+        </div>
 
         <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
-        <div class="row">
+        <div class="row" id="admin_full_content">
           <div class="col-md-6 col-xs-12">
             <div class="widget stacked">
           
