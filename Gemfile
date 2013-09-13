@@ -68,7 +68,8 @@ end
 gem 'rails_12factor', group: :production
 # Image uploading
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
-
+#amazon s3
+gem 'aws-sdk'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -65,5 +65,14 @@ module DanceDynamics
     config.autoload_paths += %W(#{config.root}/lib/validators/)
 
     config.middleware.use "PDFKit::Middleware", :print_media_type => true
+
+    # Paperclip defaults
+
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => File.join(Rails.root, "config", "s3_credentials.yml"),
+      :s3_host_name => 's3-ap-northeast-1.amazonaws.com',
+      :path => "/:class/:attachment/:id_partition/:style/:filename"
+    }
   end
 end
