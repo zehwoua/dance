@@ -89,12 +89,14 @@ function handleAuthorized() {
  * click handler to the authorize-button.
  */
 function handleUnauthorized() {
-  var authorizeButton = $("#authorize-button");
+  var authorizeButton = $('#authorize-button');
   var runDemoButton = $('#run-demo-button');
 
   runDemoButton.hide();
   authorizeButton.show();
-  authorizeButton.onclick = handleAuthClick;
+  authorizeButton.click(function(){
+    handleAuthClick;
+  });
   outputToPage('Please authorize this script to access Google Analytics.');
 }
 
