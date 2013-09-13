@@ -521,4 +521,19 @@
 	font-weight: 600;
 	color: #888;
 }
-
+.short_site_stat_title{
+	margin-top: 0;
+}
+.short_site_stat{
+	td{
+		vertical-align: middle !important;
+		&.stat_name{
+			width: 80%;
+		}
+	}
+	.pull-right{
+		font-weight: bold;
+		font-size: 20px;
+		padding-right: 10px;
+	}
+}

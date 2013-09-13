@@ -95,7 +95,7 @@ function handleUnauthorized() {
   runDemoButton.hide();
   authorizeButton.show();
   authorizeButton.click(function(){
-    handleAuthClick;
+    handleAuthClick();
   });
   outputToPage('Please authorize this script to access Google Analytics.');
 }
