@@ -53,7 +53,7 @@
 
   <div class="col-lg-3" id="video_sidebar">
     <% if current_user.admin? %>
-      <%= link_to raw('<span class="glyphicon glyphicon-wrench"></span><span class="txt">Edit This Video</span>'), edit_video_path(@video),:class =>"btn edit" %>
+      <%= link_to raw('<span class="glyphicon glyphicon-wrench"></span><span class="txt">Edit This Video</span>'), edit_admin_video_path(@video),:class =>"btn edit" %>
     <% end %>
 
     <%= render "add_favorites_button" %>
