@@ -1,8 +1,11 @@
 <%= render 'admin/admin_dashboard_tabs', :active_tab => 'users' %>
-<div id="dashboard_section" class="admin_dashboard">
+<div id="dashboard_section" class="admin_dashboard admin_style">
   <div class="inner_container">
     <div id="tabs-1">
-      	<h2>Welcome, <span class="text-primary"><%= current_user.username %></span></h2>
+      <div>
+        <%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New User'), new_admin_user_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
+        <h2>Welcome, <span class="text-primary"><%= current_user.username %></span></h2>
+      </div>
       	<table class="table table-condensed table-striped">
       		<tr>
       			<th>Id</th>
@@ -22,9 +25,10 @@
 	      			<td><%= user.id %></td>
 	      			<td><%= user.id %></td>
 	      			<td>
-	      				<%= link_to "View", "", :class => "btn btn-success btn-sm" %>
-	      				<%= link_to "Edit", "", :class => "btn btn-warning btn-sm" %>
-	      				<%= link_to "Delete", "", :class => "btn btn-danger btn-sm" %>
+	      				<%= link_to "Delete", admin_user_path(user), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-sm pull-right" %>
+                <%= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-warning btn-sm pull-right" %>
+                
+                <%= link_to "View", user_path(user), :class => "btn btn-success btn-sm pull-right" %>
 	      			</td>
 	      		</tr>
       		<% end%>
