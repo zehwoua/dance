@@ -71,7 +71,7 @@ module DanceDynamics
     config.paperclip_defaults = {
       :storage => :s3,
       :s3_credentials => File.join(Rails.root, "config", "s3_credentials.yml"),
-      :s3_host_name => 's3-ap-northeast-1.amazonaws.com',
+      :s3_host_name => 's3-website-ap-southeast-2.amazonaws.com',
       :path => "/:class/:attachment/:id_partition/:style/:filename"
     }
   end
