@@ -38,4 +38,13 @@ DanceDynamics::Application.configure do
   config.assets.precompile += %w( admin.js )
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  PAPERCLIP_STORAGE_OPTIONS = {
+    :storage => :s3,
+    :bucket => 'dd-testing',
+    :s3_credentials => "#{Rails.root}/config/s3_credentials.yml",
+    :url => ":s3_domain_url",
+    :s3_host_name => 's3-ap-southeast-2.amazonaws.com',
+    :path => "/:class/:id/:style/:basename.:extension"
+  }
 end

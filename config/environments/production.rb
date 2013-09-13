@@ -70,4 +70,12 @@ DanceDynamics::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  PAPERCLIP_STORAGE_OPTIONS = {
+    :storage => :s3,
+    :bucket => 'dancedynamics-heroku',
+    :s3_credentials => "#{Rails.root}/config/s3_credentials.yml",
+    :url => ":s3_domain_url",
+    :s3_host_name => 's3-ap-southeast-2.amazonaws.com',
+    :path => "/:class/:id/:style/:basename.:extension"
+  }
 end
