@@ -75,9 +75,9 @@ function handleAuthResult(authResult) {
  * makeApiCall click handler to the run-demo-button.
  */
 function handleAuthorized() {
-  var authorizeButton = document.getElementById('authorize-button');
+  var authorizeButton = $('#authorize-button');
 
-  authorizeButton.style.visibility = 'hidden';
+  authorizeButton.hide();
   makeApiCall();
 }
 
@@ -92,8 +92,8 @@ function handleUnauthorized() {
   var authorizeButton = $("#authorize-button");
   var runDemoButton = $('#run-demo-button');
 
-  runDemoButton.style.visibility = 'hidden';
-  authorizeButton.style.visibility = '';
+  runDemoButton.hide();
+  authorizeButton.show();
   authorizeButton.onclick = handleAuthClick;
   outputToPage('Please authorize this script to access Google Analytics.');
 }

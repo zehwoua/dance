@@ -490,8 +490,13 @@
 .news-item-date {
 	width: 75px;
 	vertical-align: middle;
-	
 	text-align: right;
+	&.date_image{
+		background: #f9f9f9;
+		border: 1px solid #eee;
+		padding: 3px;
+		@inlcude border-radius(3px);
+	}
 }
 
 .news-item-day {

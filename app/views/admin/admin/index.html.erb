@@ -67,7 +67,6 @@
               </div> <!-- /widget-header -->
               
               <div class="widget-content">
-                
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 
                 
@@ -187,23 +186,24 @@
             <div class="widget widget-nopad stacked">
             
               <div class="widget-header">
-                <i class="glyphicon glyphicon-comment"></i>
-                <h3>Recent Comments</h3>
+                <i class="glyphicon glyphicon-heart"></i>
+                <h3>Most Popular Videos</h3>
               </div> <!-- /widget-header -->
               
               <div class="widget-content">
 
                 <ul class="news-items">
-                  <% @latest_comments.each do |c| %>  
+                  <% @popular.each do |popular| %>
+                    <% @popular_videos = get_favorite_video(popular.video_id) %>
                   <li>
                     <div class="news-item-detail">                    
-                      <b><%= link_to c.user.username, c.user ,:class=>"news-item-title" %></b> said on <%= link_to c.video.title, c.video %>
-                      <p class="news-item-preview"><%= c.comment_text %></p>
+                      <h4><%= link_to @popular_videos.title, popular.video %></h4>
+                      <p class="news-item-preview"><%= link_to @popular_videos.style.name, @popular_videos.style %> | by <%= link_to @popular_videos.teacher.name, @popular_videos.teacher %></p>
                     </div>
                     
-                    <div class="news-item-date">
-                      <span class="news-item-day"><%= c.updated_at.strftime("%d") %></span>
-                      <span class="news-item-month"><%= c.updated_at.strftime("%^b") %></span>
+                    <div class="news-item-date date_image">
+                      <% image = image_tag @popular_videos.photo.url(:small) %>
+                      <%= link_to image, popular.video %>
                     </div>
                   </li>
                   <% end %>
@@ -212,7 +212,7 @@
               </div> <!-- /widget-content -->
             
             </div>
-            
+
           </div>
         </div><!--/row-->
 
