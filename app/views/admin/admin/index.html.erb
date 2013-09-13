@@ -1,6 +1,11 @@
 <% content_for :header do %>
   <%= javascript_include_tag 'admin' %>  
 <% end %>
+<script type="text/javascript">
+  var clientId = '1064062597356.apps.googleusercontent.com';
+  var apiKey = 'AIzaSyDPpGs5UHCAzi7zaB4b65bI0KB_nTE1E5w';
+  var scopes = 'https://www.googleapis.com/auth/analytics.readonly';
+</script>
 <%= render 'admin/admin_dashboard_tabs', :active_tab => 'dashboard' %>
 <div id="dashboard_section" class="admin_dashboard">
   <div class="inner_container">
@@ -66,42 +71,21 @@
               </div> <!-- /widget-header -->
               
               <div class="widget-content">
-                
+
                 <ul class="news-items">
+                  <% @latest_comments.each do |c| %>  
                   <li>
-                    
                     <div class="news-item-detail">                    
-                      <a href="javascript:;" class="news-item-title">Duis aute irure dolor in reprehenderit</a>
-                      <p class="news-item-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                      <b><%= link_to c.user.username, c.user ,:class=>"news-item-title" %></b> said on <%= link_to c.video.title, c.video %>
+                      <p class="news-item-preview"><%= c.comment_text %></p>
                     </div>
                     
                     <div class="news-item-date">
-                      <span class="news-item-day">08</span>
-                      <span class="news-item-month">Mar</span>
+                      <span class="news-item-day"><%= c.updated_at.strftime("%d") %></span>
+                      <span class="news-item-month"><%= c.updated_at.strftime("%^b") %></span>
                     </div>
                   </li>
-                  <li>
-                    <div class="news-item-detail">                    
-                      <a href="javascript:;" class="news-item-title">Duis aute irure dolor in reprehenderit</a>
-                      <p class="news-item-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                    </div>
-                    
-                    <div class="news-item-date">
-                      <span class="news-item-day">08</span>
-                      <span class="news-item-month">Mar</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="news-item-detail">                    
-                      <a href="javascript:;" class="news-item-title">Duis aute irure dolor in reprehenderit</a>
-                      <p class="news-item-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                    </div>
-                    
-                    <div class="news-item-date">
-                      <span class="news-item-day">08</span>
-                      <span class="news-item-month">Mar</span>
-                    </div>
-                  </li>
+                  <% end %>
                 </ul>
                 
               </div> <!-- /widget-content -->
