@@ -19,7 +19,7 @@
           
               <div class="widget-header">
                 <i class="glyphicon glyphicon-star"></i>
-                <h3>Quick Stats of Today</h3>
+                <h3>Quick Site Analytics of Today</h3>
               </div> <!-- /widget-header -->
               
               <div class="widget-content">
@@ -58,6 +58,27 @@
               </div> <!-- /widget-content -->
                 
             </div>
+
+            <div class="widget stacked">
+        
+              <div class="widget-header">
+                <i class="glyphicon glyphicon-tag"></i>
+                <h3>Site Statistics</h3>
+              </div> <!-- /widget-header -->
+              
+              <div class="widget-content">
+                
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                
+                
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>          
+                
+              </div> <!-- /widget-content -->
+            
+            </div>
+
             <div class="widget widget-nopad stacked">
             
               <div class="widget-header">
@@ -162,6 +183,36 @@
               </div> <!-- /widget-content -->
             
             </div>
+
+            <div class="widget widget-nopad stacked">
+            
+              <div class="widget-header">
+                <i class="glyphicon glyphicon-comment"></i>
+                <h3>Recent Comments</h3>
+              </div> <!-- /widget-header -->
+              
+              <div class="widget-content">
+
+                <ul class="news-items">
+                  <% @latest_comments.each do |c| %>  
+                  <li>
+                    <div class="news-item-detail">                    
+                      <b><%= link_to c.user.username, c.user ,:class=>"news-item-title" %></b> said on <%= link_to c.video.title, c.video %>
+                      <p class="news-item-preview"><%= c.comment_text %></p>
+                    </div>
+                    
+                    <div class="news-item-date">
+                      <span class="news-item-day"><%= c.updated_at.strftime("%d") %></span>
+                      <span class="news-item-month"><%= c.updated_at.strftime("%^b") %></span>
+                    </div>
+                  </li>
+                  <% end %>
+                </ul>
+                
+              </div> <!-- /widget-content -->
+            
+            </div>
+            
           </div>
         </div><!--/row-->
 

@@ -24,23 +24,19 @@
  * The function name is specified in the onload query parameter of URL to load
  * this library. After 1 millisecond, checkAuth is called.
  */
-function giveApi(){
-  var apiKey = 'AIzaSyDPpGs5UHCAzi7zaB4b65bI0KB_nTE1E5w';
-  return apiKey;
-}
-function giveClientId(){
-  var clientId = '1064062597356.apps.googleusercontent.com';
-  return clientId;
-}
-function giveScopes(){
-  var scopes = 'https://www.googleapis.com/auth/analytics.readonly';
-  return scopes;
-}
+var apiKey = 'AIzaSyDPpGs5UHCAzi7zaB4b65bI0KB_nTE1E5w';
+var clientId = '1064062597356.apps.googleusercontent.com';
+var scopes = 'https://www.googleapis.com/auth/analytics.readonly';
+
 function handleClientLoad() {
-  var apiKey = giveApi();
   gapi.client.setApiKey(apiKey);
-  window.setTimeout(checkAuth, 1);
+  // window.setTimeout(checkAuth, 1);
 }
+
+$(document).ready(function() {
+     handleClientLoad();
+     checkAuth();
+});
 
 
 /**
@@ -49,9 +45,6 @@ function handleClientLoad() {
  * called.
  */
 function checkAuth() {
-  var clientId = giveClientId();
-  var scopes = giveScopes();
-
   gapi.auth.authorize({
     client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
 }
@@ -96,8 +89,8 @@ function handleAuthorized() {
  * click handler to the authorize-button.
  */
 function handleUnauthorized() {
-  var authorizeButton = document.getElementById('authorize-button');
-  var runDemoButton = document.getElementById('run-demo-button');
+  var authorizeButton = $("#authorize-button");
+  var runDemoButton = $('#run-demo-button');
 
   runDemoButton.style.visibility = 'hidden';
   authorizeButton.style.visibility = '';
@@ -113,9 +106,6 @@ function handleUnauthorized() {
  * @param {Object} event The onclick event.
  */
 function handleAuthClick(event) {
-  var clientId = giveClientId();
-  var scopes = giveScopes();
-
   gapi.auth.authorize({
     client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
   return false;
