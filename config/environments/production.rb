@@ -52,7 +52,7 @@ DanceDynamics::Application.configure do
   # config.assets.precompile += %w( search.js )
   # config.assets.precompile += %w[ jquery.js ]
   config.assets.precompile += %w( admin.js )
-  config.assets.precompile += %w( admin/ga_auth_pro.js )
+  config.assets.precompile += %w( 'admin/ga_auth_pro.js' )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
