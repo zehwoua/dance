@@ -1,7 +1,4 @@
-<% content_for :header do %>
-  <%= load_javascript() %> 
-  <%= javascript_include_tag 'admin' %> 
-<% end %>
+<%= load_javascript() %> 
 <%= render 'admin/admin_dashboard_tabs', :active_tab => 'dashboard' %>
 <div id="dashboard_section" class="admin_dashboard">
   <div class="inner_container">
@@ -196,7 +193,7 @@
                     <i class="glyphicon glyphicon-user shortcut-icon"></i>
                     <span class="shortcut-label">Users</span>
                   </a>
-                   
+
                 </div> <!-- /shortcuts -->  
               
               </div> <!-- /widget-content -->

@@ -35,7 +35,7 @@ DanceDynamics::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.assets.precompile += %w( admin.js )
+  config.assets.precompile += %w( ga_auth_dev.js )
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
