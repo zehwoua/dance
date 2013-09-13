@@ -45,7 +45,6 @@ function handleAccounts(response) {
   if (!response.code) {
     if (response && response.items && response.items.length) {
       var firstAccountId = '37860054';
-      console.log(firstAccountId);
       queryWebproperties(firstAccountId);
     } else {
       updatePage('No accounts found for this user.')

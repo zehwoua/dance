@@ -18,10 +18,10 @@ class User < ActiveRecord::Base
 					:braintree_customer_id
 	# attr_accessible :title, :body
 
-	has_attached_file :avatar, :styles => {:medium => "300x300>", :small => "150x150>" },
-				:default_url => "/assets/default_avatars/default.png",
-	            :url  => "/assets/avatars/:id/:style/:basename.:extension",
-	            :path => ":rails_root/public/assets/avatars/:id/:style/:basename.:extension"
+	has_attached_file :avatar, { 
+				:styles => {:medium => "400x400>", :small => "150x150>" },
+				:default_url => "http://pixelholdr.com/color:ff5c23/150x150"
+				}.merge(PAPERCLIP_STORAGE_OPTIONS)
 
 	# validates_attachment_presence :avatar
 	validates_attachment_size :avatar, :less_than => 5.megabytes
