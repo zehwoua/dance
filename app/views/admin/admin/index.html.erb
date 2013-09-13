@@ -1,11 +1,6 @@
 <% content_for :header do %>
   <%= javascript_include_tag 'admin' %>  
 <% end %>
-<script type="text/javascript">
-  var clientId = '1064062597356.apps.googleusercontent.com';
-  var apiKey = 'AIzaSyDPpGs5UHCAzi7zaB4b65bI0KB_nTE1E5w';
-  var scopes = 'https://www.googleapis.com/auth/analytics.readonly';
-</script>
 <%= render 'admin/admin_dashboard_tabs', :active_tab => 'dashboard' %>
 <div id="dashboard_section" class="admin_dashboard">
   <div class="inner_container">
