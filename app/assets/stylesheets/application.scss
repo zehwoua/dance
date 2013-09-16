@@ -579,6 +579,12 @@ textarea.form-control{
 	    -ms-transition: all 0.2s ease-in-out;
 	     -o-transition: all 0.2s ease-in-out;
 	        transition: all 0.2s ease-in-out;
+	&.btn-sm{
+	line-height:18px;
+	}
+	&.active{
+		background-color:#34a46c;
+	}
 }
 .btn.buy:hover{
 	background-color:#34a46c;

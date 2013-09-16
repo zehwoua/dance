@@ -3,37 +3,16 @@
   <div class="inner_container">
     <div id="tabs-1">
     	<div>
-    		<div class="pull-right">
-    			<%= link_to "Approved Comments", "",:class=>"btn buy sm" %>
-    			<%= link_to "Unapproved Comments", "",:class=>"btn buy sm" %>
-    			<%= link_to "Pending Comments", "",:class=>"btn buy sm" %>
+    		<div class="pull-right <%= @active %>">
+    			<%= link_to "All", admin_comments_path, :class=>"all btn buy btn-sm" %>
+    			<%= link_to "Approved", admin_comments_path(:sort => 1),:class=>"approved btn buy btn-sm" %>
+    			<%= link_to "Unapproved", admin_comments_path(:sort => 0),:class=>"unapproved btn buy btn-sm" %>
+    			<%= link_to "Pending", admin_comments_path(:sort => 3),:class=>"pending btn buy btn-sm" %>
     		</div>
         	<h2 class="">Your Listed Comments</h2>
     	</div>
             
-      	<table class="table table-condensed table-striped">
-      		<tr>
-      			<th><%= sort_link @search, :id, "ID" %></th>
-      			<th>Comment</th>
-      			<th><%= sort_link @search, :video_id, "Video" %></th>
-      			<th><%= sort_link @search, :user_id, "Username" %></th>
-	            <th>Status</th>
-      			<th></th>
-      		</tr>
-      		<% @comments.each do |comment| %>
-	      		<tr>
-	      			<td><%= comment.id %></td>
-	      			<td><%= comment.comment_text %></td>
-	      			<td><%= comment.video.title %></td>
-	      			<td><%= comment.user.username %></td>
-	      			<td><%= comment_status(comment) %></td>
-	      			<td>
-                		<%= link_to "Delete", admin_comment_path(comment), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-xs pull-right" %>
-	      				<%= link_to "Edit", edit_admin_comment_path(comment), :class => "btn btn-warning btn-xs pull-right" %>
-	      			</td>
-	      		</tr>
-      		<% end%>
-      	</table>
+      	<%= render "comments" %>
 	</div>
   </div>
 </div>

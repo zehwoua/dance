@@ -13,7 +13,22 @@ class Admin::CommentsController < ApplicationController
 	# end
 	def index
 		@search = Comment.search(params[:q])
-    	@comments = @search.result
+		if params[:sort].present?
+			if params[:sort] == '3'
+				@comments = @search.result.where(:approved => nil)
+				@active = "pending"
+			else
+				@comments = @search.result.where(:approved => params[:sort])
+				if params[:sort] == '1'
+					@active = "approved"
+				else
+					@active = "unapproved"
+				end
+			end
+		else
+			@comments = @search.result
+			@active = "all"
+		end
 	end
 
 	def edit

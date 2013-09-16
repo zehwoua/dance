@@ -1,5 +1,5 @@
 <div id="comments_section">
-  <h2 class="video_title"><%= comment_message(selected_video.comments.count) %></h2>
+  <h2 class="video_title"><%= comment_message(selected_video.comments.where(:approved => !false).count) %></h2>
 
   <div id="comments" class="clearfix">
     <%= render selected_video.comments %>

@@ -1,17 +1,18 @@
-<%= div_for comment do %>
-	<div class="commenter_avatar pull-left">
-		<%= image_tag comment.user.avatar.url(:small), :class => "commenter_avatar_img" %>
-	</div>
-	<div class="comment_details clearfix">
-		<div class="inner_container">
-			<p><b><%= comment.user.username %></b> <%= time_ago_in_words comment.created_at %> ago</p>
-			<p><%= simple_format comment.comment_text %></p>
-			<% if comment.user == current_user %>
-				<p class="pull-right">
-				<%= link_to "Edit", edit_video_comment_path(@video, comment),:class =>"btn buy btn-xs" %> 
-				<%= link_to "Destroy", [@video, comment], method: :delete, :class => "btn btn-danger btn-xs" %>
-				</p>
-			<% end %>
+<% if comment.comment_approved? %>
+	<%= div_for comment do %>
+		<div class="commenter_avatar pull-left">
+			<%= image_tag comment.user.avatar.url(:small), :class => "commenter_avatar_img" %>
 		</div>
-	</div>
+		<div class="comment_details clearfix">
+			<div class="inner_container">
+				<% if comment.user == current_user %>
+					<p class="pull-right">
+					<%= link_to "Delete Comment", [@video, comment], method: :delete, :class => "btn btn-danger btn-xs" %>
+					</p>
+				<% end %>
+				<p><b><%= comment.user.username %></b> <%= time_ago_in_words comment.created_at %> ago</p>
+				<p><%= simple_format comment.comment_text %></p>
+			</div>
+		</div>
+	<% end %>
 <% end %>

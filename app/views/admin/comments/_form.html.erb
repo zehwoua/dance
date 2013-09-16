@@ -1,0 +1,24 @@
+<%= simple_form_for([:admin,@comment], :class =>"test") do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %></h2>
+    </div>
+  <% end %>
+
+  <%= f.input :approved,:label =>"Status", :wrapper_html=>{:class => "clearfix"}, 
+      :collection => [[true, 'Approved'], [false, 'Unapproved'], ['', 'Pending']], 
+      :label_method => :last, 
+      :value_method => :first, 
+      :checked => @comment.approved,
+      :item_wrapper_class => 'radio_inline',
+      :as => :radio %>
+  <%= f.input :comment_text,:label =>"Comment" , :wrapper_html=>{:class => "clearfix"}, :input_html => { :rows => 5,:class => "form-control"} %>
+
+  <div class="control-group">
+        <label class="string required control-label" for="style_name"></label>
+        <div class="controls">
+          <%= link_to "Go back", admin_comments_path, :class => "btn btn-default"%>
+          <%= f.button :submit, :class => "btn btn-primary" %>
+        </div>
+      </div>
+<% end %>
