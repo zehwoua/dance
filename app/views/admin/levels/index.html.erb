@@ -4,31 +4,37 @@
     <div id="tabs-1">
     	<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Level'), new_admin_level_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
       	<h2 class="">Your Listed Levels</h2>
-      	<table class="table table-condensed table-striped">
-      		<tr>
-      			<th><%= sort_link @search, :id, "ID" %></th>
-      			<th><%= sort_link @search, :name, "Name" %></th>
-      			<th><%= sort_link @search, :scale, "Scale" %></th>
-      			<th><%= sort_link @search, :created_at, "Created At" %></th>
-      			<th><%= sort_link @search, :updated_at, "Updated At" %></th>
-      			<th></th>
-      		</tr>
-      		<% @levels.each do |level| %>
-	      		<tr>
-	      			<td><%= level.id %></td>
-	      			<td><%= level.name %></td>
-              <td><%= level.scale %></td>
-	      			<td><%= nice_date_form(level.created_at) %></td>
-	      			<td><%= nice_date_form(level.updated_at) %></td>
-	      			<td>
-                <%= link_to "Delete", admin_level_path(level), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-sm pull-right" %>
-	      				<%= link_to "Edit", edit_admin_level_path(level), :class => "btn btn-warning btn-sm pull-right" %>
-	      				
-	      				<%= link_to "View", level_path(level), :class => "btn btn-success btn-sm pull-right" %>
-	      			</td>
-	      		</tr>
-      		<% end%>
-      	</table>
-	</div>
+        <% if @levels.count != 0 %>
+
+        	<table class="table table-condensed table-striped">
+        		<tr>
+        			<th><%= sort_link @search, :id, "ID" %></th>
+        			<th><%= sort_link @search, :name, "Name" %></th>
+        			<th><%= sort_link @search, :scale, "Scale" %></th>
+        			<th><%= sort_link @search, :created_at, "Created At" %></th>
+        			<th><%= sort_link @search, :updated_at, "Updated At" %></th>
+        			<th></th>
+        		</tr>
+        		<% @levels.each do |level| %>
+  	      		<tr>
+  	      			<td><%= level.id %></td>
+  	      			<td><%= level.name %></td>
+                <td><%= level.scale %></td>
+  	      			<td><%= nice_date_form(level.created_at) %></td>
+  	      			<td><%= nice_date_form(level.updated_at) %></td>
+  	      			<td>
+                  <%= link_to "Delete", admin_level_path(level), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-sm pull-right" %>
+  	      				<%= link_to "Edit", edit_admin_level_path(level), :class => "btn btn-warning btn-sm pull-right" %>
+  	      				
+  	      				<%= link_to "View", level_path(level), :class => "btn btn-success btn-sm pull-right" %>
+  	      			</td>
+  	      		</tr>
+        		<% end%>
+        	</table>
+        <% else %>
+          <hr/>
+          <h4 class="text-primary">Sorry, there is no level right now!</h4>
+        <% end %>
+	  </div>
   </div>
 </div>

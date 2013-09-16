@@ -6,6 +6,7 @@
         <%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New User'), new_admin_user_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
         <h2>Welcome, <span class="text-primary"><%= current_user.username %></span></h2>
       </div>
+      <% if @users.count != 0 %>
       	<table class="table table-condensed table-striped">
       		<tr>
       			<th>Id</th>
@@ -33,6 +34,10 @@
 	      		</tr>
       		<% end%>
       	</table>
+      <% else %>
+        <hr/>
+        <h4 class="text-primary">Sorry, there is no users right now!</h4>
+      <% end %>
 	</div>
   </div>
 </div>

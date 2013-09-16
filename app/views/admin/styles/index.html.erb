@@ -4,34 +4,39 @@
     <div id="tabs-1">
     	<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Style'), new_admin_style_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
       	<h2 class="">Your Listed Styles</h2>
-      	<table class="table table-condensed table-striped">
-      		<tr>
-      			<th><%= sort_link @search, :id, "ID" %></th>
-      			<th><%= sort_link @search, :name, "Name" %></th>
-      			<th>Description</th>
-      			<th><%= sort_link @search, :created_at, "Created At" %></th>
-      			<th><%= sort_link @search, :updated_at, "Updated At" %></th>
-      			<th></th>
-      		</tr>
-      		<% @styles.each do |style| %>
-	      		<tr>
-	      			<td><%= style.id %></td>
-	      			<td><%= style.name %></td>
-	      			<td class="description"><%= (truncate h(style.description), 
-			                  :length => 300, 
-			                  :omission => "...")
-			                  .html_safe %></td>
-	      			<td><%= nice_date_form(style.created_at) %></td>
-	      			<td><%= nice_date_form(style.updated_at) %></td>
-	      			<td>
-                <%= link_to "Delete", admin_style_path(style), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-sm pull-right" %>
-	      				<%= link_to "Edit", edit_admin_style_path(style), :class => "btn btn-warning btn-sm pull-right" %>
-	      				
-	      				<%= link_to "View", style_path(style), :class => "btn btn-success btn-sm pull-right" %>
-	      			</td>
-	      		</tr>
-      		<% end%>
-      	</table>
-	</div>
+        <% if @styles.count != 0 %>
+        	<table class="table table-condensed table-striped">
+        		<tr>
+        			<th><%= sort_link @search, :id, "ID" %></th>
+        			<th><%= sort_link @search, :name, "Name" %></th>
+        			<th>Description</th>
+        			<th><%= sort_link @search, :created_at, "Created At" %></th>
+        			<th><%= sort_link @search, :updated_at, "Updated At" %></th>
+        			<th></th>
+        		</tr>
+        		<% @styles.each do |style| %>
+  	      		<tr>
+  	      			<td><%= style.id %></td>
+  	      			<td><%= style.name %></td>
+  	      			<td class="description"><%= (truncate h(style.description), 
+  			                  :length => 300, 
+  			                  :omission => "...")
+  			                  .html_safe %></td>
+  	      			<td><%= nice_date_form(style.created_at) %></td>
+  	      			<td><%= nice_date_form(style.updated_at) %></td>
+  	      			<td>
+                  <%= link_to "Delete", admin_style_path(style), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-sm pull-right" %>
+  	      				<%= link_to "Edit", edit_admin_style_path(style), :class => "btn btn-warning btn-sm pull-right" %>
+  	      				
+  	      				<%= link_to "View", style_path(style), :class => "btn btn-success btn-sm pull-right" %>
+  	      			</td>
+  	      		</tr>
+        		<% end%>
+        	</table>
+        <% else %>
+          <hr/>
+          <h4 class="text-primary">Sorry, there is no styles right now!</h4>
+        <% end %>
+	  </div>
   </div>
 </div>
