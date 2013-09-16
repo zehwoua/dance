@@ -10,6 +10,10 @@
           <%= link_to link, admin_users_path, :class => 'users' %>
       </li>
       <li class="<%= active_tab %>">
+          <% link = raw('<i class="glyphicon glyphicon-comment"></i><span>Comments</span>') %>
+          <%= link_to link, admin_comments_path, :class => 'comments' %>
+      </li>
+      <li class="<%= active_tab %>">
           <% link = raw('<i class="glyphicon glyphicon-briefcase"></i><span>Plans</span>') %>
           <%= link_to link, admin_admin_plans_path, :class => 'plans' %>
       </li>

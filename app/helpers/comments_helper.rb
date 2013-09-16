@@ -9,4 +9,14 @@ module CommentsHelper
         end
         return comment_message     	
     end
+
+    def comment_status(c)
+        if c.approved == true
+            status = raw("<span class='text-success'><b>Approved</b></span>")
+        elsif c.approved == false
+            status = raw("<span class='text-danger'><b>Unapproved</b></span>")
+        else c.approved == nil
+            status = raw("<span class='text-warning'><b>Pending</b></span>")
+        end
+    end
 end

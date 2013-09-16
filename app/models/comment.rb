@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   attr_accessible :comment_text, 
-  				  :video_id
+  				  :video_id,
+  				  :approved
 
   belongs_to :video
   belongs_to :user

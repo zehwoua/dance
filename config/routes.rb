@@ -54,6 +54,8 @@ DanceDynamics::Application.routes.draw do
     resources :styles
     resources :teachers
     resources :users
+    resources :comments
+    put "/approve_comments" => "comments#approve_comments", :as => :approve_comments
   end
   resources :credit_card_info, :only => [:edit]
 

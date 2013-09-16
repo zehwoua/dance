@@ -135,28 +135,40 @@
             
             </div>
 
-            <div class="widget widget-nopad stacked">
+            <div class="widget widget-nopad stacked" id="recent_pending_comments">
             
               <div class="widget-header">
                 <i class="glyphicon glyphicon-comment"></i>
-                <h3>Recent Comments</h3>
+                <h3>Recent Pending Comments</h3>
               </div> <!-- /widget-header -->
               
               <div class="widget-content">
 
                 <ul class="news-items">
-                  <% @latest_comments.each do |c| %>  
-                  <li>
-                    <div class="news-item-detail">                    
-                      <b><%= link_to c.user.username, c.user ,:class=>"news-item-title" %></b> said on <%= link_to c.video.title, c.video %>
-                      <p class="news-item-preview"><%= c.comment_text %></p>
-                    </div>
-                    
-                    <div class="news-item-date">
-                      <span class="news-item-day"><%= c.updated_at.strftime("%d") %></span>
-                      <span class="news-item-month"><%= c.updated_at.strftime("%^b") %></span>
-                    </div>
-                  </li>
+                  <% if @latest_comments.where(:approved => nil).count > 0 %>
+                    <% @latest_comments.where(:approved => nil).each do |c| %>  
+                    <li id="<%= "c-#{c.id}" %>" class="listed_comments">
+                      <div class="news-item-date">
+                        <span class="news-item-day"><%= c.updated_at.strftime("%d") %></span>
+                        <span class="news-item-month"><%= c.updated_at.strftime("%^b") %></span>
+                      </div>
+                      <div class="news-item-detail">                    
+                        <b><%= link_to c.user.username, c.user ,:class=>"news-item-title" %></b> said on <%= link_to c.video.title, c.video %>
+                        <p class="news-item-preview"><%= c.comment_text %></p>
+                      </div>
+
+                      <div class="news-item-approve">
+                        <%= link_to raw('<span class="glyphicon glyphicon-ok"></span>'), admin_approve_comments_path(:id => c.id , :approved => 1), :method => :put, :remote => true, :class=>"btn btn-sm buy approve_comment", :data =>{:rel=> "c-#{c.id}"}  %>
+
+                        <%= link_to raw('<span class="glyphicon glyphicon-remove"></span>'), admin_approve_comments_path(:id => c.id, :approved => 0), :method => :put, :remote => true, :class=>"btn btn-sm btn-danger unapprove_comment", :data =>{:rel=> "c-#{c.id}"}  %>
+                      </div>
+                    </li>
+                    <% end %>
+                    <% if Comment.where(:approved => nil).count > 5 %>
+                      <li><h5 class="text-center" id="see_all_comments"><%= link_to "See all Pending Comments","" %></h5></li>
+                    <% end %>
+                  <% else %>
+                    <li> <h5 class="text-primary">Currently there are no pending comments.</h5></li>
                   <% end %>
                 </ul>
                 

@@ -64,7 +64,8 @@
 			&.videos a.videos,
 			&.plans a.plans,
 			&.teachers a.teachers,
-			&.users a.users{
+			&.users a.users,
+			&.comments a.comments{
 				position: relative;
 				background: white;
 				color: #dd4814;
@@ -461,42 +462,50 @@
 .news-items {
 	padding: 0;
 	margin: 1em 0 0;
+	li {
+		display: table;
+		padding: 0 2em 0 1.5em;
+		padding-bottom: 1em;
+		margin-bottom: 1em;
+		width: 100%;
+		border-bottom: 1px dotted #CCC;
+		&:last-child { padding-bottom: 0; border: none; }
+		.news-item-approve{
+			padding-left: 1em;
+			margin-left: 1em;
+			border-left: 1px solid #ddd;
+			.buy{
+				line-height: 18px;
+			}
+			.btn-danger{
+				margin-left: 0 !important;
+			}
+		}
+	}
 }
 
-.news-items li {
-	display: table;
-	padding: 0 2em 0 1.5em;
-	padding-bottom: 1em;
-	margin-bottom: 1em;
-	width: 100%;
-	border-bottom: 1px dotted #CCC;
-}
-
-.news-items li:last-child { padding-bottom: 0; border: none; }
 
 .news-item-date {
 	display: table-cell;
-}
-
-.news-item-detail {
-	display: table-cell;
-}
-
-.news-item-title {
-	font-size: 13px;
-	font-weight: 600;
-}
-
-.news-item-date {
-	width: 75px;
+	width: 9%;
 	vertical-align: middle;
-	text-align: right;
+	text-align: left;
 	&.date_image{
 		background: #f9f9f9;
 		border: 1px solid #eee;
 		padding: 3px;
 		@inlcude border-radius(3px);
 	}
+}
+
+.news-item-detail {
+	display: table-cell;
+	width: 72%;
+}
+
+.news-item-title {
+	font-size: 13px;
+	font-weight: 600;
 }
 
 .news-item-day {
@@ -509,14 +518,12 @@
 
 .news-item-preview {
 	margin-bottom: 0;
-	
 	color: #777;
 }
 
 .news-item-month {
 	display: block;
 	padding-right: 1px;	
-	
 	font-size: 12px;
 	font-weight: 600;
 	color: #888;
