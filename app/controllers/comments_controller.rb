@@ -12,19 +12,6 @@ class CommentsController < ApplicationController
 		end
 	end
 
-	def edit
-		@comment = current_user.comments.find(params[:id])
-  	end
-
-  	def update
-  		@comment = current_user.comments.find(params[:id])
-  		if @comment.update_attributes(params[:comment])
-  			redirect_to @video, notice: "comment was updated."
-  		else
-  			render :edit
-  		end	  		
-  	end
-
   	def destroy
 		@comment = current_user.comments.find(params[:id])
 		@comment.destroy

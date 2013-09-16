@@ -9,6 +9,8 @@ class Comment < ActiveRecord::Base
   	scope :latest_comment, order("created_at desc").limit(5)
 
   	def comment_approved?
-	  	return true unless approved != false
+	  	if (approved.nil? || approved == true)
+	  		return true 
+	  	end
 	end
 end

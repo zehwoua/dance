@@ -240,7 +240,7 @@ function drawVisualization(response) {
     data = google.visualization.arrayToDataTable(data);
     // Create and draw the visualization.
     new google.visualization.ColumnChart(document.getElementById('site-statistic')).
-        draw(data);
+        draw(data, {width:529});
   }
 }
 

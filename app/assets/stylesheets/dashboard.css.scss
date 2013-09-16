@@ -490,12 +490,16 @@
 	width: 9%;
 	vertical-align: middle;
 	text-align: left;
-	&.date_image{
-		background: #f9f9f9;
-		border: 1px solid #eee;
-		padding: 3px;
-		@inlcude border-radius(3px);
-	}
+}
+.news_item_image{
+	background: #f9f9f9;
+	border: 1px solid #eee;
+	padding: 3px;
+	@inlcude border-radius(3px);
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
+	width: 15%;
 }
 
 .news-item-detail {
@@ -563,4 +567,10 @@
 	float: left;
 	margin-top: 10px !important;
 	margin-right: 15px;
+}
+#site_stat_cont{
+	padding: 0 !important;
+	#site-statistic{
+		width: 100%;
+	}
 }

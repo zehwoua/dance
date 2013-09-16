@@ -1,7 +1,7 @@
 <h3 class="video_title">Latest Comments</h3>
 <div class="latest_comments_box">
 	<ul class="latest_comment_list">
-		<% @latest_comments.each do |c| %>  
+		<% @latest_comments.where(:approved => [true,nil]).each do |c| %>  
 	    	<li>
 	    		<p><b><%= link_to c.user.username, c.user %></b> said on <%= link_to c.video.title, c.video %></p>
 	    		<p><span class="glyphicon glyphicon-chevron-right"></span><%= c.comment_text %></p>
