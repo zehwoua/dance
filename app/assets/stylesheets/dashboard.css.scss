@@ -29,7 +29,7 @@
 				text-transform: capitalize;
 				font-size: 12px;
 				text-align: center;
-				width: 200px;
+				width: auto;
 				@include transition(all, 0.1s, ease-in-out);
 				&:hover{
 					text-decoration:none;

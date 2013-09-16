@@ -49,6 +49,7 @@ DanceDynamics::Application.routes.draw do
     end
     resources :users
     resources :videos, :except => [:index]
+    resources :today_videos
     get "videos" => "videos#index_admin", :as => :admin_videos
     resources :levels
     resources :styles

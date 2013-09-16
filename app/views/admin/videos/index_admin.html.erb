@@ -1,59 +1,109 @@
 <%= render 'admin/admin_dashboard_tabs', :active_tab => 'videos' %>
 <div id="dashboard_section" class="admin_dashboard admin_video">
   <div class="inner_container">
-    <div id="tabs-1">
-      <div>
-        <%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Video'), new_admin_video_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
-          <h2 class="">Your Listed Videos</h2>
-      </div>
-    	
-        <%= search_form_for([:admin, @search], :html => { :class => 'form-inline clearfix', :id => 'video_search_form'}) do |f| %>
-          <div class="row">
-            <div class="col-lg-4"><%= f.text_field :title_cont, :class => "form-control", :placeholder => "Search Video" %>
+    <div id="my_profile" class="dashboard_inner_tab">
+      <ul class="class_tabs clearfix">
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#set_feature_video">Today's Feature Video</a></li>
+        </ul>
+        
+        <hr/>
+      <div id="videos" class="clearfix">
+        <div>
+          <%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Video'), new_admin_video_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
+            <h2 class="">Your Listed Videos</h2>
+        </div>
+      	
+          <%= search_form_for([:admin, @search], :html => { :class => 'form-inline clearfix', :id => 'video_search_form'}) do |f| %>
+            <div class="row">
+              <div class="col-lg-4"><%= f.text_field :title_cont, :class => "form-control", :placeholder => "Search Video" %>
+              </div>
+              <div class="col-lg-1">
+                <%= f.submit :class =>"btn btn-primary" %>
+              </div>
             </div>
-            <div class="col-lg-1">
-              <%= f.submit :class =>"btn btn-primary" %>
+          <% end %>
+          <% if @videos.count != 0 %>      
+          	<table class="table table-condensed table-striped">
+          		<tr>
+          			<th><%= sort_link @search, :id, "ID" %></th>
+          			<th><%= sort_link @search, :title, "Video Name" %></th>
+          			<th><%= sort_link @search, :style_id, "Style" %></th>
+          			<th><%= sort_link @search, :level_id, "Level" %></th>
+          			<th><%= sort_link @search, :teacher_id, "Teacher" %></th>
+          			<th class="text-center"><%= sort_link @search, :duration, "Duration" %></th>
+                <th class="text-center">Favorited by</th>
+                <th class="text-center">Commented by</th>
+          			<th><%= sort_link @search, :created_at, "Created on" %></th>
+          			<th></th>
+          		</tr>
+          		<% @videos.each do |video| %>
+    	      		<tr>
+    	      			<td><%= video.id %></td>
+    	      			<td><%= video.title %></td>
+    	      			<td><%= video.style.name %></td>
+    	      			<td><%= video.level.name %></td>
+    	      			<td><%= video.teacher.name %></td>
+    	      			<td class="text-center"><%= video.duration %> min</td>
+                  <td class="text-center"><%= FavoriteVideo.count :conditions => {:video_id => video.id} %> <span class="glyphicon glyphicon-heart"></span></td>
+                  <td class="text-center"><%= video.comments.count %> <span class="glyphicon glyphicon-comment"></span></td>
+    	      			<td><%= nice_date_form(video.created_at) %></td>
+    	      			<td>
+                    <%= link_to "Delete", admin_video_path(video), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-xs pull-right" %>
+    	      				<%= link_to "Edit", edit_admin_video_path(video), :class => "btn btn-warning btn-xs pull-right" %>
+    	      				
+    	      				<%= link_to "View", video_path(video), :class => "btn btn-success btn-xs pull-right" %>
+    	      			</td>
+    	      		</tr>
+          		<% end%>
+          	</table>
+          <% else %>
+            <hr/>
+            <h4 class="text-primary">Sorry, there is no videos right now!</h4>
+          <% end %>
+  	    </div><!--/videos-->
+        <div id="set_feature_video" class="clearfix">
+          <h2 class="">Featured Videos Schedule</h2>
+
+          <div class="row clearfix">
+            <div class="col-lg-8">
+              <div id="articles">
+                <h2 id="month">
+                  <%= link_to "<", date: @date.prev_month, :anchor=>"set_feature_video" %>
+                  <%= @date.strftime("%B %Y") %>
+                  <%= link_to ">", date: @date.next_month, :anchor =>"set_feature_video" %>
+                </h2>
+                <%= calendar @date do |date| %>
+                  <%= date.day %>
+                  <% @videos_by_date['2013-09-16'] %>
+                  <% date.to_datetime %>
+                  <% if TodayVideo.where(:set_date => date).count > 0 %>
+                    <ul class="list_set_dates">
+                      <% TodayVideo.where(:set_date => date).each do |set_video| %>
+                      <% @seted_video = set_video %>
+                        <li><%= link_to set_video.video.title, "" %></li>
+                      <% end %>
+                    </ul>
+                    <% end %>
+                  <div id="<%= date %>" class="full_hidden_date set"></div>
+
+                <% end %>
+              </div>
+            </div>
+            <div class="col-lg-4" id="display_today_video">
+              <h5 class="no_top_margin text-primary">Set the Video for <b><span class="full_date"><%= @date %></span></b> date</h5>
+              <hr/>
+              <p id="calendar_form_loader_image"><%= image_tag "loader.gif" %></p>
+              <%= simple_form_for [:admin, @today_video],:remote => true do |f| %>
+                <%= f.input :set_date ,:as =>:hidden,input_html: { value: @date }%>
+                <%= f.association :video ,:label =>"Select a video", :wrapper_html=>{:class => "clearfix"},
+                  :as => :radio_buttons
+                   %>
+                <%= f.button :submit, :class => "btn btn-primary" %>
+                <% end %>
             </div>
           </div>
-        <% end %>
-        <% if @videos.count != 0 %>      
-        	<table class="table table-condensed table-striped">
-        		<tr>
-        			<th><%= sort_link @search, :id, "ID" %></th>
-        			<th><%= sort_link @search, :title, "Video Name" %></th>
-        			<th><%= sort_link @search, :style_id, "Style" %></th>
-        			<th><%= sort_link @search, :level_id, "Level" %></th>
-        			<th><%= sort_link @search, :teacher_id, "Teacher" %></th>
-        			<th class="text-center"><%= sort_link @search, :duration, "Duration" %></th>
-              <th class="text-center">Favorited by</th>
-              <th class="text-center">Commented by</th>
-        			<th><%= sort_link @search, :created_at, "Created on" %></th>
-        			<th></th>
-        		</tr>
-        		<% @videos.each do |video| %>
-  	      		<tr>
-  	      			<td><%= video.id %></td>
-  	      			<td><%= video.title %></td>
-  	      			<td><%= video.style.name %></td>
-  	      			<td><%= video.level.name %></td>
-  	      			<td><%= video.teacher.name %></td>
-  	      			<td class="text-center"><%= video.duration %> min</td>
-                <td class="text-center"><%= FavoriteVideo.count :conditions => {:video_id => video.id} %> <span class="glyphicon glyphicon-heart"></span></td>
-                <td class="text-center"><%= video.comments.count %> <span class="glyphicon glyphicon-comment"></span></td>
-  	      			<td><%= nice_date_form(video.created_at) %></td>
-  	      			<td>
-                  <%= link_to "Delete", admin_video_path(video), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-xs pull-right" %>
-  	      				<%= link_to "Edit", edit_admin_video_path(video), :class => "btn btn-warning btn-xs pull-right" %>
-  	      				
-  	      				<%= link_to "View", video_path(video), :class => "btn btn-success btn-xs pull-right" %>
-  	      			</td>
-  	      		</tr>
-        		<% end%>
-        	</table>
-        <% else %>
-          <hr/>
-          <h4 class="text-primary">Sorry, there is no videos right now!</h4>
-        <% end %>
-	   </div>
+        </div><!--/set_feature_video-->
+    </div>
   </div>
 </div>

@@ -21,6 +21,7 @@ class Video < ActiveRecord::Base
 
 	#relationships
 	has_many :comments, dependent: :destroy
+	has_many :today_videos, dependent: :destroy
 	belongs_to :teacher
 	belongs_to :style
 	belongs_to :level
@@ -31,4 +32,8 @@ class Video < ActiveRecord::Base
 	# Favorited by users
 	has_many :history_videos, dependent: :destroy # just the 'relationships'
 	has_many :historied_by, through: :history_videos, source: :user # the actual users finish watching a video 
+
+	def calendar
+	    @videos = Video.all
+	end
 end

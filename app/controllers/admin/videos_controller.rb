@@ -2,7 +2,15 @@ class Admin::VideosController < ApplicationController
  def index_admin
     @search = Video.search(params[:q])
     @videos = @search.result
+
+    @today_video = TodayVideo.new
+
+    @todays = TodayVideo.all
+    @videos_by_date = @todays.group_by(&:set_date)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+
   end
+
 
   # GET /videos/new
   # GET /videos/new.json

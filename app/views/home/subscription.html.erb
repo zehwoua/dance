@@ -1,7 +1,100 @@
-<ul>
-<% @plans.each do |plan| %>
-    <li>
-      <%= link_to plan.name , new_membership_path(:plan_id => plan.id )%>
-    </li>
-<% end %>
-</ul>
+<div class="pricing-header">
+	<h1>15-days Free Trial on All Accounts</h1>
+	<h2>No hidden fees. Cancel at anytime. No risk.</h2>
+</div>
+<div class="pricing-plans plans-3">
+						
+	<div class="plan-container">
+	    <div class="plan stacked skyblue">
+	        <div class="plan-header">
+	            
+	        	<div class="plan-title">
+	        		Micro	        		
+	    		</div> <!-- /plan-title -->
+	            
+	            <div class="plan-price">
+	            	<span class="note">$</span>15<span class="term">Per Month</span>
+				</div> <!-- /plan-price -->
+				
+	        </div> <!-- /plan-header -->	        
+	        
+	        <div class="plan-features">
+				<ul>
+					<li><strong>feature</strong> one</li>
+					<li><strong>feature</strong> two</li>
+					<li><strong>feature</strong> three</li>
+					<li><strong>feature</strong> four</li>
+					<li><strong>feature</strong> five</li>
+				</ul>
+			</div> <!-- /plan-features -->
+			
+			<div class="plan-actions">				
+				<%= link_to "Purchase Now" , new_membership_path(:plan_id => @plans[0].id ),:class=>"btn btn-primary" %>			
+			</div> <!-- /plan-actions -->
+
+		</div> <!-- /plan -->
+	</div> <!-- /plan-container -->
+
+	<div class="plan-container">
+	    <div class="plan stacked teal">
+	        <div class="plan-header">
+	            
+	        	<div class="plan-title">
+	        		Starter	        		
+	    		</div> <!-- /plan-title -->
+	            
+	            <div class="plan-price">
+	            	<span class="note">$</span>35<span class="term">Per Month</span>
+				</div> <!-- /plan-price -->
+				
+	        </div> <!-- /plan-header -->       
+	        
+	        <div class="plan-features">
+				<ul>
+					<li><strong>feature</strong> one</li>
+					<li><strong>feature</strong> two</li>
+					<li><strong>feature</strong> three</li>
+					<li><strong>feature</strong> four</li>
+					<li><strong>feature</strong> five</li>
+				</ul>
+			</div> <!-- /plan-features -->
+			
+			<div class="plan-actions">				
+				<%= link_to "Purchase Now" , new_membership_path(:plan_id => @plans[1].id ),:class=>"btn btn-primary" %>			
+			</div> <!-- /plan-actions -->
+
+		</div> <!-- /plan -->
+	</div> <!-- /plan-container -->
+
+	<div class="plan-container">
+	    <div class="plan stacked orange">
+	        <div class="plan-header">
+	            
+	        	<div class="plan-title">
+	        		Business	        		
+	    		</div> <!-- /plan-title -->
+	            
+	            <div class="plan-price">
+	            	<span class="note">$</span>75<span class="term">Per Month</span>
+				</div> <!-- /plan-price -->
+				
+	        </div> <!-- /plan-header -->	          
+	        
+	        <div class="plan-features">
+				<ul>
+					<li><strong>feature</strong> one</li>
+					<li><strong>feature</strong> two</li>
+					<li><strong>feature</strong> three</li>
+					<li><strong>feature</strong> four</li>
+					<li><strong>feature</strong> five</li>
+				</ul>
+			</div> <!-- /plan-features -->
+			
+			<div class="plan-actions">				
+				<%= link_to "Purchase Now" , new_membership_path(:plan_id => @plans[1].id ),:class=>"btn btn-primary" %>				
+			</div> <!-- /plan-actions -->
+
+		</div> <!-- /plan -->
+	</div> <!-- /plan-container -->
+
+</div>
