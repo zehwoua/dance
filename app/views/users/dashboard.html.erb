@@ -8,48 +8,65 @@
 
       <div class="row display_videos_module featured_style">
         <div class="col-lg-12"><h2 class="section_title">Today's Feature Class</h2></div>
-
-        <div class="col-lg-12">
-          <div class="video_container clearfix">
-            <div class="video_item">
-              <img alt="rfwqggfweecwdc" class="video_thumb" src="/assets/videos/7/medium/dancedynamics_0180.jpg?1377828263">
-              <div class="video_overlay">
-                <a href="/videos/7" class="video_popover" data-content="" data-toggle="popover" data-trigger="hover" id="video7"><img alt="Play_button" src="/assets/play_button.png"></a>
-                <div class="video_duration"><span>80 min</span></div>
-              </div><!--/video_overlay--> 
-            </div> <!--/video_item-->
-            <div class="video_short_content">
-              <div class="video_content_inner">
-                <div class="video_level">
-                      <span class="glyphicon glyphicon-leaf"></span>
-                </div>
-                <p>by <a href="/teachers/2">geoff teacher</a></p>
-                <div class="social clearfix">
-                  <ul class="no_list left_list">
-                    <li>
-                      <span class="txt">
-                        1
-                      </span>
-                      <span class="glyphicon glyphicon-heart"></span>
-                    </li>
-                    <li>
-                      <span class="txt">1 </span>
-                      <span class="glyphicon glyphicon-comment"></span>
-                    </li>
-                    <li> | </li>
-                    <li><a href="#">style1</a></li>
-                    <li> | </li>
-                    <li><span>80 min</span></li>
-                  </ul>
-                </div>
-                <h2 class="clearfix"><a href="/videos/7">rfwqggfweecwdc</a></h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae tempus mi. Cras consequat eros ut pretium consectetur. Cras augue enim, tincidunt ut odio at, mattis aliquam turpis. MauriLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae tempus mi. Cras consequat eros ut pretium consectetur. Cras augue enim, tincidunt ut odio at, mattis aliquam turpis. MauriLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae tempus mi. Cras consequat eros ut pretium consectetur. Cras augue enim, tincidunt ut odio at, mattis aliquam turpis. Mauri... <a href="/videos/7">more</a>
-                </p>
-              </div><!--/video_content_inner-->
-            </div><!--/video_short_content-->
-          </div>
-        </div>
+        <% if TodayVideo.where(:set_date => Date.today).count > 0 %>
+          <% TodayVideo.where(:set_date => Date.today).each do |set_video| %>
+            <div class="col-lg-12">
+              <div class="video_container clearfix">
+                <div class="video_item">
+                  <%= image_tag(set_video.video.photo.url(:medium), :alt => set_video.video.title, :class => "video_thumb") %>
+                  <div class="video_overlay">
+                    <%= link_to ( image_tag "play_button.png" ), set_video.video, 
+                            :id => "video#{set_video.video_id}",
+                            :class => "video_popover"   
+                      %>
+                  </div><!--/video_overlay--> 
+                </div> <!--/video_item-->
+                <div class="video_short_content">
+                  <div class="video_content_inner">
+                    <div class="video_level">
+                        <% x = 1 %>
+                          <% while x <= set_video.video.level.scale %>
+                            <% x+=1 %>
+                            <span class="glyphicon glyphicon-leaf"></span>
+                          <% end %>
+                      </div>
+                    <ul class="no_list left_list clearfix" style="margin-bottom:0.5em;">
+                        <li><%= link_to set_video.video.style.name, set_video.video.style %></li>
+                        <li> | </li>
+                        <li>by <%= link_to set_video.video.teacher.name, set_video.video.teacher %></li>
+                      </ul>
+                    <div class="social clearfix">
+                        <ul class="no_list left_list">
+                          <li>
+                            <span class="txt">
+                              <%= FavoriteVideo.count :conditions => {:video_id => set_video.video_id} %>
+                            </span>
+                            <span class="glyphicon glyphicon-heart"></span>
+                          </li>
+                          <li>
+                            <span class="txt"><%= set_video.video.comments.count %> </span>
+                            <span class="glyphicon glyphicon-comment"></span>
+                          </li>
+                          <li>
+                            <span class="txt"><%= set_video.video.duration %> min</span>
+                            <span class="glyphicon glyphicon-time"></span>
+                          </li>
+                        </ul>
+                      </div>
+                      <h2 class="clearfix"><%= link_to set_video.video.title, set_video.video %></h2>
+                    <p>
+                        <%= (truncate h(set_video.video.description), 
+                                :length => 850, 
+                                :omission => "... #{link_to'more',set_video.video}")
+                                .html_safe %>
+                      </p>
+                  </div><!--/video_content_inner-->
+                </div><!--/video_short_content-->
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        
         <hr/>
         <div class="col-lg-12">
           <h2 class="section_title">This Week's Featured Teachers Classes</h2>

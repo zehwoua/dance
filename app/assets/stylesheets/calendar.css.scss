@@ -61,12 +61,17 @@
   }
 }
 
-#articles ul {
+#articles p {
   font-size: 11px;
-  padding-left: 20px;
+  padding-top: 1em;
+  line-height: 14px;
 }
 #calendar_form_loader_image{
 	text-align: center;
 	display: none;
 }
 .no_top_margin{margin-top: 0 !important;}
+#display_today_video #message{
+	font-weight: bold;
+	margin-left: 1em;
+}

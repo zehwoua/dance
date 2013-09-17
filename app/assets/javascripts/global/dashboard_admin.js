@@ -38,6 +38,24 @@ $(document).ready(function(){
 			}
 		});
 	}
+	$('#submit_today_video').click(function(){
+		selected_video = $('#new_today_video input[name="today_video[video_id]"]:checked').parent().text();
+		if(!selected_video){
+			append_message($(this),"Please select a video");
+			return false;
+		}
+		$(".calendar td.selected p").html("<span class='text-primary'>"+selected_video+"</span>");
+		append_message($(this),"The video is added.");
+	});
+
+	function append_message(button,message){
+		button.parent().append('<span id="message" class="text-success">'+message+'</span>');
+		setTimeout(function() {	
+			$("#message").fadeOut('slow',function(){
+				$(this).remove();
+			});
+		},1500);
+	}
 // 	$(".approve_comment").click(function(e){
 // 		e.preventDefault();
 // 		var str = $(this).attr('id');

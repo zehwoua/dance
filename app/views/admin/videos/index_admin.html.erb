@@ -77,21 +77,20 @@
                   <%= date.day %>
                   <% @videos_by_date['2013-09-16'] %>
                   <% date.to_datetime %>
-                  <% if TodayVideo.where(:set_date => date).count > 0 %>
-                    <ul class="list_set_dates">
+                  <p>
+                    <% if TodayVideo.where(:set_date => date).count > 0 %>
                       <% TodayVideo.where(:set_date => date).each do |set_video| %>
-                      <% @seted_video = set_video %>
-                        <li><%= link_to set_video.video.title, "" %></li>
+                        <span class="text-primary"><%= set_video.video.title %></span>
                       <% end %>
-                    </ul>
                     <% end %>
+                  </p>
                   <div id="<%= date %>" class="full_hidden_date set"></div>
 
                 <% end %>
               </div>
             </div>
             <div class="col-lg-4" id="display_today_video">
-              <h5 class="no_top_margin text-primary">Set the Video for <b><span class="full_date"><%= @date %></span></b> date</h5>
+              <h5 class="no_top_margin text-primary">Set a Video for the date: <b><span class="full_date"><%= @date %></span></b></h5>
               <hr/>
               <p id="calendar_form_loader_image"><%= image_tag "loader.gif" %></p>
               <%= simple_form_for [:admin, @today_video],:remote => true do |f| %>
@@ -99,7 +98,7 @@
                 <%= f.association :video ,:label =>"Select a video", :wrapper_html=>{:class => "clearfix"},
                   :as => :radio_buttons
                    %>
-                <%= f.button :submit, :class => "btn btn-primary" %>
+                <%= f.button :submit, "Add Video", :class => "btn btn-primary", :id=> "submit_today_video" %>
                 <% end %>
             </div>
           </div>
