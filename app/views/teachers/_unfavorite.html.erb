@@ -1,0 +1,1 @@
+<%= link_to (raw('<span class="glyphicon glyphicon-star"></span><span class="txt">Remove favorite teachers</span>')), favorite_teacher_path( @teacher, :teacher_id => @teacher.id), { method: :delete, :class => "btn btn-sm buy remove_favorites pull-right", remote: true } %>

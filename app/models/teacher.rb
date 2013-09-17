@@ -14,4 +14,8 @@ class Teacher < ActiveRecord::Base
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg','image/jpg', 'image/png']
 
   has_many :videos
+
+  # Favorited by users
+	has_many :favorite_teachers, dependent: :destroy # just the 'relationships'
+	has_many :favorited_teacher_by, through: :favorite_teachers, source: :user # the actual users favoriting a teacher
 end

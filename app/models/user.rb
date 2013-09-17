@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
   	has_many :favorite_videos, dependent: :destroy # just the 'relationships'
   	has_many :favorites, through: :favorite_videos, source: :video # the actual videos user favorites
 
+  	# Favorite teachers of user
+  	has_many :favorite_teachers, dependent: :destroy # just the 'relationships'
+  	has_many :favorites_teacher, through: :favorite_teachers, source: :teacher # the actual teacher user favorites
+
   	# History videos of user
   	has_many :history_videos, dependent: :destroy # just the 'relationships'
   	has_many :histories, through: :history_videos, source: :video # the actual videos user favorites

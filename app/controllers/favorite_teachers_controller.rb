@@ -1,8 +1,8 @@
-class FavoriteVideosController < ApplicationController
+class FavoriteTeachersController < ApplicationController
 	before_filter :authenticate_user!
 	def create
-		@video = Video.find(params[:video_id])
-	    @favorite_video = current_user.favorite_videos.create!(:video_id => params[:video_id])
+		@teacher = Teacher.find(params[:teacher_id])
+	    @favorite_teacher = current_user.favorite_teachers.create!(:teacher_id => params[:teacher_id])
 	    respond_to do |format|
 			format.html 
 			format.js
@@ -10,10 +10,10 @@ class FavoriteVideosController < ApplicationController
 	end
 
 	def update
-	 	@favorite = FavoriteVideo.find(params[:id])
+	 	@favorite = FavoriteTeacher.find(params[:id])
 
 	  	respond_to do |format|
-		    if @favorite.update_attributes(params[:favorite_video])
+		    if @favorite.update_attributes(params[:favorite_teacher])
 		       format.html { redirect_to user_my_classes_path, notice: 'Post was successfully updated.' }
 		       format.json { head :no_content } # 204 No Content
 		    else
@@ -24,9 +24,9 @@ class FavoriteVideosController < ApplicationController
 	end
 
 	def destroy
-		@video = Video.find(params[:id])
-		@favorite_video = current_user.favorite_videos.find_by_video_id(params[:id])
-		@favorite_video.destroy
+		@teacher = Teacher.find(params[:id])
+		@favorite_teacher = current_user.favorite_teachers.find_by_teacher_id(params[:id])
+		@favorite_teacher.destroy
 		respond_to do |format|
 			format.html 
 			format.js

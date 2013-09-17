@@ -35,6 +35,7 @@ DanceDynamics::Application.routes.draw do
   get "home/subscription"
   
   resources :styles, :levels, :favorite_videos, :history_videos, :teachers
+  resources :favorite_teachers, :only => [:create, :destroy]
   resources :users do
     resources :addresses
     resources :credit_cards
@@ -68,6 +69,8 @@ DanceDynamics::Application.routes.draw do
   match 'dashboard/billing', :to => 'users#billing'
   match 'credit_card_info/confirm' => 'credit_card_info#confirm', :as => :confirm_credit_card_info
   match 'subscription', :to => 'home#subscription'
+  # post "/favorite_teachers" => "favorite_teachers#create", :as => :add_favorite_teacher
+
 
   # match 'users/:id' => 'dashboard'
 
