@@ -133,7 +133,8 @@ $(document).ready(function() {
   });
 
   $(".add_user_notes_form textarea").keyup(function() {
-    $.post($(".add_user_notes_form").attr("action"), $(".add_user_notes_form").serialize(), null, "script");
+    var note_form = $(this).parent();
+    $.post(note_form.attr("action"), note_form.serialize(), null, "script");
     return false;
   });
 
