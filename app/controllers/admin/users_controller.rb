@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-	before_filter :authenticate_admin_user!
+	# before_filter :authenticate_admin_user!
 	# before_filter :find_customer
  	# before_filter :find_credit_card, :except => [:new, :create]
 
