@@ -1,4 +1,5 @@
 class Admin::VideosController < ApplicationController
+  before_filter :authenticate_admin_user!
  def index_admin
     @search = Video.search(params[:q])
     @videos = @search.result

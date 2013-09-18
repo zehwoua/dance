@@ -20,6 +20,9 @@ module UsersHelper
     {
       :collection => Date::MONTHNAMES.each_with_index.to_a[1..-1].map { |month, index| [month, index.to_s.rjust(2, '0')]},
       :include_blank => false,
+      :wrapper_html => { :class => 'pull-left' },
+      :label => "Expiration Date",
+      :input_html => { :class => 'form-control small_select month_select' }
     }
   	end
 
@@ -27,6 +30,9 @@ module UsersHelper
 	    {
 	       :collection => 1976..2200,
 	       :include_blank => false,
+         :wrapper_html => { :class => 'pull-left' },
+         :label => "",
+         :input_html => { :class => 'form-control small_select year_select' }
 	    }
 	end
 
@@ -36,7 +42,8 @@ module UsersHelper
       :value_method  => :alpha_2_code,
       :label         => 'Country',
       :include_blank => false,
-      :prompt => 'Please select a country'
+      :prompt => 'Please select a country',
+      :input_html => { :class => 'form-control' }
     }
   end
 
@@ -46,6 +53,7 @@ module UsersHelper
       :as           => :grouped_select,
       :group_method => :subregions,
       :value_method => :name,
+      :input_html => { :class => 'form-control' }
     }
   end
 

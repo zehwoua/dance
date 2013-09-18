@@ -1,0 +1,16 @@
+- model_class = BraintreeRails::CreditCard
+= render 'admin/admin_dashboard_tabs', :active_tab => 'users'
+%div#dashboard_section.admin_dashboard.admin_style
+  %div.inner_container
+    %div#tabs-1
+    %p.clearfix
+      = link_to raw("<span class='glyphicon glyphicon-chevron-left'></span>Go Back to User Panel"), admin_user_path(@user),:class=> "btn btn-sm btn-default add_new_style_btn"
+    %hr 
+    %h2
+      Add Customer Payment Information
+    = render :partial => "form_payment"
+
+    - content_for :javascript do
+      :javascript
+        var braintree = Braintree.create("#{BraintreeRails::Configuration.client_side_encryption_key}")
+        braintree.onSubmitEncryptForm('braintree-credit-card-form');

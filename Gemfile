@@ -13,7 +13,7 @@ gem 'haml-rails'
 gem 'braintree-rails', :github => "lyang/braintree-rails", :branch => 'master'
 gem 'simple_form'
 gem 'json'
-gem "simple_calendar", "~> 0.1.9"
+gem "monologue"
 #validations
 gem 'client_side_validations'
 gem 'carmen-rails'

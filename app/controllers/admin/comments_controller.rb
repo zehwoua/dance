@@ -1,4 +1,5 @@
 class Admin::CommentsController < ApplicationController
+	before_filter :authenticate_admin_user!
 	# before_filter :load_video
 	# before_filter :authenticate_user!, except: [:index, :show]
 

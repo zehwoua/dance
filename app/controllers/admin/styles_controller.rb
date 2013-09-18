@@ -1,4 +1,5 @@
 class Admin::StylesController < ApplicationController
+	before_filter :authenticate_admin_user!
 	def index
 		@search = Style.search(params[:q])
     	@styles = @search.result

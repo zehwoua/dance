@@ -1,0 +1,14 @@
+<%= render 'admin/admin_dashboard_tabs', :active_tab => 'users' %>
+<div id="dashboard_section" class="admin_dashboard admin_style">
+  <div class="inner_container">
+    <div id="tabs-1"> 
+    	<p class="clearfix">
+	        <%= link_to raw("<span class='glyphicon glyphicon-chevron-left'></span>Go Back to Users Panel"), admin_users_path,:class=> "btn btn-sm btn-default add_new_style_btn" %>
+	    </p>
+	      <hr/> 
+    	<h2>Edit Admin</h2>
+    	<hr/>
+      	<%= render "admin_form" %>
+	</div>
+  </div>
+</div>

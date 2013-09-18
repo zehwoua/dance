@@ -1,0 +1,31 @@
+<%= simple_form_for([:admin,@user], :html => { :class => 'form-horizontal'}) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %></h2>
+      <p class="danger">
+        <%= flash[:alert] %>
+      </p>
+    </div>
+  <% end %>
+  <%= f.input :username %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.input :customer_type, :label =>"User Type", :wrapper_html=>{:class => "clearfix"}, 
+      :collection => [['paid', 'Paid Subscriber'],['free', 'Free Subscriber']],
+      :label_method => :last, 
+      :value_method => :first, 
+      :checked => 'paid',
+      :item_wrapper_class => 'radio_inline',
+      :as => :radio %>
+  <div id="select_plan_section">
+    <%= render "select_plan", :f => f %>
+  </div>
+  <div class="control-group">
+        <label class="string required control-label" for="style_name"></label>
+        <div class="controls">
+          <%= link_to "Go back", admin_users_path, :class => "btn btn-default"%>
+          <%= f.button :submit, :class => "btn btn-primary" %>
+        </div>
+      </div>
+<% end %>

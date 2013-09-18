@@ -9,13 +9,17 @@ class User < ActiveRecord::Base
 
 	# Setup accessible (or protected) attributes for your model
 	attr_accessor *FIELDS
+	attr_accessor :plan_id
 	attr_accessible :email,
 					:password, 
 					:password_confirmation, 
 					:remember_me, 
 					:username,
 					:avatar,
-					:braintree_customer_id
+					:braintree_customer_id,
+					:admin,
+					:customer_type
+
 	# attr_accessible :title, :body
 
 	has_attached_file :avatar, { 
@@ -85,6 +89,8 @@ class User < ActiveRecord::Base
 	  end
 	end
 
+
+
 	def validate_password?
 		if new_record?
 	    	return true
@@ -106,6 +112,10 @@ class User < ActiveRecord::Base
 
   	def has_payment_info?
 	    !!braintree_customer_id
+	end
+
+	def paid_customer?
+		!customer_type == 'paid'
 	end
 
 

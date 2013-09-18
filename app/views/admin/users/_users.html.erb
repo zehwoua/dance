@@ -1,0 +1,37 @@
+<% if @users.count != 0 %>
+	<table class="table table-condensed table-striped">
+		<tr>
+			<th><%= sort_link @search, :id,"ID" %></th>
+			<th><%= sort_link @search, :username,"Username" %></th>
+			<th><%= sort_link @search, :email, "Email" %></th>
+			<th><%= sort_link @search, :created_at,"Created" %></th>
+      <th>Role</th>
+			<th></th>
+		</tr>
+		<% @users.each do |user| %>
+        
+  		<tr>
+  			<td><%= user.id %></td>
+  			<td><%= user.username %></td>
+  			<td><%= user.email %></td>
+  			<td><%= nice_date_form(user.created_at) %></td>
+        <td><%= user_role(user) %></td>
+  			
+  			<td>
+  				<%= link_to "Delete", admin_user_path(user), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-sm btn-danger btn-sm pull-right" %>
+
+          <% if user.admin? %>
+            <%= link_to "Edit", admin_edit_admin_path(user), :class => "btn btn-sm btn-warning btn-sm pull-right" %>
+          <% else %>
+            <%= link_to "Edit", admin_edit_customer_path(user), :class => "btn btn-sm btn-warning btn-sm pull-right" %>
+            
+            <%= link_to "View", admin_user_path(user), :class => "btn btn-sm btn-success btn-sm pull-right" %>
+          <% end %>
+  			</td>
+  		</tr>
+		<% end%>
+	</table>
+<% else %>
+  <hr/>
+  <h4 class="text-primary">Sorry, there is no users right now!</h4>
+<% end %>

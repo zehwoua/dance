@@ -1,0 +1,11 @@
+- model_class = BraintreeRails::Customer
+= render 'admin/admin_dashboard_tabs', :active_tab => 'users'
+%div#dashboard_section.admin_dashboard.admin_style
+  %div.inner_container
+    %div#tabs-1
+    %p.clearfix
+      = link_to raw("<span class='glyphicon glyphicon-chevron-left'></span>Go Back to User Panel"), admin_user_path(@user),:class=> "btn btn-sm btn-default add_new_style_btn"
+    %hr 
+    .page-header
+      %h2="Edit #{model_class.model_name.human} Info"
+    = render :partial => "form_customer"

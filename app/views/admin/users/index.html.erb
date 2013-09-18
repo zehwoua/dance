@@ -2,42 +2,23 @@
 <div id="dashboard_section" class="admin_dashboard admin_style">
   <div class="inner_container">
     <div id="tabs-1">
-      <div>
-        <%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New User'), new_admin_user_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
-        <h2>Welcome, <span class="text-primary"><%= current_user.username %></span></h2>
+      <div class="clearfix">
+
+        <%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Admin'), admin_new_admin_path, :class =>"btn btn-danger pull-right btn-sm add_new_style_btn"%>
+
+        <%= link_to raw('<span class="glyphicon glyphicon-plus"></span>Add New Customer'), new_admin_user_path, :class =>"btn btn-primary pull-right btn-sm add_new_style_btn"%>
+
       </div>
-      <% if @users.count != 0 %>
-      	<table class="table table-condensed table-striped">
-      		<tr>
-      			<th>Id</th>
-      			<th>Username</th>
-      			<th>Email</th>
-      			<th>Created at</th>
-      			<th>Membership status</th>
-      			<th>Subscription type</th>
-      			<th></th>
-      		</tr>
-      		<% @users.each do |user| %>
-	      		<tr>
-	      			<td><%= user.id %></td>
-	      			<td><%= user.email %></td>
-	      			<td><%= user.username %></td>
-	      			<td><%= nice_date_form(user.created_at) %></td>
-	      			<td><%= user.id %></td>
-	      			<td><%= user.id %></td>
-	      			<td>
-	      				<%= link_to "Delete", admin_user_path(user), :method => :delete, :confirm =>'Are you sure?', :class => "btn btn-danger btn-sm pull-right" %>
-                <%= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-warning btn-sm pull-right" %>
-                
-                <%= link_to "View", user_path(user), :class => "btn btn-success btn-sm pull-right" %>
-	      			</td>
-	      		</tr>
-      		<% end%>
-      	</table>
-      <% else %>
-        <hr/>
-        <h4 class="text-primary">Sorry, there is no users right now!</h4>
-      <% end %>
+      <div>
+        <div class="pull-right <%= @active %>">
+          <%= link_to "All", admin_users_path, :class=>"all btn buy btn-sm" %>
+          <%= link_to "Customer", admin_users_path(:sort => 0),:class=>"approved btn buy btn-sm" %>
+          <%= link_to "Admin", admin_users_path(:sort => 1),:class=>"unapproved btn buy btn-sm" %>
+        </div>
+        
+        <h2>Listed Users</h2>
+      </div>
+      <%= render "users" %>
 	</div>
   </div>
 </div>

@@ -138,4 +138,17 @@ $(document).ready(function() {
     return false;
   });
 
+  subs = $("#select_plan_section");
+  content = subs.html();
+
+  $("input[name='user[customer_type]']").change(function(){
+    type = $("input[name='user[customer_type]']:checked").val();
+    
+    if (type == 'free'){
+        $("#select_plan_section").empty();
+    }else{
+      $("#select_plan_section").append(content);
+    }
+  });
+
  });

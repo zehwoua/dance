@@ -26,7 +26,7 @@ class CreditCardsController < ApplicationController
   def update
     if @credit_card.update_attributes(params[:credit_card])
       flash[:notice] = "Credit card has been successfully updated."
-      redirect_to user_credit_card_path(@user, @credit_card) and return
+      redirect_to user_profile_path(:anchor => "credit-card-tab")
     else
       flash[:alert] = @credit_card.errors.full_messages.join(".\n")
       render :edit

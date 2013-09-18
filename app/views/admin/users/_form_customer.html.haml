@@ -1,0 +1,10 @@
+- if params[:id].present?
+  - @action = "update_customer"
+- else
+  - @action = "create_customer"
+= simple_form_for @customer, :url => {:action => @action}, :html => { :class => 'form-horizontal' } do |f|
+  - [:first_name, :last_name, :email, :company, :website, :phone, :fax].each do |attribute|
+    = f.input attribute
+  .form-actions
+    = f.button :submit, :class => 'btn-primary btn-sm'
+    = link_to 'Cancel', admin_user_path(@user), :class => 'btn btn-default btn-sm'

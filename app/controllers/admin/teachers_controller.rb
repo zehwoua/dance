@@ -1,4 +1,5 @@
 class  Admin::TeachersController < ApplicationController
+	before_filter :authenticate_admin_user!
 	def index
 		@search = Teacher.search(params[:q])
     	@teachers = @search.result

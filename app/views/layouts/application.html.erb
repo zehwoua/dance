@@ -40,6 +40,14 @@
                   <ul class="dropdown-menu">
                       <li class="menu">
                           <ul class="no_list">
+                            <% if current_user.admin? %>
+                              <li><%= link_to raw('<span class="glyphicon glyphicon-calendar"></span>Admin'), admin_root_path %></li>
+                              <li><%= link_to raw('<span class="glyphicon glyphicon-user"></span>Users'), admin_users_path %></li>
+                              <li><%= link_to raw('<span class="glyphicon glyphicon-comment"></span>Comments'), admin_comments_path %></li>
+                              <li><%= link_to raw('<span class="glyphicon glyphicon-film"></span>Videos'), admin_videos_path %></li>
+                              <li><%= link_to raw('<span class="glyphicon glyphicon-tower"></span>Teachers'), admin_teachers_path %></li>
+                              <li><%= link_to raw('<span class="glyphicon glyphicon-music"></span>Styles'), admin_styles_path %></li>
+                            <% else %>
                               <li>
                                   <%= link_to raw('<span class="glyphicon glyphicon-calendar"></span>Dashboard'), user_dashboard_path %>
                               </li>
@@ -50,6 +58,7 @@
                               <li>
                                   <%= link_to raw('<span class="glyphicon glyphicon-star"></span>My classes'), user_my_classes_path %>
                               </li>
+                              <% end %>
                               <li><%= link_to (raw('<span class="glyphicon glyphicon-log-out"></span><span class="txt"> Logout</span>')), destroy_user_session_path, :method => :delete %>
                               </li>
                           </ul>

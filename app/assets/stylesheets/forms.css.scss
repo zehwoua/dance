@@ -47,6 +47,7 @@
 	}
 	 .form-actions {
 		padding-left: 180px;
+		background: #f9f9f9;
 	}
 } 
 .form-actions{
@@ -82,4 +83,20 @@
 }
 .notify-bar-height-change {
     height: 32px;
+}
+.small_select{
+	width: 100px !important;
+	&.year_select{
+		width: 80px !important;
+	}
+}
+#expiration_date{
+	.credit_card_expiration_year{
+		label{
+			display: none;
+		}
+		.controls{
+			margin-left: 2em;
+		}
+	}
 }

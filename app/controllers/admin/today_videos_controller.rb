@@ -1,6 +1,5 @@
 class Admin::TodayVideosController < ApplicationController
-	# before_filter :load_video
-	# before_filter :authenticate_user!, except: [:index, :show]
+	before_filter :authenticate_admin_user!
 
 	def create
 		@video_exist = TodayVideo.where(:set_date => params[:today_video][:set_date])
@@ -48,42 +47,4 @@ class Admin::TodayVideosController < ApplicationController
 	  		end	  
 	  	end 		
   	end
-
-	# def index
-	# 	@search = Comment.search(params[:q])
-	# 	if params[:sort].present?
-	# 		if params[:sort] == '3'
-	# 			@comments = @search.result.where(:approved => nil)
-	# 			@active = "pending"
-	# 		else
-	# 			@comments = @search.result.where(:approved => params[:sort])
-	# 			if params[:sort] == '1'
-	# 				@active = "approved"
-	# 			else
-	# 				@active = "unapproved"
-	# 			end
-	# 		end
-	# 	else
-	# 		@comments = @search.result
-	# 		@active = "all"
-	# 	end
-	# end
-
-	# def edit
-	# 	@comment = Comment.find(params[:id])
- #  	end
-
-  	
-
- #  	def destroy
-	# 	@comment = Comment.find(params[:id])
-	# 	@comment.destroy
-	# 	redirect_to admin_comments_path, notice: "Comment is successfully destroyed."
-	# end
-
-# private
-
-#   def load_video
-#     @video = Video.find(params[:video_id])
-#   end
 end

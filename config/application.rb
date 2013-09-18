@@ -65,5 +65,9 @@ module DanceDynamics
     config.autoload_paths += %W(#{config.root}/lib/validators/)
 
     config.middleware.use "PDFKit::Middleware", :print_media_type => true
+
+    # Monologue::User.class_eval
+    #   self.table_name = 'Users'
+    # end
   end
 end

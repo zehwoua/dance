@@ -1,4 +1,5 @@
 class Admin::LevelsController < ApplicationController
+	before_filter :authenticate_admin_user!
 	def index
 		@search = Level.search(params[:q])
     	@levels = @search.result

@@ -100,7 +100,7 @@
                       </tr>
                     </table>
                   </div>
-
+                  <% results = subscription_status("") %>
                   <div class="col-md-6 table-responsive">
                     <h5 class="short_site_stat_title">Users</h5>
                     <table class="table table-condensed short_site_stat">
@@ -112,19 +112,19 @@
                       </tr>
                       <tr>
                         <td>
-                          <span class="pull-right">x</span>
+                          <span class="pull-right"><%= subscription_trial(results) %></span>
                           </td>
                         <td class="stat_name">Trial User</td>
                       </tr>
                       <tr>
                         <td>
-                          <span class="pull-right">x</span>
+                          <span class="pull-right"><%= subscription_status_counter(results,"Active") %></span>
                           </td>
                         <td class="stat_name">Active User</td>
                       </tr>
                       <tr>
-                        <td><span class="pull-right">i</span></td>
-                        <td class="stat_name">Inactive User</td>
+                        <td><span class="pull-right"><%= subscription_status_counter(results,"Canceled") %></span></td>
+                        <td class="stat_name">Canceled User</td>
                       </tr>
                     </table>
                   </div>

@@ -1,0 +1,5 @@
+<%= f.input :plan_id, :label =>"User Type", :wrapper_html=>{:class => "clearfix"}, 
+      :collection => @plans,
+      :prompt => 'Please select a subscription plan',
+      :input_html => { :class => 'form-control' },
+      :as => :select %>

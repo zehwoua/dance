@@ -1,0 +1,25 @@
+<% if params[:id].present? %>
+	<% @action = "update_admin" %>
+	<p class="text-info">Please leave password blank if you dont want to change it!</p>
+<% else %>
+	<% @action = "create_admin" %>
+<% end %>
+<%= simple_form_for([:admin,@user], :html => { :class => 'form-horizontal'},:url => {:action => @action}) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %></h2>
+    </div>
+  <% end %>
+  <%= f.input :username %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.input :admin ,:as =>:hidden, input_html: { value: true }%>
+  <div class="control-group">
+        <label class="string required control-label" for="style_name"></label>
+        <div class="controls">
+          <%= link_to "Go back", admin_users_path, :class => "btn btn-default"%>
+          <%= f.button :submit, :class => "btn btn-primary" %>
+        </div>
+      </div>
+<% end %>

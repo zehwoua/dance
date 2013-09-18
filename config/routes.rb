@@ -13,11 +13,7 @@ DanceDynamics::Application.routes.draw do
     get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
   
-  # devise_for :users, :path => '', :path_names => 
-  #           {:sign_in => '/login',
-  #            :sign_out => '/logout',
-  #            :sign_up => '/sign_up'
-  #          }
+  mount Monologue::Engine, at: '/blog'
 
  
  # get "favorite_videos/destroy"
@@ -49,6 +45,14 @@ DanceDynamics::Application.routes.draw do
       resources :subscriptions
     end
     resources :users
+    get "new_admin" => "users#new_admin", :as => :new_admin
+    post "create_admin" => "users#create_admin", :as => :create_admin
+    get "edit_admin/:id" => "users#edit_admin", :as => :edit_admin
+    put "update_admin/:id" => "users#update_admin", :as => :update_admin
+    get "new_customer" => "users#new_customer", :as => :new_customer
+    post "create_customer" => "users#create_customer", :as => :create_customer
+    get "edit_customer/:id" => "users#edit_customer", :as => :edit_customer
+    put "update_customer/:id" => "users#update_customer", :as => :update_customer
     resources :videos, :except => [:index]
     resources :today_videos
     get "videos" => "videos#index_admin", :as => :admin_videos

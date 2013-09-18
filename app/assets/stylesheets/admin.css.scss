@@ -10,6 +10,7 @@
 			margin-left:1em;
 		}
 	}
+	.widget .table{margin-top:0 !important;}
 	&.admin_style, &.admin_video{
 		.table{
 			.description{
@@ -21,4 +22,9 @@
 		}
 	}
 }
-
+.double_th{vertical-align:middle !important;}
+.td-actions{
+	width:90px;
+	.btn-danger{margin-left:0 !important;}
+}
+.no-top{margin-top:0;}
